@@ -61,7 +61,19 @@
     }];
     */
     
-    
+    /*
+    PFObject *dish = [PFObject objectWithClassName:@"BeefIN"];
+    dish[@"name"] = @"Beef 1";
+    dish[@"price"] = @11;
+    [dish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Dish created.");
+        } else {
+            NSLog(@"Dish error.");
+        }
+    }];
+    */
+     
     return YES;
 }
 							

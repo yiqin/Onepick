@@ -1,19 +1,21 @@
 //
-//  MenuTableViewController.m
+//  DishTableViewController.m
 //  onepick
 //
-//  Created by yiqin on 4/21/14.
+//  Created by yiqin on 4/22/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
-#import "MenuTableViewController.h"
 #import "DishTableViewController.h"
 
-@interface MenuTableViewController ()
+@interface DishTableViewController ()
 
 @end
 
-@implementation MenuTableViewController
+@implementation DishTableViewController
+
+// Why synthesize?
+@synthesize category;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,10 +30,6 @@
 {
     self = [super initWithCoder:aCoder];
     if (self) {
-        // self.parseClassNmae didn't work efficiently.
-        // The className to query on
-        self.parseClassName = @"ichibanCategoryIN";
-        
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
         
@@ -44,7 +42,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Load the menu.");
+    NSLog(@"Load dishes.");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -59,51 +57,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-*/
 - (PFQuery *)queryForTable
 {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    PFQuery *query = [PFQuery queryWithClassName:category];
+    NSLog(@"parseClassName: %@", category);
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-
+    
     return query;
 }
 
-// Not sure it is UITableViewCell or PFTableViewCell
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *) object
 {
-    static NSString *simpleTableIdentifier = @"categoryCell";
+    static NSString *simpleTableIdentifier = @"dishCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    UILabel *categoryLabel = (UILabel *) [cell viewWithTag:100];
-    categoryLabel.text = [object objectForKey:@"category"];
+    UILabel *nameLabel = (UILabel *) [cell viewWithTag:200];
+    nameLabel.text = [object objectForKey:@"name"];
+    UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
+    priceLabel.text = [[object objectForKey:@"price"] stringValue];
     
     return cell;
 }
-
-
-
 
 
 /*
@@ -144,7 +126,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -152,17 +134,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    NSLog(@"Start to move to dishes.");
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    DishTableViewController *destViewController = segue.destinationViewController;
-    
-    PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    destViewController.category = [object objectForKey:@"category"];
-    
-    NSLog(@"%@",destViewController.category);
-    
 }
-
+*/
 
 @end
