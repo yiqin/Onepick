@@ -32,6 +32,7 @@
     [Parse setApplicationId:@"2D6T3tgwBIPoE8HkuninwT3gsUkrHouCfzg0MzDL"
                   clientKey:@"cmvDVWTEIrZO4phyuddppS96diUqckCKazxBEwxH"];
     // Parse Test
+    /*
     PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
     gameScore[@"score"] = @1337;
     gameScore[@"playerName"] = @"Sean Plott";
@@ -44,6 +45,21 @@
             NSLog(@"Error.");
         }
     }];
+    */
+    
+    
+    // Initialize data on Parse.com
+    /*
+    PFObject *ichibanCategory = [PFObject objectWithClassName:@"ichibanCategoryIN"];
+    ichibanCategory[@"category"] = @"Beef";
+    [ichibanCategory saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"ichiban category created.");
+        } else {
+            NSLog(@"ichiban category error.");
+        }
+    }];
+    */
     
     
     return YES;

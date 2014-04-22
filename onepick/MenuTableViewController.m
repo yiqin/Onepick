@@ -23,8 +23,28 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aCoder
+{
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // The className to query on
+        self.parseClassName = @"ichibanCategoryIN";
+        
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"category";
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = NO;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = NO;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
+    NSLog(@"Load the menu.");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -39,7 +59,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -55,17 +75,33 @@
     // Return the number of rows in the section.
     return 0;
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+*/
+- (PFQuery *)queryForTable
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    return query;
+}
+
+// Not sure it is UITableViewCell or PFTableViewCell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *) object
+{
+    static NSString *simpleTableIdentifier = @"categoryCell";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    UILabel *categoryLabel = (UILabel *) [cell viewWithTag:100];
+    
+    categoryLabel.text = [object objectForKey:@"category"];
     
     return cell;
 }
-*/
+
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

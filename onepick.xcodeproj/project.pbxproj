@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8D4209521905C31300D566CA /* onepick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onepick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D4209521905C31300D566CA /* Ichiban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ichiban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4209551905C31300D566CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D4209571905C31300D566CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8D4209591905C31300D566CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -121,7 +121,7 @@
 		8D4209531905C31300D566CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D4209521905C31300D566CA /* onepick.app */,
+				8D4209521905C31300D566CA /* Ichiban.app */,
 				8D4209731905C31300D566CA /* onepickTests.xctest */,
 			);
 			name = Products;
@@ -211,7 +211,7 @@
 			);
 			name = onepick;
 			productName = onepick;
-			productReference = 8D4209521905C31300D566CA /* onepick.app */;
+			productReference = 8D4209521905C31300D566CA /* Ichiban.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8D4209721905C31300D566CA /* onepickTests */ = {
@@ -435,7 +435,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "onepick/onepick-Prefix.pch";
 				INFOPLIST_FILE = "onepick/onepick-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ichiban;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -452,7 +452,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "onepick/onepick-Prefix.pch";
 				INFOPLIST_FILE = "onepick/onepick-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ichiban;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
