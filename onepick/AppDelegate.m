@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
+// #define barTintColor [UIColor colorWithRed: 0.984 green: 0.471 blue: 0.525 alpha: 1]
+#define barTintColor [UIColor colorWithRed: 0.886 green: 0.2157 blue: 0.235 alpha: 1]
+#define tintcolor [UIColor whiteColor]
+
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -13,6 +17,35 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+    // Define color.
+    [[UINavigationBar appearance] setBarTintColor:barTintColor];
+    [[UITabBar appearance] setTintColor:barTintColor];
+    // White or black
+    [[UINavigationBar appearance] setTintColor:tintcolor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : tintcolor}];
+    // Set status bar style
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // Parse.com
+    [Parse setApplicationId:@"2D6T3tgwBIPoE8HkuninwT3gsUkrHouCfzg0MzDL"
+                  clientKey:@"cmvDVWTEIrZO4phyuddppS96diUqckCKazxBEwxH"];
+    // Parse Test
+    PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
+    gameScore[@"score"] = @1337;
+    gameScore[@"playerName"] = @"Sean Plott";
+    gameScore[@"cheatMode"] = @NO;
+    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Parse succeed.");
+        } else {
+            // If it doesn't print Error, please check the wifi connection.
+            NSLog(@"Error.");
+        }
+    }];
+    
+    
     return YES;
 }
 							
