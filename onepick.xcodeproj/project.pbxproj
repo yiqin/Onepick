@@ -38,6 +38,8 @@
 		8D4209A219061DDE00D566CA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209A119061DDE00D566CA /* Parse.framework */; };
 		8D4209A41906207F00D566CA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209A31906207F00D566CA /* SystemConfiguration.framework */; };
 		8D4209AE1906225100D566CA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209AD1906225100D566CA /* MobileCoreServices.framework */; };
+		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
+		8D77B3E01909551500310CDF /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DE1909551500310CDF /* 640x1136.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		8D4209A119061DDE00D566CA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8D4209A31906207F00D566CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8D4209AD1906225100D566CA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8D77B3DD1909551500310CDF /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
+		8D77B3DE1909551500310CDF /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,8 @@
 		8D42095C1905C31300D566CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D77B3DD1909551500310CDF /* 640x960.png */,
+				8D77B3DE1909551500310CDF /* 640x1136.png */,
 				8D20DFEC19075C390055CCDF /* I58.png */,
 				8D20DFED19075C390055CCDF /* I80.png */,
 				8D20DFEE19075C390055CCDF /* I120.png */,
@@ -296,10 +302,12 @@
 				8D42099D190619D100D566CA /* History@2x.png in Resources */,
 				8D20DFF019075C390055CCDF /* I80.png in Resources */,
 				8D42098D1905D1CC00D566CA /* Menu@2x.png in Resources */,
+				8D77B3E01909551500310CDF /* 640x1136.png in Resources */,
 				8D4209911905D3B600D566CA /* Cart@2x.png in Resources */,
 				8D4209941905D62000D566CA /* More.png in Resources */,
 				8D4209691905C31300D566CA /* Main.storyboard in Resources */,
 				8D4209981905D6E200D566CA /* TopRate.png in Resources */,
+				8D77B3DF1909551500310CDF /* 640x960.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +452,6 @@
 		8D4209851905C31300D566CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -460,7 +467,6 @@
 		8D4209861905C31300D566CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

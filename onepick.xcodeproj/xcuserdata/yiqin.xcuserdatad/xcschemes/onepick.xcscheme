@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D4209511905C31300D566CA"
-               BuildableName = "onepick.app"
+               BuildableName = "Ichiban.app"
                BlueprintName = "onepick"
                ReferencedContainer = "container:onepick.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D4209511905C31300D566CA"
-            BuildableName = "onepick.app"
+            BuildableName = "Ichiban.app"
             BlueprintName = "onepick"
             ReferencedContainer = "container:onepick.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D4209511905C31300D566CA"
-            BuildableName = "onepick.app"
+            BuildableName = "Ichiban.app"
             BlueprintName = "onepick"
             ReferencedContainer = "container:onepick.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D4209511905C31300D566CA"
-            BuildableName = "onepick.app"
+            BuildableName = "Ichiban.app"
             BlueprintName = "onepick"
             ReferencedContainer = "container:onepick.xcodeproj">
          </BuildableReference>
