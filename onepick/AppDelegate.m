@@ -7,7 +7,10 @@
 //
 
 // #define barTintColor [UIColor colorWithRed: 0.984 green: 0.471 blue: 0.525 alpha: 1]
-#define barTintColor [UIColor colorWithRed: 0.886 green: 0.2157 blue: 0.235 alpha: 1]
+//
+// Reminder: You can use this calculator and put in what you want the color to be when rendered on screen, it will tell you what to set the color of the barTintColor so when Apple adjusts it, it will show as intended
+//
+#define barTintColor [UIColor colorWithRed: 226.0/255.0 green: 55.0/255.0 blue: 60.0/255.0 alpha: 1]
 #define tintcolor [UIColor whiteColor]
 
 #import "AppDelegate.h"
@@ -27,7 +30,7 @@
     // Set status bar style
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
+        
     // Parse.com
     [Parse setApplicationId:@"2D6T3tgwBIPoE8HkuninwT3gsUkrHouCfzg0MzDL"
                   clientKey:@"cmvDVWTEIrZO4phyuddppS96diUqckCKazxBEwxH"];
