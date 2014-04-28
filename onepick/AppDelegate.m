@@ -64,7 +64,8 @@
     }];
     */
     
-    NSString *name = [NSString stringWithFormat:@"beef 1"];
+    /*
+    NSString *name = [NSString stringWithFormat:@"pork 1"];
     NSNumber *price = [NSNumber numberWithFloat:10];
     NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", nil];
     NSArray *dishArrayObjects = [NSArray arrayWithObjects:name,price, nil];
@@ -72,7 +73,7 @@
     NSDictionary *dishDictionaryInput = [NSDictionary dictionaryWithObjects:dishArrayObjects forKeys:dishArrayKeys];
     NSString *dishDictionaryInputString = [dishDictionaryInput DictionaryToJSONString];
     
-    PFObject *dish = [PFObject objectWithClassName:@"BeefIN"];
+    PFObject *dish = [PFObject objectWithClassName:@"PorkIN"];
     dish[@"dish"] = dishDictionaryInputString;
     [dish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -82,6 +83,7 @@
         }
     }];
     
+    */
      
     return YES;
 }

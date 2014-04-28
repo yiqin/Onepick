@@ -10,9 +10,11 @@
 #import <Parse/Parse.h>
 
 #import "NSString+JSONStringToDictionary.h"
+#import "Cart.h"
 
-@interface DishTableViewController : PFQueryTableViewController
+@interface DishTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) Cart *cart;
 
 @end

@@ -31,7 +31,7 @@
     self = [super initWithCoder:aCoder];
     if (self) {
         // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
+        self.pullToRefreshEnabled = NO;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = NO;
@@ -79,15 +79,38 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
-
+    // [object objectForKey:@"dish"] is a JSON string.
+    NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
     
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:200];
     nameLabel.text = [dishInformation objectForKey:@"name"];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
     priceLabel.text = [[dishInformation objectForKey:@"price"] stringValue];
     
+    
+    
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
+
+    NSLog(@"Select a dish %@", [dishInformation objectForKey:@"name"]);
+    
+
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        // Reflect selection in data model
+    } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        // Reflect deselection in data model
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
