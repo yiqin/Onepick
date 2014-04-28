@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "NSString+JSONStringToDictionary.h"
+
 @interface DishTableViewController : PFQueryTableViewController
 
 @property (strong, nonatomic) NSString *category;

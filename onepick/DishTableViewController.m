@@ -79,10 +79,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
+     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
+
+    
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:200];
-    nameLabel.text = [object objectForKey:@"name"];
+    nameLabel.text = [dishInformation objectForKey:@"name"];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
-    priceLabel.text = [[object objectForKey:@"price"] stringValue];
+    priceLabel.text = [[dishInformation objectForKey:@"price"] stringValue];
     
     return cell;
 }

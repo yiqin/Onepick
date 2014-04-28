@@ -155,10 +155,15 @@
     
     NSLog(@"Start to move to dishes.");
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    // Send selection to DishTableViewController.
     DishTableViewController *destViewController = segue.destinationViewController;
     
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    destViewController.category = [object objectForKey:@"category"];
+    
+    NSString *tempCategory = [object objectForKey:@"category"];
+    NSString *locationIndicator = @"IN";
+    
+    destViewController.category = [tempCategory stringByAppendingString:locationIndicator];
     
     NSLog(@"%@",destViewController.category);
     

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "NSDictionary+DictionaryToJSONString.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
