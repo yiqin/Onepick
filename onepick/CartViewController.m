@@ -43,6 +43,7 @@
     NSError *error = nil;
     // Return a fetch array.
     self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
+    // Since the table view will use array, it is not necessary to use dictionary to handle these data. Reload all the data here.
     self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]+1];
     if([self.previousCart count] > 0) {
         for (SelectedDishes *previousDish in self.previousCart) {
