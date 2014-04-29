@@ -44,6 +44,7 @@
     // Return a fetch array.
     self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
     // Since the table view will use array, it is not necessary to use dictionary to handle these data. Reload all the data here.
+    // Also Core Data return an array.
     self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]+1];
     if([self.previousCart count] > 0) {
         for (SelectedDishes *previousDish in self.previousCart) {
@@ -68,6 +69,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // init a mutable dictionary here, or not?
 }
 
 - (void)didReceiveMemoryWarning
