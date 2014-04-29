@@ -47,7 +47,6 @@
     // Also Core Data return an array.
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
-        NSNumber *dishCount = [[NSNumber alloc] initWithInt:0];
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -57,7 +56,7 @@
             // The mutable array doesn't exist at the time this is being called.
             // The mutable array must be initalized first.
             keys = [NSMutableArray arrayWithObjects:@"name", @"price", @"nameChinese", @"parseObjectId",@"count", nil];
-            objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,dishCount, nil];
+            objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,previousDish.count, nil];
             dishDictionary = [NSMutableDictionary dictionaryWithObjects:objects forKeys:keys];
             [self.cartArray addObject:dishDictionary];
         }
@@ -144,6 +143,7 @@
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
     [self.cartTableView reloadData];
+    [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
 }
 
 - (IBAction)minusDish:(id)sender
@@ -152,12 +152,70 @@
     NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:senderButton.tag];
     // NSNumber are not really used to store numbers in actual math.
     int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
-    if (previousCount > 0) {
+    if (previousCount > 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
         [self.cartTableView reloadData];
+        [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
+    }
+    else if (previousCount == 1) {
+        NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
+        [dishInformation setValue:currentCount forKey:@"count"];
+        [self.cartTableView reloadData];
+        [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
 }
+
+// Save counts in Core Data
+- (void) updateCount:(NSString *)dishName withCount:(NSNumber *) count {
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Fetch all the data we wanna delete
+    NSFetchRequest *fetchUpdate = [[NSFetchRequest alloc] init];
+    fetchUpdate.entity = [NSEntityDescription entityForName:@"SelectedDishes" inManagedObjectContext:context];
+    fetchUpdate.predicate = [NSPredicate predicateWithFormat:@"name == %@", dishName];
+    NSArray *arrayUpdate = [context executeFetchRequest:fetchUpdate error:nil];
+    
+    // maybe some check before, to be sure results is not empty
+    if ([arrayUpdate count] > 0) {
+        NSManagedObject* updateGrabbed = [arrayUpdate objectAtIndex:0];
+        [updateGrabbed setValue:count forKey:@"count"];
+    }
+    
+    // Delete
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Error deleting movie, %@", [error userInfo]);
+    }
+}
+
+// Delete zero dish in Core Data
+- (void) deleteZeroDish: (NSString *)dishName {
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Fetch all the data we wanna delete
+    NSFetchRequest *fetchDelete = [[NSFetchRequest alloc] init];
+    fetchDelete.entity = [NSEntityDescription entityForName:@"SelectedDishes" inManagedObjectContext:context];
+    fetchDelete.predicate = [NSPredicate predicateWithFormat:@"name == %@", dishName];
+    NSArray *arrayDelete = [context executeFetchRequest:fetchDelete error:nil];
+    
+    for (NSManagedObject *managedObject in arrayDelete) {
+        [context deleteObject:managedObject];
+    }
+    
+    // Delete
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Error deleting movie, %@", [error userInfo]);
+    }
+    
+}
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do some stuff when the row is selected

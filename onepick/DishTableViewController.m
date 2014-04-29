@@ -163,6 +163,9 @@
     
     [selectedDishes setParseObjectId:parseObjectId];
     
+    NSNumber *count = [[NSNumber alloc] initWithInt:1];
+    [selectedDishes setCount:count];
+    
     // Save everything
     NSError *error = nil;
     if (![context save:&error])
@@ -194,8 +197,7 @@
     {
         NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
-    
-    
+
 }
 
 
