@@ -70,7 +70,7 @@
     }];
     */
     
-    /*
+    
     NSString *name = [NSString stringWithFormat:@"pork 1"];
     NSNumber *price = [NSNumber numberWithFloat:10];
     NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", nil];
@@ -89,7 +89,7 @@
         }
     }];
     
-    */
+    
     return YES;
 }
 							

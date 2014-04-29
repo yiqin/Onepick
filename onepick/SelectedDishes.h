@@ -12,10 +12,10 @@
 
 @interface SelectedDishes : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * count;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * nameChinese;
-@property (nonatomic, retain) NSNumber * count;
-@property (nonatomic, retain) NSDecimalNumber * price;
 @property (nonatomic, retain) NSString * parseObjectID;
+@property (nonatomic, retain) NSNumber * price;
 
 @end

@@ -11,10 +11,10 @@
 
 @implementation SelectedDishes
 
+@dynamic count;
 @dynamic name;
 @dynamic nameChinese;
-@dynamic count;
-@dynamic price;
 @dynamic parseObjectID;
+@dynamic price;
 
 @end
