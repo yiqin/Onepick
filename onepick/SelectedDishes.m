@@ -2,7 +2,7 @@
 //  SelectedDishes.m
 //  onepick
 //
-//  Created by yiqin on 4/28/14.
+//  Created by yiqin on 4/29/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
@@ -12,5 +12,9 @@
 @implementation SelectedDishes
 
 @dynamic name;
+@dynamic nameChinese;
+@dynamic count;
+@dynamic price;
+@dynamic parseObjectID;
 
 @end

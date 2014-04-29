@@ -45,8 +45,8 @@
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
 		8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */; };
-		8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E1190EF81900E8FA36 /* SelectedDishes.m */; };
 		8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E4190F340C00E8FA36 /* CartViewController.m */; };
+		8DFEBEB0190FF8FA00D24B9D /* SelectedDishes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFEBEAF190FF8FA00D24B9D /* SelectedDishes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,10 +106,10 @@
 		8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryToJSONString.m"; sourceTree = "<group>"; };
 		8DE455DB190EF1D900E8FA36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cart.xcdatamodel; sourceTree = "<group>"; };
-		8DE455E0190EF81900E8FA36 /* SelectedDishes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDishes.h; sourceTree = "<group>"; };
-		8DE455E1190EF81900E8FA36 /* SelectedDishes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDishes.m; sourceTree = "<group>"; };
 		8DE455E3190F340C00E8FA36 /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		8DE455E4190F340C00E8FA36 /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		8DFEBEAE190FF8FA00D24B9D /* SelectedDishes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDishes.h; sourceTree = "<group>"; };
+		8DFEBEAF190FF8FA00D24B9D /* SelectedDishes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDishes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,9 +187,9 @@
 				8D20DFEA190703170055CCDF /* DishTableViewController.m */,
 				8DE455E3190F340C00E8FA36 /* CartViewController.h */,
 				8DE455E4190F340C00E8FA36 /* CartViewController.m */,
-				8DE455E0190EF81900E8FA36 /* SelectedDishes.h */,
-				8DE455E1190EF81900E8FA36 /* SelectedDishes.m */,
 				8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */,
+				8DFEBEAE190FF8FA00D24B9D /* SelectedDishes.h */,
+				8DFEBEAF190FF8FA00D24B9D /* SelectedDishes.m */,
 				8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */,
 				8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */,
 				8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */,
@@ -361,7 +361,7 @@
 				8D4209A019061C1E00D566CA /* MenuTableViewController.m in Sources */,
 				8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */,
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
-				8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */,
+				8DFEBEB0190FF8FA00D24B9D /* SelectedDishes.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
 				8D20DFEB190703170055CCDF /* DishTableViewController.m in Sources */,
 				8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */,
