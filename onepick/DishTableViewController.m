@@ -126,7 +126,7 @@
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         // Reflect selection in data model
-        [self create:[dishInformation objectForKey:@"name"]];
+        [self create:dishInformation withParseObjectId:[object objectId]];
     } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
         cell.accessoryType = UITableViewCellAccessoryNone;
         // Reflect deselection in data model
@@ -141,7 +141,7 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
-- (void) create: (NSString *)dishName {
+- (void) create:(NSDictionary *)dishInformation withParseObjectId:(NSString *) parseObjectId{
     // As there is no built in method available, you need to fetch results and check whether result contains object you don't want to be duplicated.
     
     // Grab the context
@@ -151,31 +151,26 @@
     SelectedDishes *selectedDishes = [NSEntityDescription insertNewObjectForEntityForName:@"SelectedDishes" inManagedObjectContext:context];
     
     // Set dish name
-    [selectedDishes setName:dishName];
+    NSString *name = [dishInformation objectForKey:@"name"];
+    if (name != nil) [selectedDishes setName:name];
+    else [selectedDishes setName:@"no good name"];
+    
+    NSNumber *price = [dishInformation objectForKey:@"price"];
+    if (price != nil) [selectedDishes setPrice:price];
+    else [selectedDishes setPrice:[[NSNumber alloc] initWithFloat:10]];
+
+    NSString *nameChinese = [dishInformation objectForKey:@"nameChinese"];
+    if (nameChinese != nil) [selectedDishes setName:nameChinese];
+    else [selectedDishes setNameChinese:@"还没有名字"];
+    
+    [selectedDishes setParseObjectId:parseObjectId];
     
     // Save everything
     NSError *error = nil;
-    if ([context save:&error]) {
-        NSLog(@"The save was successful!");
-        // Read all data
-        NSLog(@"Now we wanna retrieve the one just stored.");
-        // Construct a fetch request
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SelectedDishes"
-                                                  inManagedObjectContext:context];
-        
-        [fetchRequest setEntity:entity];
-        NSError *error = nil;
-        // Return a fetch array.
-        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-        for (SelectedDishes *tempselectedDishes in fetchedObjects) {
-            NSLog(@"%@", tempselectedDishes.name);
-        }
-        
-    } else {
-        NSLog(@"The save wasn't successful: %@", [error userInfo]);
+    if (![context save:&error])
+    {
+        NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
-    
     
 }
 

@@ -14,7 +14,7 @@
 @dynamic count;
 @dynamic name;
 @dynamic nameChinese;
-@dynamic parseObjectID;
+@dynamic parseObjectId;
 @dynamic price;
 
 @end

@@ -4,7 +4,7 @@
         <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nameChinese" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="parseObjectID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parseObjectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>

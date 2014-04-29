@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSNumber * count;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * nameChinese;
-@property (nonatomic, retain) NSString * parseObjectID;
+@property (nonatomic, retain) NSString * parseObjectId;
 @property (nonatomic, retain) NSNumber * price;
 
 @end
