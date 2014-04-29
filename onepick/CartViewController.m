@@ -47,7 +47,7 @@
     // Also Core Data return an array.
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
-        self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]+1];
+        self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
         NSMutableDictionary *dishDictionary = [[NSMutableDictionary alloc] init];
