@@ -26,6 +26,7 @@
     return self;
 }
 
+// initWithCoder: load only one time, which is the first time
 - (id)initWithCoder:(NSCoder *)aCoder
 {
     self = [super initWithCoder:aCoder];
@@ -36,23 +37,29 @@
         // Whether the built-in pagination is enabled
         self.paginationEnabled = NO;
         // self.objectsPerPage = 2;
-        
-        // Grab the context
-        NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
-        // Construct a fetch request
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"SelectedDishes"
-                                                  inManagedObjectContext:context];
-        
-        [fetchRequest setEntity:entity];
-        NSError *error = nil;
-        // Return a fetch array.
-        self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
 
-        
-        
     }
     return self;
+}
+
+// viewWilAppear: load eveytime the page is visited
+// viewDidLoad: load only one time, which is the first time
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Welcome to Dish.");
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    // Construct a fetch request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"SelectedDishes"
+                                              inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    NSError *error = nil;
+    // Return a fetch array.
+    self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
+    // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
+    // will do cellForRowAtIndexPath again
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -103,6 +110,7 @@
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
     priceLabel.text = [[dishInformation objectForKey:@"price"] stringValue];
 
+    cell.accessoryType = UITableViewCellAccessoryNone;
     // Note that in self.previousCart is not NSString objects.
     for(SelectedDishes *previousDish in self.previousCart) {
         if ([previousDish.name isEqualToString:name]) {

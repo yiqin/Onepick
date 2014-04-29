@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
-#import "NSString+JSONStringToDictionary.h"
 #import "SelectedDishes.h"
+#import "NSString+JSONStringToDictionary.h"
+
 
 @interface DishTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
