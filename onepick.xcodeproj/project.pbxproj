@@ -43,7 +43,9 @@
 		8D77B3E2190A028900310CDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3E1190A028900310CDF /* Default-568h@2x.png */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
-		8DE455DA190ED87600E8FA36 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D9190ED87600E8FA36 /* Cart.m */; };
+		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
+		8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */; };
+		8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E1190EF81900E8FA36 /* SelectedDishes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,8 +103,10 @@
 		8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONStringToDictionary.m"; sourceTree = "<group>"; };
 		8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryToJSONString.h"; sourceTree = "<group>"; };
 		8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DictionaryToJSONString.m"; sourceTree = "<group>"; };
-		8DE455D8190ED87600E8FA36 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
-		8DE455D9190ED87600E8FA36 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
+		8DE455DB190EF1D900E8FA36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cart.xcdatamodel; sourceTree = "<group>"; };
+		8DE455E0190EF81900E8FA36 /* SelectedDishes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDishes.h; sourceTree = "<group>"; };
+		8DE455E1190EF81900E8FA36 /* SelectedDishes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDishes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */,
 				8D4209AE1906225100D566CA /* MobileCoreServices.framework in Frameworks */,
 				8D4209A41906207F00D566CA /* SystemConfiguration.framework in Frameworks */,
 				8D4209581905C31300D566CA /* CoreGraphics.framework in Frameworks */,
@@ -155,6 +160,7 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DE455DB190EF1D900E8FA36 /* CoreData.framework */,
 				8D4209AD1906225100D566CA /* MobileCoreServices.framework */,
 				8D4209A31906207F00D566CA /* SystemConfiguration.framework */,
 				8D4209A119061DDE00D566CA /* Parse.framework */,
@@ -176,8 +182,9 @@
 				8D42099F19061C1E00D566CA /* MenuTableViewController.m */,
 				8D20DFE9190703170055CCDF /* DishTableViewController.h */,
 				8D20DFEA190703170055CCDF /* DishTableViewController.m */,
-				8DE455D8190ED87600E8FA36 /* Cart.h */,
-				8DE455D9190ED87600E8FA36 /* Cart.m */,
+				8DE455E0190EF81900E8FA36 /* SelectedDishes.h */,
+				8DE455E1190EF81900E8FA36 /* SelectedDishes.m */,
+				8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */,
 				8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */,
 				8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */,
 				8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */,
@@ -345,10 +352,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DE455DA190ED87600E8FA36 /* Cart.m in Sources */,
 				8D4209661905C31300D566CA /* AppDelegate.m in Sources */,
 				8D4209A019061C1E00D566CA /* MenuTableViewController.m in Sources */,
+				8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */,
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
+				8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
 				8D20DFEB190703170055CCDF /* DishTableViewController.m in Sources */,
 				8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */,
@@ -572,6 +580,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */,
+			);
+			currentVersion = 8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */;
+			path = Cart.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8D42094A1905C31300D566CA /* Project object */;
 }

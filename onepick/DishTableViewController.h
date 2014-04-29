@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-
+#import "AppDelegate.h"
 #import "NSString+JSONStringToDictionary.h"
-#import "Cart.h"
+#import "SelectedDishes.h"
 
 @interface DishTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *category;
-@property (strong, nonatomic) Cart *cart;
+@property (strong, nonatomic) NSArray *previousCart;
 
 @end
