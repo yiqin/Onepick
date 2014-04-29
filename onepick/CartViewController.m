@@ -28,10 +28,9 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+// viewWilAppear: load eveytime the page is visited
+// viewDidLoad: load only one time, that is the first time
+- (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Welcome to Cart.");
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
@@ -44,15 +43,30 @@
     NSError *error = nil;
     // Return a fetch array.
     self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
+    self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]+1];
     if([self.previousCart count] > 0) {
         for (SelectedDishes *previousDish in self.previousCart) {
-            NSLog(@"Loop %@", previousDish.name);
+            // Why this line never work ?
+            // The mutable array doesn't exist at the time this is being called.
+            // The mutable array must be initalized first.
+            [self.cartArray addObject:previousDish.name];
         }
     }
     else {
         [self.cartArray addObject:@"Your cart is empty."];
     }
+    for(NSString *temp in self.cartArray) {
+        NSLog(@"Cart Loop: %@", temp);
+    }
     
+    // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
+    [self.cartTableView reloadData];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,10 +75,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.previousCart count];
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -75,15 +91,12 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
-    SelectedDishes *temp = [self.previousCart objectAtIndex:indexPath.row];
+
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:300];
-    nameLabel.text = temp.name;
+    nameLabel.text = [self.cartArray objectAtIndex:indexPath.row];
     
     return cell;
 }
-
-
 
 /*
 #pragma mark - Navigation

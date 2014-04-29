@@ -15,4 +15,6 @@
 @property (strong, nonatomic) NSArray *previousCart;
 @property (strong, nonatomic) NSMutableArray *cartArray;
 
+@property (strong, nonatomic) IBOutlet UITableView *cartTableView;
+
 @end
