@@ -46,6 +46,7 @@
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
 		8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */; };
 		8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E1190EF81900E8FA36 /* SelectedDishes.m */; };
+		8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E4190F340C00E8FA36 /* CartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cart.xcdatamodel; sourceTree = "<group>"; };
 		8DE455E0190EF81900E8FA36 /* SelectedDishes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDishes.h; sourceTree = "<group>"; };
 		8DE455E1190EF81900E8FA36 /* SelectedDishes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDishes.m; sourceTree = "<group>"; };
+		8DE455E3190F340C00E8FA36 /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
+		8DE455E4190F340C00E8FA36 /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				8D42099F19061C1E00D566CA /* MenuTableViewController.m */,
 				8D20DFE9190703170055CCDF /* DishTableViewController.h */,
 				8D20DFEA190703170055CCDF /* DishTableViewController.m */,
+				8DE455E3190F340C00E8FA36 /* CartViewController.h */,
+				8DE455E4190F340C00E8FA36 /* CartViewController.m */,
 				8DE455E0190EF81900E8FA36 /* SelectedDishes.h */,
 				8DE455E1190EF81900E8FA36 /* SelectedDishes.m */,
 				8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */,
@@ -359,6 +364,7 @@
 				8DE455E2190EF81900E8FA36 /* SelectedDishes.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
 				8D20DFEB190703170055CCDF /* DishTableViewController.m in Sources */,
+				8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */,
 				8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
