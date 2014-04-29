@@ -111,8 +111,6 @@
         }
     }
     
-    
-    
     return cell;
 }
 

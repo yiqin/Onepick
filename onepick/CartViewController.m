@@ -47,6 +47,7 @@
     // Also Core Data return an array.
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
+        NSNumber *dishCount = [[NSNumber alloc] initWithInt:0];
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -55,8 +56,8 @@
             // Why this line never work ?
             // The mutable array doesn't exist at the time this is being called.
             // The mutable array must be initalized first.
-            keys = [NSMutableArray arrayWithObjects:@"name", @"price", @"nameChinese", @"parseObjectId", nil];
-            objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId, nil];
+            keys = [NSMutableArray arrayWithObjects:@"name", @"price", @"nameChinese", @"parseObjectId",@"count", nil];
+            objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,dishCount, nil];
             dishDictionary = [NSMutableDictionary dictionaryWithObjects:objects forKeys:keys];
             [self.cartArray addObject:dishDictionary];
         }
@@ -107,8 +108,60 @@
     priceLabel.text = [[dishDictionary objectForKey:@"price"] stringValue];
     UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:302];
     nameChineseLabel.text = [dishDictionary objectForKey:@"nameChinese"];
+    UILabel *countLabel = (UILabel *) [cell viewWithTag:303];
+    countLabel.text = [[dishDictionary objectForKey:@"count"] stringValue];
+    
+    // Dynamically add buttons
+    // add button
+    UIButton *addDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    addDishButton.tag = indexPath.row;
+    addDishButton.frame = CGRectMake(200.0f, 5.0f, 75.0f, 30.0f);
+    [addDishButton setTitle:@"Add" forState:UIControlStateNormal];
+    [cell addSubview:addDishButton];
+    [addDishButton addTarget:self
+                        action:@selector(addDish:)
+              forControlEvents:UIControlEventTouchUpInside];
+
+    // minus button
+    UIButton *minusDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    minusDishButton.tag = indexPath.row;
+    minusDishButton.frame = CGRectMake(200.0f, 50.0f, 75.0f, 30.0f);
+    [minusDishButton setTitle:@"Delete" forState:UIControlStateNormal];
+    [cell addSubview:minusDishButton];
+    [minusDishButton addTarget:self
+                      action:@selector(minusDish:)
+            forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
+}
+
+- (IBAction)addDish:(id)sender
+{
+    UIButton *senderButton = (UIButton *)sender;
+    NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:senderButton.tag];
+    // NSNumber are not really used to store numbers in actual math.
+    int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
+    NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
+    [dishInformation setValue:currentCount forKey:@"count"];
+    [self.cartTableView reloadData];
+}
+
+- (IBAction)minusDish:(id)sender
+{
+    UIButton *senderButton = (UIButton *)sender;
+    NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:senderButton.tag];
+    // NSNumber are not really used to store numbers in actual math.
+    int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
+    if (previousCount > 0) {
+        NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
+        [dishInformation setValue:currentCount forKey:@"count"];
+        [self.cartTableView reloadData];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Do some stuff when the row is selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*
