@@ -128,7 +128,7 @@
     // minus button
     UIButton *minusDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     minusDishButton.tag = indexPath.row;
-    minusDishButton.frame = CGRectMake(200.0f, 50.0f, 75.0f, 30.0f);
+    minusDishButton.frame = CGRectMake(200.0f, 40.0f, 75.0f, 30.0f);
     [minusDishButton setTitle:@"Delete" forState:UIControlStateNormal];
     [cell addSubview:minusDishButton];
     [minusDishButton addTarget:self
