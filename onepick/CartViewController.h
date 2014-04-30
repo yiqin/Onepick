@@ -17,4 +17,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *cartTableView;
 
+@property (strong, nonatomic) IBOutlet UILabel *totalCredit;
+@property (assign, nonatomic) float total;
+
 @end

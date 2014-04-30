@@ -47,6 +47,8 @@
     // Also Core Data return an array.
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
+        // Reset the total price
+        self.total = 0;
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -59,6 +61,7 @@
             objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,previousDish.count, nil];
             dishDictionary = [NSMutableDictionary dictionaryWithObjects:objects forKeys:keys];
             [self.cartArray addObject:dishDictionary];
+            self.total = self.total + [previousDish.price floatValue]*[previousDish.count intValue];
         }
     }
     else {
@@ -66,6 +69,7 @@
     }
     
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
+    self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
     [self.cartTableView reloadData];
 }
 
@@ -142,6 +146,8 @@
     int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
+    self.total = self.total + [[dishInformation objectForKey:@"price"] floatValue];
+    self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
     [self.cartTableView reloadData];
     [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
 }
@@ -155,12 +161,16 @@
     if (previousCount > 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
+        self.total = self.total - [[dishInformation objectForKey:@"price"] floatValue];
+        self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
         [self.cartTableView reloadData];
         [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
     }
     else if (previousCount == 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
+        self.total = self.total - [[dishInformation objectForKey:@"price"] floatValue];
+        self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
         [self.cartTableView reloadData];
         [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
