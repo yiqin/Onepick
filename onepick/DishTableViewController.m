@@ -108,7 +108,9 @@
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:200];
     nameLabel.text = [dishInformation objectForKey:@"name"];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
-    priceLabel.text = [[dishInformation objectForKey:@"price"] stringValue];
+    // NSNumber -> float -> string
+    NSNumber *price = [dishInformation objectForKey:@"price"];
+    priceLabel.text = [NSString stringWithFormat:@"%.2f",[price floatValue]];
 
     cell.accessoryType = UITableViewCellAccessoryNone;
     // Note that in self.previousCart is not NSString objects.

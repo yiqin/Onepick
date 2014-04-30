@@ -48,7 +48,7 @@
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
         // Reset the total price
-        self.total = 0;
+        self.totalDishesFloat = 0;
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -61,7 +61,7 @@
             objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,previousDish.count, nil];
             dishDictionary = [NSMutableDictionary dictionaryWithObjects:objects forKeys:keys];
             [self.cartArray addObject:dishDictionary];
-            self.total = self.total + [previousDish.price floatValue]*[previousDish.count intValue];
+            self.totalDishesFloat = self.totalDishesFloat + [previousDish.price floatValue]*[previousDish.count intValue];
         }
     }
     else {
@@ -69,7 +69,7 @@
     }
     
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
-    self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
+    self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
 }
 
@@ -104,21 +104,24 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
 
-    NSMutableDictionary *dishDictionary = [self.cartArray objectAtIndex:indexPath.row];
+    // Similar as DishTableViewController
+    NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:indexPath.row];
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:300];
-    nameLabel.text = [dishDictionary objectForKey:@"name"];
+    nameLabel.text = [dishInformation objectForKey:@"name"];
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:301];
-    priceLabel.text = [[dishDictionary objectForKey:@"price"] stringValue];
+    // NSNumber -> float -> string
+    NSNumber *price = [dishInformation objectForKey:@"price"];
+    priceLabel.text = [NSString stringWithFormat:@"%.2f",[price floatValue]];
     UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:302];
-    nameChineseLabel.text = [dishDictionary objectForKey:@"nameChinese"];
+    nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];
     UILabel *countLabel = (UILabel *) [cell viewWithTag:303];
-    countLabel.text = [[dishDictionary objectForKey:@"count"] stringValue];
+    countLabel.text = [[dishInformation objectForKey:@"count"] stringValue];
     
     // Dynamically add buttons
     // add button
     UIButton *addDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addDishButton.tag = indexPath.row;
-    addDishButton.frame = CGRectMake(200.0f, 5.0f, 75.0f, 30.0f);
+    addDishButton.frame = CGRectMake(100.0f, 5.0f, 75.0f, 30.0f);
     [addDishButton setTitle:@"Add" forState:UIControlStateNormal];
     [cell addSubview:addDishButton];
     [addDishButton addTarget:self
@@ -128,7 +131,7 @@
     // minus button
     UIButton *minusDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     minusDishButton.tag = indexPath.row;
-    minusDishButton.frame = CGRectMake(200.0f, 40.0f, 75.0f, 30.0f);
+    minusDishButton.frame = CGRectMake(250.0f, 5.0f, 75.0f, 30.0f);
     [minusDishButton setTitle:@"Delete" forState:UIControlStateNormal];
     [cell addSubview:minusDishButton];
     [minusDishButton addTarget:self
@@ -146,8 +149,8 @@
     int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
-    self.total = self.total + [[dishInformation objectForKey:@"price"] floatValue];
-    self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
+    self.totalDishesFloat = self.totalDishesFloat + [[dishInformation objectForKey:@"price"] floatValue];
+    self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
     [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
 }
@@ -161,16 +164,16 @@
     if (previousCount > 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
-        self.total = self.total - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
+        self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
+        self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
         [self.cartTableView reloadData];
         [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
     }
     else if (previousCount == 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
-        self.total = self.total - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalCredit.text = [NSString stringWithFormat:@"Total price is %.2f",self.total];
+        self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
+        self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
         [self.cartTableView reloadData];
         [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
