@@ -11,6 +11,7 @@
 		8D20DFEF19075C390055CCDF /* I58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D20DFEC19075C390055CCDF /* I58.png */; };
 		8D20DFF019075C390055CCDF /* I80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D20DFED19075C390055CCDF /* I80.png */; };
 		8D20DFF119075C390055CCDF /* I120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D20DFEE19075C390055CCDF /* I120.png */; };
+		8D35777019108CDA004D9732 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D35776F19108CDA004D9732 /* CoreLocation.framework */; };
 		8D4209561905C31300D566CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209551905C31300D566CA /* Foundation.framework */; };
 		8D4209581905C31300D566CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209571905C31300D566CA /* CoreGraphics.framework */; };
 		8D42095A1905C31300D566CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4209591905C31300D566CA /* UIKit.framework */; };
@@ -65,6 +66,7 @@
 		8D20DFEC19075C390055CCDF /* I58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I58.png; sourceTree = "<group>"; };
 		8D20DFED19075C390055CCDF /* I80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I80.png; sourceTree = "<group>"; };
 		8D20DFEE19075C390055CCDF /* I120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I120.png; sourceTree = "<group>"; };
+		8D35776F19108CDA004D9732 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8D4209521905C31300D566CA /* Ichiban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ichiban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4209551905C31300D566CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8D4209571905C31300D566CA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D35777019108CDA004D9732 /* CoreLocation.framework in Frameworks */,
 				8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */,
 				8D4209AE1906225100D566CA /* MobileCoreServices.framework in Frameworks */,
 				8D4209A41906207F00D566CA /* SystemConfiguration.framework in Frameworks */,
@@ -163,6 +166,7 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D35776F19108CDA004D9732 /* CoreLocation.framework */,
 				8DE455DB190EF1D900E8FA36 /* CoreData.framework */,
 				8D4209AD1906225100D566CA /* MobileCoreServices.framework */,
 				8D4209A31906207F00D566CA /* SystemConfiguration.framework */,

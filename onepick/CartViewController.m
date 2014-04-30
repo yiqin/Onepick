@@ -71,6 +71,15 @@
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
     self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
+    
+    // How to get the path distance?
+    // Willowbrook 40.448668, -86.939104
+    // Ichiban 40.417421, -86.893315
+    CLLocation *locA = [[CLLocation alloc] initWithLatitude:40.448668 longitude:-86.939104];
+    CLLocation *locB = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
+    CLLocationDistance distance = [locA distanceFromLocation:locB];
+    NSLog(@"%f", distance);
+    
 }
 
 - (void)viewDidLoad
