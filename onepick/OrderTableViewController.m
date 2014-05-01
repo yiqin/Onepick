@@ -1,19 +1,18 @@
 //
-//  MenuTableViewController.m
+//  OrderTableViewController.m
 //  onepick
 //
-//  Created by yiqin on 4/21/14.
+//  Created by yiqin on 4/30/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
-#import "MenuTableViewController.h"
-#import "DishTableViewController.h"
+#import "OrderTableViewController.h"
 
-@interface MenuTableViewController ()
+@interface OrderTableViewController ()
 
 @end
 
-@implementation MenuTableViewController
+@implementation OrderTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,28 +23,26 @@
     return self;
 }
 
+// initWithCoder: load only one time, which is the first time
 - (id)initWithCoder:(NSCoder *)aCoder
 {
     self = [super initWithCoder:aCoder];
     if (self) {
-        // self.parseClassNmae didn't work efficiently.
-        // The className to query on
-        self.parseClassName = @"ichibanCategoryIN";
-        
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = NO;
         
         // Whether the built-in pagination is enabled
         self.paginationEnabled = NO;
         // self.objectsPerPage = 2;
+        
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    NSLog(@"Load the menu.");
     [super viewDidLoad];
+    NSLog(@"Welcome to Order.");
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -59,6 +56,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (PFQuery *)queryForTable
+{
+    // Device name + phone number
+    // Always from Core Data
+    PFQuery *query = [PFQuery queryWithClassName:@"no"];
+    // NSLog(@"parseClassName: %@", category);
+    
+    // enable caching.
+    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    return query;
+}
+
 /*
 #pragma mark - Table view data source
 
@@ -76,35 +87,17 @@
     return 0;
 }
 */
-- (PFQuery *)queryForTable
-{
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    // enable caching.
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
 
-    return query;
-}
-
-// Not sure it is UITableViewCell or PFTableViewCell
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *) object
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"categoryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    
-    UILabel *categoryLabel = (UILabel *) [cell viewWithTag:100];
-    categoryLabel.text = [object objectForKey:@"category"];
+    // Configure the cell...
     
     return cell;
 }
-
-
-
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -144,7 +137,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -152,21 +145,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    NSLog(@"Start to move to dishes.");
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    // Send selection to DishTableViewController.
-    DishTableViewController *destViewController = segue.destinationViewController;
-    
-    PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    NSString *tempCategory = [object objectForKey:@"category"];
-    NSString *locationIndicator = @"IN";
-    
-    destViewController.category = [tempCategory stringByAppendingString:locationIndicator];
-    
-    NSLog(@"%@",destViewController.category);
-    
 }
-
+*/
 
 @end

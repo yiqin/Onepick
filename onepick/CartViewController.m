@@ -69,7 +69,7 @@
     }
     
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
-    self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
+    self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
     
     // How to get the path distance?
@@ -80,13 +80,15 @@
     CLLocationDistance distance = [locA distanceFromLocation:ichibanLocation];
     NSLog(@"first distance %f", distance);
     
+    // User's address -> Machine address (readable)
     CLGeocoder* geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:@"2113 Willowbrook Drive, West Lafayette, IN 47906, USA"
+    [geocoder geocodeAddressString:@"1000 Willowbrook Drive, West Lafayette, IN 47906, USA"
                  completionHandler:^(NSArray* placemarks, NSError* error){
                      for (CLPlacemark* aPlacemark in placemarks)
                      {
                          // Process the placemark.
                          NSLog(@"second distance %f", [aPlacemark.location distanceFromLocation:ichibanLocation]);
+                         NSLog(@"name %@", aPlacemark.addressDictionary);
                      }
                  }];
     
@@ -136,6 +138,9 @@
     UILabel *countLabel = (UILabel *) [cell viewWithTag:303];
     countLabel.text = [[dishInformation objectForKey:@"count"] stringValue];
     
+    UILabel *listNumLabel = (UILabel *) [cell viewWithTag:304];
+    listNumLabel.text = [NSString stringWithFormat:@"%i", indexPath.row+1];
+    
     // Dynamically add buttons
     // add button
     UIButton *addDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -169,7 +174,7 @@
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
     self.totalDishesFloat = self.totalDishesFloat + [[dishInformation objectForKey:@"price"] floatValue];
-    self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
+    self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
     [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
 }
@@ -184,7 +189,7 @@
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
         self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
+        self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
         [self.cartTableView reloadData];
         [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
     }
@@ -192,7 +197,7 @@
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
         self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalDishes.text = [NSString stringWithFormat:@"Total dishes price is %.2f",self.totalDishesFloat];
+        self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
         [self.cartTableView reloadData];
         [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
@@ -248,12 +253,73 @@
 }
 
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do some stuff when the row is selected
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+// Alert
+- (IBAction)deliverToWhere:(id)sender {
+    UIActionSheet *deliverToWhereActionSheet = [[UIActionSheet alloc] initWithTitle:@"Update Address"delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"History Address", @"Add New Address", nil];
+    [deliverToWhereActionSheet setTag:1];
+    [deliverToWhereActionSheet showInView:self.view];
+    
+}
+
+- (IBAction)confirm:(id)sender {
+    UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:@"Update Address\nUpdate Address" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
+    [confirmActionSheet setTag:2];
+    [confirmActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet.tag == 1) {
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"History Address");
+                [self historyButtonPress];
+                break;
+            case 1:
+                NSLog(@"Add New Address");
+                [self addNewButtonPress];
+                break;
+            default:
+                break;
+        }
+    }
+    else if (actionSheet.tag == 2) {
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"Confirm");
+                [self confirmButtonPress];
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
+
+-(void) addNewButtonPress {
+    NewAddressViewController *newAddrewViewController = (NewAddressViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"NewAddrewController"];
+    [self.navigationController pushViewController:newAddrewViewController animated:YES];
+}
+
+-(void) historyButtonPress {
+    HistoryAddressTableViewController *historyAddressTableViewController = (HistoryAddressTableViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"HistoryAddressTableViewController"];
+    [self.navigationController pushViewController:historyAddressTableViewController animated:YES];
+}
+
+- (void) confirmButtonPress {
+    NSLog(@"Confirm is pressed.");
+    NSLog(@"%@", [[UIDevice currentDevice] name]);
+    // Get the currentDevice name for the first, since the name will be changed. Then save it to Core Data
+    
+    // Move to Order View
+    // But I don't why ??
+    OrderTableViewController *orderTableViewController = (OrderTableViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTableViewController"];
+    [self.navigationController pushViewController:orderTableViewController animated:YES];
+}
 
 
 /*

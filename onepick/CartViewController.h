@@ -11,7 +11,11 @@
 #import "AppDelegate.h"
 #import "SelectedDishes.h"
 
-@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "OrderTableViewController.h"
+#import "NewAddressViewController.h"
+#import "HistoryAddressTableViewController.h"
+
+@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSArray *previousCart;
 @property (strong, nonatomic) NSMutableArray *cartArray;
