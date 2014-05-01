@@ -160,6 +160,8 @@
     
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     NSString *tempCategory = [object objectForKey:@"category"];
+    
+    // Need to optimize the location indicator here. Only one string operation is needed.
     NSString *locationIndicator = @"IN";
     
     destViewController.category = [tempCategory stringByAppendingString:locationIndicator];
