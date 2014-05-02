@@ -82,8 +82,13 @@
 
 - (PFQuery *)queryForTable
 {
-    PFQuery *query = [PFQuery queryWithClassName:category];
-    NSLog(@"parseClassName: %@", category);
+
+    NSString *locationIndicator = @"IN";
+    
+    NSString *tempCategory =  [category stringByAppendingString:locationIndicator];
+    
+    PFQuery *query = [PFQuery queryWithClassName:tempCategory];
+    NSLog(@"parseClassName: %@", tempCategory);
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
