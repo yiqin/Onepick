@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
+#import "Addresses.h"
+#import "MBProgressHUD.h"
 
-@interface NewAddressViewController : UIViewController
+// Do I need UITextFieldDelegate here?
+@interface NewAddressViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate, UIAlertViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *addTitle;
+@property (strong, nonatomic) IBOutlet UITextField *addStreet;
+@property (strong, nonatomic) IBOutlet UITextField *addApartment;
+
+@property (strong, nonatomic) NSMutableString *formattedAddressLines;
+@property (strong, nonatomic) NSNumber *distance;
 
 @end

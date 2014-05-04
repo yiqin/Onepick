@@ -47,6 +47,8 @@
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
 		8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */; };
 		8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455E4190F340C00E8FA36 /* CartViewController.m */; };
+		8DEAD4161915C91400CB5E7F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEAD4151915C91400CB5E7F /* MBProgressHUD.m */; };
+		8DEAD4191915EC9200CB5E7F /* Addresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEAD4181915EC9200CB5E7F /* Addresses.m */; };
 		8DF658011911D6BD003920F4 /* OrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF658001911D6BD003920F4 /* OrderTableViewController.m */; };
 		8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF658031911E0CD003920F4 /* NewAddressViewController.m */; };
 		8DF6580A1911E5BB003920F4 /* HistoryAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF658091911E5BB003920F4 /* HistoryAddressTableViewController.m */; };
@@ -113,6 +115,10 @@
 		8DE455DE190EF43E00E8FA36 /* Cart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cart.xcdatamodel; sourceTree = "<group>"; };
 		8DE455E3190F340C00E8FA36 /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		8DE455E4190F340C00E8FA36 /* CartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		8DEAD4141915C91400CB5E7F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8DEAD4151915C91400CB5E7F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		8DEAD4171915EC9200CB5E7F /* Addresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addresses.h; sourceTree = "<group>"; };
+		8DEAD4181915EC9200CB5E7F /* Addresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addresses.m; sourceTree = "<group>"; };
 		8DF657FF1911D6BD003920F4 /* OrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewController.h; sourceTree = "<group>"; };
 		8DF658001911D6BD003920F4 /* OrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewController.m; sourceTree = "<group>"; };
 		8DF658021911E0CD003920F4 /* NewAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAddressViewController.h; sourceTree = "<group>"; };
@@ -207,12 +213,16 @@
 				8DE455E3190F340C00E8FA36 /* CartViewController.h */,
 				8DE455E4190F340C00E8FA36 /* CartViewController.m */,
 				8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */,
+				8DEAD4171915EC9200CB5E7F /* Addresses.h */,
+				8DEAD4181915EC9200CB5E7F /* Addresses.m */,
 				8DFEBEB119101B9300D24B9D /* SelectedDishes.h */,
 				8DFEBEB219101B9300D24B9D /* SelectedDishes.m */,
 				8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */,
 				8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */,
 				8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */,
 				8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */,
+				8DEAD4141915C91400CB5E7F /* MBProgressHUD.h */,
+				8DEAD4151915C91400CB5E7F /* MBProgressHUD.m */,
 				8D42096D1905C31300D566CA /* Images.xcassets */,
 				8D42095C1905C31300D566CA /* Supporting Files */,
 			);
@@ -382,9 +392,11 @@
 				8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */,
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
+				8DEAD4191915EC9200CB5E7F /* Addresses.m in Sources */,
 				8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
 				8DF658011911D6BD003920F4 /* OrderTableViewController.m in Sources */,
+				8DEAD4161915C91400CB5E7F /* MBProgressHUD.m in Sources */,
 				8D20DFEB190703170055CCDF /* DishTableViewController.m in Sources */,
 				8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */,
 				8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */,

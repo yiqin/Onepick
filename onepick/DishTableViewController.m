@@ -66,7 +66,7 @@
 {
     NSLog(@"Load dishes.");
     [super viewDidLoad];
-    self.navigationItem.title = [category substringToIndex:[category length]-2];
+    self.navigationItem.title = category;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -69,7 +69,7 @@
     }];
     */
     
-    
+    /*
     NSString *name = [NSString stringWithFormat:@"Soup 12"];
     NSNumber *price = [NSNumber numberWithFloat:10.00];
     NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", nil];
@@ -87,7 +87,7 @@
             NSLog(@"Dish error.");
         }
     }];
-    
+    */
     
     return YES;
 }

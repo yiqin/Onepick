@@ -72,25 +72,7 @@
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     [self.cartTableView reloadData];
     
-    // How to get the path distance?
-    // Willowbrook 40.448668, -86.939104
-    // Ichiban 40.417421, -86.893315
-    CLLocation *locA = [[CLLocation alloc] initWithLatitude:40.448668 longitude:-86.939104];
-    CLLocation *ichibanLocation = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
-    CLLocationDistance distance = [locA distanceFromLocation:ichibanLocation];
-    NSLog(@"first distance %f", distance);
-    
-    // User's address -> Machine address (readable)
-    CLGeocoder* geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:@"1000 Willowbrook Drive, West Lafayette, IN 47906, USA"
-                 completionHandler:^(NSArray* placemarks, NSError* error){
-                     for (CLPlacemark* aPlacemark in placemarks)
-                     {
-                         // Process the placemark.
-                         NSLog(@"second distance %f", [aPlacemark.location distanceFromLocation:ichibanLocation]);
-                         NSLog(@"name %@", aPlacemark.addressDictionary);
-                     }
-                 }];
+
     
 }
 

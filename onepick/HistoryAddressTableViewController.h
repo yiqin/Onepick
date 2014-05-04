@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Addresses.h"
+#import "MBProgressHUD.h"
 
-@interface HistoryAddressTableViewController : UITableViewController
+@interface HistoryAddressTableViewController : UITableViewController <UIAlertViewDelegate, MBProgressHUDDelegate>
+
+@property(strong, nonatomic) NSArray *historyAddress;
 
 @end

@@ -23,6 +23,28 @@
     return self;
 }
 
+// Core Data
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Welcome to Cart.");
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    // Construct a fetch request
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Addresses"
+                                              inManagedObjectContext:context];
+    
+    [fetchRequest setEntity:entity];
+    NSError *error = nil;
+    // Return a fetch array.
+    self.historyAddress = [[NSArray alloc] initWithArray:[context executeFetchRequest:fetchRequest error:&error]];
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -50,25 +72,84 @@
     // Return the number of sections.
     return 0;
 }
+*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.historyAddress count];
 }
-*/
- 
-/*
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *simpleTableIdentifier = @"historyAddressCell";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
     
+    int historyAddreeCount = [self.historyAddress count];
+    
+    Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
+    
+    UILabel *streetLabel = (UILabel *) [cell viewWithTag:400];
+    streetLabel.text = address.street;
+    NSLog(@"Title: %@", address.street);
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Add MBProgressHUD as indicator
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view.superview addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"Calculating the distance.";
+    [HUD show:YES];
+    
+    int historyAddreeCount = [self.historyAddress count];
+    Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
+    
+    // Ichiban 40.417421, -86.893315
+    CLLocation *ichibanLocation = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
+    // User's address -> Machine address (readable)
+    CLGeocoder* geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString: address.street
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
+                     NSNumber *distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
+                     [HUD hide:YES];
+                     UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:@"Distance"
+                                                                            message:[distance stringValue]
+                                                                           delegate:self
+                                                                  cancelButtonTitle:@"Cancel"
+                                                                  otherButtonTitles:@"Save",nil];
+                     [alertAddress show];
+                     
+                 }];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
+(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"Cancel button clicked");
+            break;
+        case 1:
+            NSLog(@"OK button clicked");
+            // Here is the way to move back
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
