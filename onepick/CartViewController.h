@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+
 #import "AppDelegate.h"
 #import "SelectedDishes.h"
 #import "Account.h"
@@ -25,6 +27,7 @@
 @property (assign, nonatomic) float totalDishesFloat;
 @property (strong, nonatomic) IBOutlet UILabel *totalDishes;
 
+@property (assign, nonatomic) float deliveryFeeFloat;
 @property (strong, nonatomic) IBOutlet UILabel *deliveryFee;
 
 @property (strong, nonatomic) IBOutlet UILabel *cartDeliveryAddress;

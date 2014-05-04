@@ -103,9 +103,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-
     
+    self.deliveryFeeFloat = 2.50;
+    PFQuery *query = [PFQuery queryWithClassName:@"deliveryFee"];
+    [query getObjectInBackgroundWithId:@"0sV22OGRD6" block:^(PFObject *object, NSError *error) {
+        self.deliveryFee.text = [NSString stringWithFormat:@"$%@",[object objectForKey:@"fee"]];
+        self.deliveryFeeFloat = [[object objectForKey:@"fee"] floatValue];
+    }];
+    
+    //
 }
 
 - (void)didReceiveMemoryWarning
