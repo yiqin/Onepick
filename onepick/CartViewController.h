@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "SelectedDishes.h"
+#import "Account.h"
 
 #import "OrderTableViewController.h"
 #import "NewAddressViewController.h"
@@ -26,5 +27,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *deliveryFee;
 
+@property (strong, nonatomic) IBOutlet UILabel *cartDeliveryAddress;
 
 @end

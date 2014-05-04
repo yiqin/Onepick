@@ -10,12 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 #import "Addresses.h"
+#import "Account.h"
+
 #import "MBProgressHUD.h"
 
 // Do I need UITextFieldDelegate here?
 @interface NewAddressViewController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *addTitle;
 @property (strong, nonatomic) IBOutlet UITextField *addStreet;
 @property (strong, nonatomic) IBOutlet UITextField *addApartment;
 

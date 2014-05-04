@@ -2,7 +2,7 @@
 //  Addresses.h
 //  onepick
 //
-//  Created by yiqin on 5/3/14.
+//  Created by yiqin on 5/4/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
@@ -12,7 +12,6 @@
 
 @interface Addresses : NSManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * street;
 
 @end

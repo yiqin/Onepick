@@ -112,6 +112,8 @@
     int historyAddreeCount = [self.historyAddress count];
     Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
     
+    self.selectedAddress = [[NSString alloc] initWithString:address.street];
+    
     // Ichiban 40.417421, -86.893315
     CLLocation *ichibanLocation = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
     // User's address -> Machine address (readable)
@@ -143,6 +145,7 @@
         case 1:
             NSLog(@"OK button clicked");
             // Here is the way to move back
+            [self updateCurrentAddress];
             [self.navigationController popViewControllerAnimated:YES];
             break;
             
@@ -150,6 +153,35 @@
             break;
     }
 }
+
+- (void) updateCurrentAddress {
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Get address
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    
+    if([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        fetchAddress.address = self.selectedAddress;
+    }
+    
+    // Save everything
+    // include save to History Address
+    NSError *errorCoreData = nil;
+    if (![context save:&errorCoreData])
+    {
+        NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

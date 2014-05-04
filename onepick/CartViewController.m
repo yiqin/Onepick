@@ -70,6 +70,29 @@
     
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+    
+    
+    // Get address
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                              inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    NSLog(@"%i",[fetchAccountArray count]);
+    
+    if([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        self.cartDeliveryAddress.text = fetchAddress.address;
+    } else {
+        self.cartDeliveryAddress.text = @"No Address yet.";
+    }
+    
+
+    
     [self.cartTableView reloadData];
     
 
@@ -80,8 +103,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+
     
-    // init a mutable dictionary here, or not?
 }
 
 - (void)didReceiveMemoryWarning
@@ -296,6 +320,10 @@
     NSLog(@"Confirm is pressed.");
     NSLog(@"%@", [[UIDevice currentDevice] name]);
     // Get the currentDevice name for the first, since the name will be changed. Then save it to Core Data
+    
+    // save the order to Parse.com
+    
+    
     
     // Move to Order View
     // But I don't why ??

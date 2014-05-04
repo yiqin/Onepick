@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Addresses.h"
+#import "Account.h"
 #import "MBProgressHUD.h"
 
 @interface HistoryAddressTableViewController : UITableViewController <UIAlertViewDelegate, MBProgressHUDDelegate>
 
 @property(strong, nonatomic) NSArray *historyAddress;
+@property(strong, nonatomic) NSString *selectedAddress;
 
 @end

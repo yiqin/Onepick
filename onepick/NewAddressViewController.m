@@ -30,7 +30,7 @@
     NSLog(@"Welcome to New Address.");
     self.navigationItem.title = @"New Address";
     
-    [self.addTitle becomeFirstResponder];
+    [self.addStreet becomeFirstResponder];
     
 }
 
@@ -48,15 +48,7 @@
     NSLog(@"Sumibt Address. %@", self.addStreet.text);
     NSLog(@"%@", self.addApartment.text);
     
-    if ([self.addTitle.text isEqualToString:@""]) {
-        UIAlertView *alertTitle = [[UIAlertView alloc] initWithTitle:@"New Address"
-                                                              message:@"Please fill a title."
-                                                             delegate:self
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles:nil];
-        [alertTitle show];
-    }
-    else if ([self.addStreet.text isEqualToString:@""]) {
+    if ([self.addStreet.text isEqualToString:@""]) {
         UIAlertView *alertStreet = [[UIAlertView alloc] initWithTitle:@"New Address"
                                                         message:@"Please fill the street information."
                                                        delegate:self
@@ -83,7 +75,7 @@
         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view.superview addSubview:HUD];
         HUD.delegate = self;
-        HUD.labelText = @"Analyzing...😊";
+        HUD.labelText = @"Analyzing...";
         [HUD show:YES];
         
         if ([locationIndicator isEqualToString:@"IN"]) {
@@ -94,49 +86,46 @@
             CLGeocoder* geocoder = [[CLGeocoder alloc] init];
             [geocoder geocodeAddressString: inputStreet
                          completionHandler:^(NSArray* placemarks, NSError* error){
-                             CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
-                             // initialize first
-                             self.formattedAddressLines = [[NSMutableString alloc] init];
-                             [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
-                             NSLog(@"%@", aPlacemark.addressDictionary);
-                             [self.formattedAddressLines appendString: @", unit #"];
-                             [self.formattedAddressLines appendString: self.addApartment.text];
-                             [self.formattedAddressLines appendString: @", "];
-                             [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
-                             [self.formattedAddressLines appendString: @", "];
-                             [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
-                             
-                             // Core Data
-                             // Grab the context
-                             NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
-                             // Grab the Label entity
-                             Addresses *saveAddress = [NSEntityDescription insertNewObjectForEntityForName:@"Addresses" inManagedObjectContext:context];
-                             [saveAddress setTitle:self.addTitle.text];
-                             [saveAddress setStreet:self.formattedAddressLines];
-                             
-                             // Save everything
-                             NSError *errorCoreData = nil;
-                             if (![context save:&errorCoreData])
-                             {
-                                 NSLog(@"Error deleting movie, %@", [error userInfo]);
+                             if ([placemarks count] > 0) {
+                                 // Need to check whether placemarks is 0 or not.
+                                 CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
+                                 // initialize first
+                                 self.formattedAddressLines = [[NSMutableString alloc] init];
+                                 [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
+                                 NSLog(@"%@", aPlacemark.addressDictionary);
+                                 [self.formattedAddressLines appendString: @", unit #"];
+                                 [self.formattedAddressLines appendString: self.addApartment.text];
+                                 [self.formattedAddressLines appendString: @", "];
+                                 [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
+                                 [self.formattedAddressLines appendString: @", "];
+                                 [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
+                                 
+                                 // Core Data
+                                 // Grab the context, only one context is needed.
+                                 NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+                                 
+                                 // Grab the Label entity
+                                 Addresses *saveAddress = [NSEntityDescription insertNewObjectForEntityForName:@"Addresses" inManagedObjectContext:context];
+                                 [saveAddress setStreet:self.formattedAddressLines];
+                                 // This data is saved later in updateCurrentAddress function.
+                                 
+                                 // Get distance
+                                 // Need to consider how to store the value of distance.
+                                 self.distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
+                                 
+                                 NSMutableString* messageSummaryAddress = [[NSMutableString alloc] initWithString: self.formattedAddressLines];
+                                 [messageSummaryAddress appendString: @"\nDistance "];
+                                 [messageSummaryAddress appendString: [self.distance stringValue]];
+                                 
+                                 [HUD hide:YES];
+                                 UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:self.title
+                                                                                        message:messageSummaryAddress
+                                                                                       delegate:self
+                                                                              cancelButtonTitle:@"Cancel"
+                                                                              otherButtonTitles:@"Save",nil];
+                                 [alertAddress show];
                              }
-                             
-                             // Get distance
-                             // Need to consider how to store the value of distance.
-                             self.distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
-                             
-                             NSMutableString* messageSummaryAddress = [[NSMutableString alloc] initWithString: self.formattedAddressLines];
-                             [messageSummaryAddress appendString: @"\nDistance "];
-                             [messageSummaryAddress appendString: [self.distance stringValue]];
-                             
-                             [HUD hide:YES];
-                             UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:self.title
-                                                                                    message:messageSummaryAddress
-                                                                                     delegate:self
-                                                                            cancelButtonTitle:@"Cancel"
-                                                                            otherButtonTitles:@"Save",nil];
-                             [alertAddress show];
-                         }];
+                        }];
         }
     }
     
@@ -151,12 +140,42 @@
             break;
         case 1:
             NSLog(@"OK button clicked");
+            [self updateCurrentAddress];
             // Here is the way to move back
             [self.navigationController popViewControllerAnimated:YES];
             break;
             
         default:
             break;
+    }
+}
+
+- (void) updateCurrentAddress {
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Get address
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    NSLog(@"%i",[fetchAccountArray count]);
+    
+    if([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        fetchAddress.address = self.formattedAddressLines;
+    }
+    
+    // Save everything
+    // include save to History Address
+    NSError *errorCoreData = nil;
+    if (![context save:&errorCoreData])
+    {
+        NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
     }
 }
 
