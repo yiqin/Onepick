@@ -167,8 +167,8 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    
-    if([fetchAccountArray count] > 0) {
+
+    if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         fetchAddress.address = self.selectedAddress;
     }

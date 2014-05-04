@@ -79,7 +79,7 @@
         [HUD show:YES];
         
         if ([locationIndicator isEqualToString:@"IN"]) {
-            [inputStreet appendString:@" Lafayette, USA"];
+            [inputStreet appendString:@" Lafayette, IN, USA"];
             // Ichiban 40.417421, -86.893315
             CLLocation *ichibanLocation = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
             // User's address -> Machine address (readable)
@@ -97,7 +97,7 @@
                                  [self.formattedAddressLines appendString: self.addApartment.text];
                                  [self.formattedAddressLines appendString: @", "];
                                  [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
-                                 [self.formattedAddressLines appendString: @", "];
+                                 [self.formattedAddressLines appendString: @", Indiana, "];
                                  [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
                                  
                                  // Core Data
@@ -165,18 +165,30 @@
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
     NSLog(@"%i",[fetchAccountArray count]);
     
-    if([fetchAccountArray count] > 0) {
+    if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         fetchAddress.address = self.formattedAddressLines;
+        // Save everything
+        // include save to History Address
+        NSError *errorCoreData = nil;
+        if (![context save:&errorCoreData])
+        {
+            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+        }
     }
-    
-    // Save everything
-    // include save to History Address
-    NSError *errorCoreData = nil;
-    if (![context save:&errorCoreData])
-    {
-        NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+    else {
+        // Grab the Label entity
+        Account *saveAccount = [NSEntityDescription insertNewObjectForEntityForName:@"Account" inManagedObjectContext:context];
+        [saveAccount setAddress:self.formattedAddressLines];
+        // Save everything
+        // include save to History Address
+        NSError *errorCoreData = nil;
+        if (![context save:&errorCoreData])
+        {
+            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+        }
     }
+
 }
 
 /*
