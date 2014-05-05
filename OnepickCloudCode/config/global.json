@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "OnePick": {
+            "applicationId": "2D6T3tgwBIPoE8HkuninwT3gsUkrHouCfzg0MzDL", 
+            "masterKey": "5Swae09AvZoTXyF1ndK4OEEebpLHgzqd9NrQwmBl"
+        }, 
+        "_default": {
+            "link": "OnePick"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}
