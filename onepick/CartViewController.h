@@ -30,6 +30,13 @@
 @property (assign, nonatomic) float deliveryFeeFloat;
 @property (strong, nonatomic) IBOutlet UILabel *deliveryFee;
 
+@property (assign, nonatomic) float taxFloat;
+@property (strong, nonatomic) IBOutlet UILabel *tax;
+
+@property (assign, nonatomic) float totalPriceFloat;
+@property (strong, nonatomic) IBOutlet UILabel *totalPrice;
+
+
 @property (strong, nonatomic) IBOutlet UILabel *cartDeliveryAddress;
 
 @end

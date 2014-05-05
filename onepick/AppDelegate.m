@@ -70,16 +70,19 @@
     */
     
     /*
-    NSString *name = [NSString stringWithFormat:@"Soup 12"];
-    NSNumber *price = [NSNumber numberWithFloat:10.00];
+    PFObject *dish = [PFObject objectWithClassName:@"DishesIN"];
+    
+    NSString *name = [NSString stringWithFormat:@"Pork 1"];
+    NSNumber *price = [NSNumber numberWithFloat:12.00];
     NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", nil];
     NSArray *dishArrayObjects = [NSArray arrayWithObjects:name,price, nil];
     
     NSDictionary *dishDictionaryInput = [NSDictionary dictionaryWithObjects:dishArrayObjects forKeys:dishArrayKeys];
     NSString *dishDictionaryInputString = [dishDictionaryInput DictionaryToJSONString];
     
-    PFObject *dish = [PFObject objectWithClassName:@"SoupIN"];
     dish[@"dish"] = dishDictionaryInputString;
+    dish[@"category"] = @"Pork";
+    dish[@"orderCount"] = @0;
     [dish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Dish created.");

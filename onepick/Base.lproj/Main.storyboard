@@ -332,7 +332,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$62.50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsS-xh-cGe">
-                                <rect key="frame" x="208" y="441" width="92" height="21"/>
+                                <rect key="frame" x="221" y="441" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -393,7 +393,9 @@
                         <outlet property="cartDeliveryAddress" destination="JI1-Vx-qqR" id="J0z-Zz-HpW"/>
                         <outlet property="cartTableView" destination="BTc-pB-cK5" id="tO6-hq-Yt0"/>
                         <outlet property="deliveryFee" destination="ZIS-NM-hNC" id="3WP-qo-Ynt"/>
+                        <outlet property="tax" destination="ACx-zH-5eZ" id="LCZ-G0-UoH"/>
                         <outlet property="totalDishes" destination="d7D-ZD-zcs" id="FzC-Ij-fUq"/>
+                        <outlet property="totalPrice" destination="OsS-xh-cGe" id="aEP-S1-qqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4w-6b-VD7" userLabel="First Responder" sceneMemberID="firstResponder"/>

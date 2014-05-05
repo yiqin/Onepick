@@ -68,8 +68,7 @@
         // [self.cartArray addObject:@"Your cart is empty."];
     }
     
-    // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
-    self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+    [self updatePriceLabel];
     
     
     // Get address
@@ -92,7 +91,7 @@
     }
     
 
-    
+    // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
     [self.cartTableView reloadData];
     
 
@@ -111,7 +110,10 @@
         self.deliveryFeeFloat = [[object objectForKey:@"fee"] floatValue];
     }];
     
-    //
+    self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
+
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,7 +146,7 @@
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:301];
     // NSNumber -> float -> string
     NSNumber *price = [dishInformation objectForKey:@"price"];
-    priceLabel.text = [NSString stringWithFormat:@"%.2f",[price floatValue]];
+    priceLabel.text = [NSString stringWithFormat:@"$%.2f",[price floatValue]];
     UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:302];
     nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];
     UILabel *countLabel = (UILabel *) [cell viewWithTag:303];
@@ -186,7 +188,7 @@
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
     self.totalDishesFloat = self.totalDishesFloat + [[dishInformation objectForKey:@"price"] floatValue];
-    self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+    [self updatePriceLabel];
     [self.cartTableView reloadData];
     [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
 }
@@ -201,7 +203,7 @@
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
         self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+        [self updatePriceLabel];
         [self.cartTableView reloadData];
         [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
     }
@@ -209,7 +211,7 @@
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];
         self.totalDishesFloat = self.totalDishesFloat - [[dishInformation objectForKey:@"price"] floatValue];
-        self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+        [self updatePriceLabel];
         [self.cartTableView reloadData];
         [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
@@ -337,6 +339,19 @@
     [self.navigationController pushViewController:orderTableViewController animated:YES];
 }
 
+- (void) updatePriceLabel {
+    self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
+    
+    NSString *locationIndicator = @"IN";
+    if ([locationIndicator isEqualToString:@"IN"]) {
+        self.taxFloat = self.totalDishesFloat*0.07;
+        self.tax.text = [NSString stringWithFormat:@"$%.2f",self.taxFloat];
+    }
+    
+    self.totalPriceFloat = self.totalDishesFloat + self.taxFloat + self.deliveryFeeFloat;
+    self.totalPrice.text = [NSString stringWithFormat:@"$%.2f",self.totalPriceFloat];
+    
+}
 
 /*
 #pragma mark - Navigation

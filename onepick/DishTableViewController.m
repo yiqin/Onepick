@@ -85,10 +85,12 @@
 
     NSString *locationIndicator = @"IN";
     
-    NSString *tempCategory =  [category stringByAppendingString:locationIndicator];
+    NSString *parseClassName =  [@"Dishes" stringByAppendingString:locationIndicator];
     
-    PFQuery *query = [PFQuery queryWithClassName:tempCategory];
-    NSLog(@"parseClassName: %@", tempCategory);
+    PFQuery *query = [PFQuery queryWithClassName:parseClassName];
+    [query whereKey:@"category" equalTo:category];
+    
+    NSLog(@"parseClassName: %@", parseClassName);
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
