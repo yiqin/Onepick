@@ -92,6 +92,18 @@
     }];
     */
     
+    /*
+    // Test Parse cloud code setting
+    [PFCloud callFunctionInBackground:@"hello"
+                       withParameters:@{}
+                                block:^(NSString *result, NSError *error) {
+                                    if (!error) {
+                                        // result is @"Hello world!"
+                                        NSLog(@"Parse Cloud Code: %@", result);
+                                    }
+                                }];
+    */
+    
     return YES;
 }
 							

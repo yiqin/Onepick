@@ -340,6 +340,10 @@
     
     // Wrapper up all the information
     NSMutableString *summary = [[NSMutableString alloc] init];
+    NSMutableDictionary *summaryObjectId = [[NSMutableDictionary alloc] init];
+    NSMutableString *tempObjectId = [[NSMutableString alloc] init];
+    NSMutableString *tempCount = [[NSMutableString alloc] init];
+    
     for (NSMutableDictionary *cartListDictionary in self.cartArray) {
         [summary appendString:[cartListDictionary objectForKey:@"name"]];
         [summary appendString:@", "];
@@ -347,6 +351,12 @@
         [summary appendString:@", count: "];
         [summary appendString:[[cartListDictionary objectForKey:@"count"] stringValue]];
         [summary appendString:@".\n"];
+        
+        tempObjectId = [cartListDictionary objectForKey:@"parseObjectId"];
+        tempCount = [cartListDictionary objectForKey:@"count"];
+        if ([summaryObjectId objectForKey:tempObjectId] == nil) {
+            [summaryObjectId setObject:tempCount forKey:tempObjectId];
+        }
     }
     [summary appendString:@"Total price: "];
     [summary appendString:self.totalPrice.text];
@@ -358,6 +368,8 @@
     // save the order to Parse.com
     PFObject *orderSummary = [PFObject objectWithClassName:@"Order"];
     orderSummary[@"order"] = summary;
+    orderSummary[@"price"] = [[NSNumber alloc] initWithFloat: self.totalPriceFloat];
+    orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Parse succeed.");

@@ -13,6 +13,8 @@
 #import "SelectedDishes.h"
 #import "Account.h"
 
+#import "NSDictionary+DictionaryToJSONString.h"
+
 #import "OrderTableViewController.h"
 #import "NewAddressViewController.h"
 #import "HistoryAddressTableViewController.h"
