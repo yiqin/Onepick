@@ -17,7 +17,9 @@
 #import "NewAddressViewController.h"
 #import "HistoryAddressTableViewController.h"
 
-@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
+#import "MBProgressHUD.h"
+
+@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) NSArray *previousCart;
 @property (strong, nonatomic) NSMutableArray *cartArray;

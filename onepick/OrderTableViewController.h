@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface OrderTableViewController : PFQueryTableViewController
+@interface OrderTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @end

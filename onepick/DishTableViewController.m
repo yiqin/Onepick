@@ -57,8 +57,7 @@
     NSError *error = nil;
     // Return a fetch array.
     self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
-    // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
-    // will do cellForRowAtIndexPath again
+
     [self.tableView reloadData];
 }
 

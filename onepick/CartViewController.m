@@ -70,7 +70,6 @@
     
     [self updatePriceLabel];
     
-    
     // Get address
     // Construct a fetch request
     NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
@@ -93,9 +92,6 @@
 
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
     [self.cartTableView reloadData];
-    
-
-    
 }
 
 - (void)viewDidLoad
@@ -112,9 +108,8 @@
     
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
 
-    
-
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -281,7 +276,13 @@
 }
 
 - (IBAction)confirm:(id)sender {
-    UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:@"Update Address\nUpdate Address" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
+    NSMutableString *confirmInformation = [[NSMutableString alloc] init];
+    [confirmInformation appendString:@"Delivery to: "];
+    [confirmInformation appendString:self.cartDeliveryAddress.text];
+    [confirmInformation appendString:@"\n Total price:"];
+    [confirmInformation appendString:self.totalPrice.text];
+
+    UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:confirmInformation delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
     [confirmActionSheet setTag:2];
     [confirmActionSheet showInView:self.view];
 }
@@ -326,17 +327,56 @@
 
 - (void) confirmButtonPress {
     NSLog(@"Confirm is pressed.");
+    
+    // Add MBProgressHUD as indicator
+    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view.superview addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"Proccessing the order.";
+    [HUD show:YES];
+    
     NSLog(@"%@", [[UIDevice currentDevice] name]);
     // Get the currentDevice name for the first, since the name will be changed. Then save it to Core Data
     
+    // Wrapper up all the information
+    NSMutableString *summary = [[NSMutableString alloc] init];
+    for (NSMutableDictionary *cartListDictionary in self.cartArray) {
+        [summary appendString:[cartListDictionary objectForKey:@"name"]];
+        [summary appendString:@", "];
+        [summary appendString:[cartListDictionary objectForKey:@"nameChinese"]];
+        [summary appendString:@", count: "];
+        [summary appendString:[[cartListDictionary objectForKey:@"count"] stringValue]];
+        [summary appendString:@".\n"];
+    }
+    [summary appendString:@"Total price: "];
+    [summary appendString:self.totalPrice.text];
+    [summary appendString:@"\nDelivery to: "];
+    [summary appendString:self.cartDeliveryAddress.text];
+    
+    NSLog(@"%@",summary);
+    
     // save the order to Parse.com
+    PFObject *orderSummary = [PFObject objectWithClassName:@"Order"];
+    orderSummary[@"order"] = summary;
+    [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Parse succeed.");
+            [HUD hide:YES];
+            
+            // Move to Order View
+            // But I don't why ??
+            // OrderTableViewController *orderTableViewController = (OrderTableViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTableViewController"];
+            // [self.navigationController pushViewController:orderTableViewController animated:YES];
+            [self.tabBarController setSelectedIndex:3];
+            
+            
+        } else {
+            // If it doesn't print Error, please check the wifi connection.
+            NSLog(@"Error.");
+        }
+    }];
     
-    
-    
-    // Move to Order View
-    // But I don't why ??
-    OrderTableViewController *orderTableViewController = (OrderTableViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTableViewController"];
-    [self.navigationController pushViewController:orderTableViewController animated:YES];
+
 }
 
 - (void) updatePriceLabel {

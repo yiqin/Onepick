@@ -29,20 +29,27 @@
     self = [super initWithCoder:aCoder];
     if (self) {
         // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = NO;
+        self.pullToRefreshEnabled = YES;
         
         // Whether the built-in pagination is enabled
-        self.paginationEnabled = NO;
-        // self.objectsPerPage = 2;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 10;
         
     }
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Welcome to Order.");
+    
+    // reload data doesn't work at all.
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"Welcome to Order.");
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,11 +68,15 @@
 {
     // Device name + phone number
     // Always from Core Data
-    PFQuery *query = [PFQuery queryWithClassName:@"no"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Order"];
     // NSLog(@"parseClassName: %@", category);
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    // Sorts the results in descending order by the created date
+    [query orderByDescending:@"createdAt"];
+    
     
     return query;
 }
@@ -88,16 +99,28 @@
 }
 */
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *) object
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *simpleTableIdentifier = @"orderCell";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    //Optionally for time zone converstions
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"EDT"]];
+    
+    UILabel *createTimeLabel = (UILabel *) [cell viewWithTag:500];
+    createTimeLabel.text = [formatter stringFromDate:[object createdAt]];
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
