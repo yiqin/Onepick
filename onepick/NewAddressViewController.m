@@ -97,8 +97,8 @@
                                  [self.formattedAddressLines appendString: self.addApartment.text];
                                  [self.formattedAddressLines appendString: @", "];
                                  [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
-                                 [self.formattedAddressLines appendString: @", Indiana, "];
-                                 [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
+                                 [self.formattedAddressLines appendString: @", Indiana"];
+                                 // [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
                                  
                                  // Core Data
                                  // Grab the context, only one context is needed.

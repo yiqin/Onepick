@@ -112,13 +112,16 @@
     int historyAddreeCount = [self.historyAddress count];
     Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
     
+    NSMutableString *inputAddressStreet = [[NSMutableString alloc] initWithString:address.street];
+    [inputAddressStreet appendString:@", United States"];
+    
     self.selectedAddress = [[NSString alloc] initWithString:address.street];
     
     // Ichiban 40.417421, -86.893315
     CLLocation *ichibanLocation = [[CLLocation alloc] initWithLatitude:40.417421 longitude:-86.893315];
     // User's address -> Machine address (readable)
     CLGeocoder* geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString: address.street
+    [geocoder geocodeAddressString: inputAddressStreet
                  completionHandler:^(NSArray* placemarks, NSError* error){
                      CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
                      NSNumber *distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
