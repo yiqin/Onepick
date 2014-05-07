@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="350" y="2420"/>
         </scene>
-        <!--View Controller - More-->
+        <!--More View Controller - More-->
         <scene sceneID="G5O-TF-c8b">
             <objects>
-                <viewController id="rLZ-oU-A31" sceneMemberID="viewController">
+                <viewController id="rLZ-oU-A31" customClass="MoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q1Z-yZ-hot"/>
                         <viewControllerLayoutGuide type="bottom" id="4zL-hZ-xBF"/>
@@ -234,6 +234,18 @@
                     <view key="view" contentMode="scaleToFill" id="Imj-W2-5t8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tV-vy-pnO">
+                                <rect key="frame" x="137" y="232" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeRestaurant:" destination="rLZ-oU-A31" eventType="touchUpInside" id="Sin-C6-h5F"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="More" id="jTz-iQ-44S"/>

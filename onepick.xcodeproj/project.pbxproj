@@ -44,6 +44,7 @@
 		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
 		8D77B3E01909551500310CDF /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DE1909551500310CDF /* 640x1136.png */; };
 		8D77B3E2190A028900310CDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3E1190A028900310CDF /* Default-568h@2x.png */; };
+		8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D996E3F191A8710008F07D4 /* MoreViewController.m */; };
 		8DA4ED1A191A76A40071466E /* TopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4ED19191A76A40071466E /* TopTableViewController.m */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
@@ -113,6 +114,8 @@
 		8D77B3DD1909551500310CDF /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		8D77B3DE1909551500310CDF /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		8D77B3E1190A028900310CDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8D996E3E191A8710008F07D4 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		8D996E3F191A8710008F07D4 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		8DA4ED18191A76A40071466E /* TopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTableViewController.h; sourceTree = "<group>"; };
 		8DA4ED19191A76A40071466E /* TopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTableViewController.m; sourceTree = "<group>"; };
 		8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONStringToDictionary.h"; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				8D4209641905C31300D566CA /* AppDelegate.h */,
 				8D4209651905C31300D566CA /* AppDelegate.m */,
 				8D4209671905C31300D566CA /* Main.storyboard */,
+				8D996E3E191A8710008F07D4 /* MoreViewController.h */,
+				8D996E3F191A8710008F07D4 /* MoreViewController.m */,
 				8DA4ED18191A76A40071466E /* TopTableViewController.h */,
 				8DA4ED19191A76A40071466E /* TopTableViewController.m */,
 				8DF658081911E5BB003920F4 /* HistoryAddressTableViewController.h */,
@@ -405,6 +410,7 @@
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
 				8D6120D41916891C003DE1F3 /* Addresses.m in Sources */,
 				8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */,
+				8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
 				8DF658011911D6BD003920F4 /* OrderTableViewController.m in Sources */,
 				8DEAD4161915C91400CB5E7F /* MBProgressHUD.m in Sources */,
