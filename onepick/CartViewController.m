@@ -325,6 +325,8 @@
     [self.navigationController pushViewController:historyAddressTableViewController animated:YES];
 }
 
+
+
 - (void) confirmButtonPress {
     NSLog(@"Confirm is pressed.");
     
@@ -340,9 +342,6 @@
     
     // Wrapper up all the information
     NSMutableString *summary = [[NSMutableString alloc] init];
-    NSMutableDictionary *summaryObjectId = [[NSMutableDictionary alloc] init];
-    NSMutableString *tempObjectId = [[NSMutableString alloc] init];
-    NSMutableString *tempCount = [[NSMutableString alloc] init];
     
     for (NSMutableDictionary *cartListDictionary in self.cartArray) {
         [summary appendString:[cartListDictionary objectForKey:@"name"]];
@@ -352,33 +351,39 @@
         [summary appendString:[[cartListDictionary objectForKey:@"count"] stringValue]];
         [summary appendString:@".\n"];
         
-        tempObjectId = [cartListDictionary objectForKey:@"parseObjectId"];
-        tempCount = [cartListDictionary objectForKey:@"count"];
-        if ([summaryObjectId objectForKey:tempObjectId] == nil) {
-            [summaryObjectId setObject:tempCount forKey:tempObjectId];
-        }
+        // Look through your code to see whether you're making two query calls on the same query object without waiting for the first to complete.
+        // Retrieve the object by id
+        
+        /*
+        [dishQuery getObjectInBackgroundWithId:tempObjectId block:^(PFObject *dish, NSError *error) {
+            
+            // Now let's update it with some new data. In this case, only cheatMode and score
+            // will get sent to the cloud. playerName hasn't changed.
+            [dish incrementKey:@"orderCount" byAmount:[cartListDictionary objectForKey:@"count"]];
+            [dish saveInBackground];
+            
+        }];
+         */
+        [self orderCount:[cartListDictionary objectForKey:@"parseObjectId"] withCount:[cartListDictionary objectForKey:@"count"]];
+
     }
     [summary appendString:@"Total price: "];
     [summary appendString:self.totalPrice.text];
     [summary appendString:@"\nDelivery to: "];
     [summary appendString:self.cartDeliveryAddress.text];
     
-    NSLog(@"%@",summary);
+    NSLog(@"Summary %@",summary);
     
     // save the order to Parse.com
     PFObject *orderSummary = [PFObject objectWithClassName:@"Order"];
     orderSummary[@"order"] = summary;
     orderSummary[@"price"] = [[NSNumber alloc] initWithFloat: self.totalPriceFloat];
-    orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
+    // orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Parse succeed.");
             [HUD hide:YES];
-            
-            // Move to Order View
-            // But I don't why ??
-            // OrderTableViewController *orderTableViewController = (OrderTableViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTableViewController"];
-            // [self.navigationController pushViewController:orderTableViewController animated:YES];
+            // Move to Order tab controler.
             [self.tabBarController setSelectedIndex:3];
             
             
@@ -387,6 +392,8 @@
             NSLog(@"Error.");
         }
     }];
+    
+    NSLog(@"End.");
     
 
 }
@@ -403,6 +410,24 @@
     self.totalPriceFloat = self.totalDishesFloat + self.taxFloat + self.deliveryFeeFloat;
     self.totalPrice.text = [NSString stringWithFormat:@"$%.2f",self.totalPriceFloat];
     
+}
+
+// This code couldn't put into the main thread.
+- (void) orderCount:(NSString *)objectId withCount:(NSNumber *) count {
+    
+    NSLog(@"orderCount");
+    
+    PFQuery *dishQuery = [PFQuery queryWithClassName:@"DishesIN"];
+    [dishQuery getObjectInBackgroundWithId:objectId block:^(PFObject *dishObject, NSError *error) {
+        // Now let's update it with some new data. In this case, only cheatMode and score
+        // will get sent to the cloud. playerName hasn't changed.
+        [dishObject incrementKey:@"orderCount" byAmount:count];
+        [dishObject saveInBackground];
+        NSLog(@"orderCount Parse.com success.");
+        
+    }];
+
+
 }
 
 /*
