@@ -86,7 +86,7 @@
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         self.cartDeliveryAddress.text = fetchAddress.address;
     } else {
-        self.cartDeliveryAddress.text = @"No Address yet.";
+        self.cartDeliveryAddress.text = @"Press Your Address button to add new address.";
     }
     
 
@@ -351,24 +351,12 @@
         [summary appendString:[[cartListDictionary objectForKey:@"count"] stringValue]];
         [summary appendString:@".\n"];
         
-        // Look through your code to see whether you're making two query calls on the same query object without waiting for the first to complete.
-        // Retrieve the object by id
-        
-        /*
-        [dishQuery getObjectInBackgroundWithId:tempObjectId block:^(PFObject *dish, NSError *error) {
-            
-            // Now let's update it with some new data. In this case, only cheatMode and score
-            // will get sent to the cloud. playerName hasn't changed.
-            [dish incrementKey:@"orderCount" byAmount:[cartListDictionary objectForKey:@"count"]];
-            [dish saveInBackground];
-            
-        }];
-         */
-        
         // asynchronously and executes the given callback block.
         [self orderCount:[cartListDictionary objectForKey:@"parseObjectId"] withCount:[cartListDictionary objectForKey:@"count"]];
 
     }
+    NSString *dishesSummary = [[NSString alloc] initWithString:summary];
+    
     [summary appendString:@"Total price: "];
     [summary appendString:self.totalPrice.text];
     [summary appendString:@"\nDelivery to: "];
@@ -378,8 +366,11 @@
     
     // save the order to Parse.com
     PFObject *orderSummary = [PFObject objectWithClassName:@"Order"];
-    orderSummary[@"order"] = summary;
+    orderSummary[@"summary"] = summary;
+    orderSummary[@"dishes"] = dishesSummary;
     orderSummary[@"price"] = [[NSNumber alloc] initWithFloat: self.totalPriceFloat];
+    orderSummary[@"address"] = self.cartDeliveryAddress.text;
+    
     // orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
