@@ -40,6 +40,63 @@
     
 }
 
+
+- (IBAction)changePhone:(id)sender {
+    NSLog(@"change phone.");
+    
+    // Update phone number in Core Data.
+    [self updatePhoneCoreData];
+}
+
+// Core Data
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void) updatePhoneCoreData {
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Get address
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    NSLog(@"%i",[fetchAccountArray count]);
+    
+    if ([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        fetchAddress.phone = @"7654041448";
+        fetchAddress.name = @"Yi Qin";
+        // Save everything
+        // include save to History Address
+        NSError *errorCoreData = nil;
+        if (![context save:&errorCoreData])
+        {
+            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+        }
+    }
+    else {
+        // Grab the Label entity
+        Account *saveAccount = [NSEntityDescription insertNewObjectForEntityForName:@"Account" inManagedObjectContext:context];
+        [saveAccount setPhone:@"7654041448"];
+        [saveAccount setName:@"Yi Qin"];
+        // Save everything
+        // include save to History Address
+        NSError *errorCoreData = nil;
+        if (![context save:&errorCoreData])
+        {
+            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+        }
+    }
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

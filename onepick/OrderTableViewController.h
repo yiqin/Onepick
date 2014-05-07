@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "AppDelegate.h"
+#import "Account.h"
+
 @interface OrderTableViewController : PFQueryTableViewController <UITableViewDelegate>
+
+@property (strong, nonatomic) NSString *who;
 
 @end

@@ -23,6 +23,11 @@
     return self;
 }
 
+// Core Data
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 // initWithCoder: load only one time, which is the first time
 - (id)initWithCoder:(NSCoder *)aCoder
 {
@@ -50,7 +55,6 @@
 {
     [super viewDidLoad];
     
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -69,10 +73,34 @@
     // Device name + phone number
     // Always from Core Data
     PFQuery *query = [PFQuery queryWithClassName:@"Order"];
-    // NSLog(@"parseClassName: %@", category);
+    NSLog(@"parseClassName:");
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    // Get address. Get user and phone number.
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    NSLog(@"Fetch account array size:%i",[fetchAccountArray count]);
+    
+    if([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        NSMutableString *tempWho = [[NSMutableString alloc] initWithString:fetchAddress.name];
+        [tempWho appendString:fetchAddress.phone];
+        self.who = [NSString stringWithString:tempWho];
+    } else {
+        self.who = @"no";
+    }
+    
+    [query whereKey:@"who" equalTo:self.who];
     
     // Sorts the results in descending order by the created date
     [query orderByDescending:@"createdAt"];

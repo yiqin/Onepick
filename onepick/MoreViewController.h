@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Account.h"
 
-@interface MoreViewController : UIViewController
+@interface MoreViewController : UIViewController <UIActionSheetDelegate>
 
 @end

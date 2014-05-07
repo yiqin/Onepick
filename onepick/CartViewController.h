@@ -43,4 +43,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *cartDeliveryAddress;
 
+@property (strong, nonatomic) NSString *who;
+
 @end

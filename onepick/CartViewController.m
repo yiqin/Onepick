@@ -70,7 +70,7 @@
     
     [self updatePriceLabel];
     
-    // Get address
+    // Get address. Get user and phone number.
     // Construct a fetch request
     NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
@@ -80,11 +80,14 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"%i",[fetchAccountArray count]);
+    NSLog(@"Fetch account array size:%i",[fetchAccountArray count]);
     
     if([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         self.cartDeliveryAddress.text = fetchAddress.address;
+        NSMutableString *tempWho = [[NSMutableString alloc] initWithString:fetchAddress.name];
+        [tempWho appendString:fetchAddress.phone];
+        self.who = [NSString stringWithString:tempWho];
     } else {
         self.cartDeliveryAddress.text = @"Press Your Address button to add new address.";
     }
@@ -337,7 +340,7 @@
     HUD.labelText = @"Proccessing the order.";
     [HUD show:YES];
     
-    NSLog(@"%@", [[UIDevice currentDevice] name]);
+   
     // Get the currentDevice name for the first, since the name will be changed. Then save it to Core Data
     
     // Wrapper up all the information
@@ -355,6 +358,7 @@
         [self orderCount:[cartListDictionary objectForKey:@"parseObjectId"] withCount:[cartListDictionary objectForKey:@"count"]];
 
     }
+    
     NSString *dishesSummary = [[NSString alloc] initWithString:summary];
     
     [summary appendString:@"Total price: "];
@@ -370,6 +374,8 @@
     orderSummary[@"dishes"] = dishesSummary;
     orderSummary[@"price"] = [[NSNumber alloc] initWithFloat: self.totalPriceFloat];
     orderSummary[@"address"] = self.cartDeliveryAddress.text;
+    NSLog(@"%@", [[UIDevice currentDevice] name]);
+    orderSummary[@"who"] = self.who;
     
     // orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
