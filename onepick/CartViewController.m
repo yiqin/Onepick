@@ -364,6 +364,8 @@
             
         }];
          */
+        
+        // asynchronously and executes the given callback block.
         [self orderCount:[cartListDictionary objectForKey:@"parseObjectId"] withCount:[cartListDictionary objectForKey:@"count"]];
 
     }
@@ -385,8 +387,6 @@
             [HUD hide:YES];
             // Move to Order tab controler.
             [self.tabBarController setSelectedIndex:3];
-            
-            
         } else {
             // If it doesn't print Error, please check the wifi connection.
             NSLog(@"Error.");
@@ -414,9 +414,8 @@
 
 // This code couldn't put into the main thread.
 - (void) orderCount:(NSString *)objectId withCount:(NSNumber *) count {
-    
     NSLog(@"orderCount");
-    
+
     PFQuery *dishQuery = [PFQuery queryWithClassName:@"DishesIN"];
     [dishQuery getObjectInBackgroundWithId:objectId block:^(PFObject *dishObject, NSError *error) {
         // Now let's update it with some new data. In this case, only cheatMode and score
@@ -424,10 +423,7 @@
         [dishObject incrementKey:@"orderCount" byAmount:count];
         [dishObject saveInBackground];
         NSLog(@"orderCount Parse.com success.");
-        
     }];
-
-
 }
 
 /*
