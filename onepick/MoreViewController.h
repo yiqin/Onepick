@@ -10,6 +10,10 @@
 #import "AppDelegate.h"
 #import "Account.h"
 
+#import <Namo/Namo.h>
+
 @interface MoreViewController : UIViewController <UIActionSheetDelegate>
+
+@property(strong, nonatomic) NAMOAdView *adView;
 
 @end

@@ -23,11 +23,25 @@
     return self;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
+    [targeting setGender:NAMOGenderMale];
+    
+    //[self.adView requestAdWithTargeting:targeting];
+    // Errors too.
+
+}
+
 - (void)viewDidLoad
 {
     NSLog(@"Welcome to More.");
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.adView = [[NAMOAdView alloc] initWithFrame:CGRectMake(
+                                                                     10, 200, 80, 80)];
+    [self.adView registerAdFormat:NAMOAdFormatSample1.class];
+    [self.view addSubview:self.adView];
+    
 }
 
 - (void)didReceiveMemoryWarning
