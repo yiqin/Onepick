@@ -46,6 +46,7 @@
 		8D77B3E2190A028900310CDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3E1190A028900310CDF /* Default-568h@2x.png */; };
 		8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D996E3F191A8710008F07D4 /* MoreViewController.m */; };
 		8DA4ED1A191A76A40071466E /* TopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4ED19191A76A40071466E /* TopTableViewController.m */; };
+		8DB24160191BE18600E3A52D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB2415F191BE18600E3A52D /* iAd.framework */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
@@ -118,6 +119,7 @@
 		8D996E3F191A8710008F07D4 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		8DA4ED18191A76A40071466E /* TopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTableViewController.h; sourceTree = "<group>"; };
 		8DA4ED19191A76A40071466E /* TopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTableViewController.m; sourceTree = "<group>"; };
+		8DB2415F191BE18600E3A52D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONStringToDictionary.h"; sourceTree = "<group>"; };
 		8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONStringToDictionary.m"; sourceTree = "<group>"; };
 		8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryToJSONString.h"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB24160191BE18600E3A52D /* iAd.framework in Frameworks */,
 				8D35777019108CDA004D9732 /* CoreLocation.framework in Frameworks */,
 				8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */,
 				8D4209AE1906225100D566CA /* MobileCoreServices.framework in Frameworks */,
@@ -190,6 +193,7 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DB2415F191BE18600E3A52D /* iAd.framework */,
 				8D35776F19108CDA004D9732 /* CoreLocation.framework */,
 				8DE455DB190EF1D900E8FA36 /* CoreData.framework */,
 				8D4209AD1906225100D566CA /* MobileCoreServices.framework */,
