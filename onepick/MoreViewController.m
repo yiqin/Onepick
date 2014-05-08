@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.adView = [[NAMOAdView alloc] initWithFrame:CGRectMake(
-                                                                     10, 200, 80, 80)];
+                                                                     10, 200, 450, 80)];
     [self.adView registerAdFormat:NAMOAdFormatSample1.class];
     [self.view addSubview:self.adView];
     

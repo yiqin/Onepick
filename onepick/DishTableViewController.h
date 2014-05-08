@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <Namo/Namo.h>
+
 #import "AppDelegate.h"
 #import "SelectedDishes.h"
 #import "NSString+JSONStringToDictionary.h"
-// #import <iAd/iAd.h>
+
+
 
 @interface DishTableViewController : PFQueryTableViewController <UITableViewDelegate>
-// UIScrollViewDelegate, ADBannerViewDelegate
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSArray *previousCart;
 
-// @property (nonatomic, strong) ADBannerView *bannerView;
+@property(nonatomic, strong) NAMOTableViewAdPlacer *adPlacer;
 
 @end

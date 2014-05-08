@@ -59,7 +59,14 @@
     // Return a fetch array.
     self.previousCart = [context executeFetchRequest:fetchRequest error:&error];
 
-    [self.tableView reloadData];
+    
+    NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
+    [targeting setEducation:NAMOEducationCollege];
+    // [targeting setGender:NAMOGenderMale];
+    [self.adPlacer requestAdsWithTargeting:targeting];
+    
+    
+    [self.tableView namo_reloadData];
 }
 
 - (void)viewDidLoad
@@ -67,12 +74,9 @@
     NSLog(@"Load dishes.");
     [super viewDidLoad];
     self.navigationItem.title = category;
-    
-    /*
-    // For now, no ad.
-    self.bannerView = [[ADBannerView alloc] init];
-    self.tableView.tableHeaderView = self.bannerView;
-    */
+
+    self.adPlacer = [NAMOTableViewAdPlacer placerForTableView:self.tableView];
+    [self.adPlacer registerAdFormat:NAMOAdFormatSample1.class];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -113,7 +117,7 @@
 {
     static NSString *simpleTableIdentifier = @"dishCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [tableView namo_dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
@@ -144,10 +148,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Row: %i", indexPath.row);
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView namo_cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         // Reflect selection in data model
@@ -157,7 +162,7 @@
         // Reflect deselection in data model
         [self delete:[dishInformation objectForKey:@"name"]];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView namo_deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -226,8 +231,6 @@
     }
 
 }
-
-
 
 
 /*
