@@ -16,6 +16,7 @@
 
 // Why synthesize?
 @synthesize category;
+// @synthesize bannerView = _bannerView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -66,12 +67,22 @@
     NSLog(@"Load dishes.");
     [super viewDidLoad];
     self.navigationItem.title = category;
+    
+    /*
+    // For now, no ad.
+    self.bannerView = [[ADBannerView alloc] init];
+    self.tableView.tableHeaderView = self.bannerView;
+    */
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
