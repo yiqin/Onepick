@@ -27,7 +27,7 @@
     NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
     [targeting setGender:NAMOGenderMale];
     
-    //[self.adView requestAdWithTargeting:targeting];
+    [self.adView requestAdWithTargeting:targeting];
     // Errors too.
 
 }

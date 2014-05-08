@@ -53,6 +53,9 @@
 		8DB24177191C26FD00E3A52D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24176191C26FD00E3A52D /* ImageIO.framework */; };
 		8DB24179191C270400E3A52D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24178191C270400E3A52D /* MediaPlayer.framework */; };
 		8DB2417B191C270C00E3A52D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB2417A191C270C00E3A52D /* StoreKit.framework */; };
+		8DB2417F191C2D8D00E3A52D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB2417E191C2D8D00E3A52D /* FacebookSDK.framework */; };
+		8DB24181191C2E5500E3A52D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24180191C2E5500E3A52D /* Social.framework */; };
+		8DB24183191C2E5B00E3A52D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24182191C2E5B00E3A52D /* Accounts.framework */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
@@ -132,6 +135,9 @@
 		8DB24176191C26FD00E3A52D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8DB24178191C270400E3A52D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8DB2417A191C270C00E3A52D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8DB2417E191C2D8D00E3A52D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		8DB24180191C2E5500E3A52D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8DB24182191C2E5B00E3A52D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONStringToDictionary.h"; sourceTree = "<group>"; };
 		8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONStringToDictionary.m"; sourceTree = "<group>"; };
 		8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryToJSONString.h"; sourceTree = "<group>"; };
@@ -157,6 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB24183191C2E5B00E3A52D /* Accounts.framework in Frameworks */,
+				8DB24181191C2E5500E3A52D /* Social.framework in Frameworks */,
 				8DB2417B191C270C00E3A52D /* StoreKit.framework in Frameworks */,
 				8DB24179191C270400E3A52D /* MediaPlayer.framework in Frameworks */,
 				8DB24177191C26FD00E3A52D /* ImageIO.framework in Frameworks */,
@@ -170,6 +178,7 @@
 				8D4209581905C31300D566CA /* CoreGraphics.framework in Frameworks */,
 				8D42095A1905C31300D566CA /* UIKit.framework in Frameworks */,
 				8DB24171191C26AA00E3A52D /* Namo.framework in Frameworks */,
+				8DB2417F191C2D8D00E3A52D /* FacebookSDK.framework in Frameworks */,
 				8D4209A219061DDE00D566CA /* Parse.framework in Frameworks */,
 				8D4209561905C31300D566CA /* Foundation.framework in Frameworks */,
 			);
@@ -211,6 +220,9 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DB24182191C2E5B00E3A52D /* Accounts.framework */,
+				8DB24180191C2E5500E3A52D /* Social.framework */,
+				8DB2417E191C2D8D00E3A52D /* FacebookSDK.framework */,
 				8DB2417A191C270C00E3A52D /* StoreKit.framework */,
 				8DB24178191C270400E3A52D /* MediaPlayer.framework */,
 				8DB24176191C26FD00E3A52D /* ImageIO.framework */,
@@ -575,6 +587,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "onepick/onepick-Prefix.pch";
 				INFOPLIST_FILE = "onepick/onepick-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Ichiban;
 				WRAPPER_EXTENSION = app;
 			};
@@ -590,6 +603,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "onepick/onepick-Prefix.pch";
 				INFOPLIST_FILE = "onepick/onepick-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Ichiban;
 				WRAPPER_EXTENSION = app;
 			};
