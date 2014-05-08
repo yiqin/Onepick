@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import <Namo/Namo.h>
+
 #import "SelectedDishes.h"
 #import "NSDictionary+DictionaryToJSONString.h"
 

@@ -104,6 +104,10 @@
                                 }];
     */
     
+    // Namo Media
+    [Namo setApplicationId:@"app-test-id"];
+    [Namo setTestDevices:@[@"10EB5A48-9FA1-4364-AEC2-78CFADA2712A"] includeSimulator:YES];
+    
     return YES;
 }
 							

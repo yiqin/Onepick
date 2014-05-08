@@ -47,6 +47,12 @@
 		8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D996E3F191A8710008F07D4 /* MoreViewController.m */; };
 		8DA4ED1A191A76A40071466E /* TopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4ED19191A76A40071466E /* TopTableViewController.m */; };
 		8DB24160191BE18600E3A52D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB2415F191BE18600E3A52D /* iAd.framework */; };
+		8DB24171191C26AA00E3A52D /* Namo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24170191C26AA00E3A52D /* Namo.framework */; };
+		8DB24173191C26C000E3A52D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24172191C26C000E3A52D /* AdSupport.framework */; };
+		8DB24175191C26CB00E3A52D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24174191C26CB00E3A52D /* CoreTelephony.framework */; };
+		8DB24177191C26FD00E3A52D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24176191C26FD00E3A52D /* ImageIO.framework */; };
+		8DB24179191C270400E3A52D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24178191C270400E3A52D /* MediaPlayer.framework */; };
+		8DB2417B191C270C00E3A52D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB2417A191C270C00E3A52D /* StoreKit.framework */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
@@ -120,6 +126,12 @@
 		8DA4ED18191A76A40071466E /* TopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTableViewController.h; sourceTree = "<group>"; };
 		8DA4ED19191A76A40071466E /* TopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTableViewController.m; sourceTree = "<group>"; };
 		8DB2415F191BE18600E3A52D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		8DB24170191C26AA00E3A52D /* Namo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Namo.framework; sourceTree = "<group>"; };
+		8DB24172191C26C000E3A52D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		8DB24174191C26CB00E3A52D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8DB24176191C26FD00E3A52D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		8DB24178191C270400E3A52D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		8DB2417A191C270C00E3A52D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONStringToDictionary.h"; sourceTree = "<group>"; };
 		8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONStringToDictionary.m"; sourceTree = "<group>"; };
 		8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryToJSONString.h"; sourceTree = "<group>"; };
@@ -145,6 +157,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB2417B191C270C00E3A52D /* StoreKit.framework in Frameworks */,
+				8DB24179191C270400E3A52D /* MediaPlayer.framework in Frameworks */,
+				8DB24177191C26FD00E3A52D /* ImageIO.framework in Frameworks */,
+				8DB24175191C26CB00E3A52D /* CoreTelephony.framework in Frameworks */,
+				8DB24173191C26C000E3A52D /* AdSupport.framework in Frameworks */,
 				8DB24160191BE18600E3A52D /* iAd.framework in Frameworks */,
 				8D35777019108CDA004D9732 /* CoreLocation.framework in Frameworks */,
 				8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */,
@@ -152,6 +169,7 @@
 				8D4209A41906207F00D566CA /* SystemConfiguration.framework in Frameworks */,
 				8D4209581905C31300D566CA /* CoreGraphics.framework in Frameworks */,
 				8D42095A1905C31300D566CA /* UIKit.framework in Frameworks */,
+				8DB24171191C26AA00E3A52D /* Namo.framework in Frameworks */,
 				8D4209A219061DDE00D566CA /* Parse.framework in Frameworks */,
 				8D4209561905C31300D566CA /* Foundation.framework in Frameworks */,
 			);
@@ -193,6 +211,12 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DB2417A191C270C00E3A52D /* StoreKit.framework */,
+				8DB24178191C270400E3A52D /* MediaPlayer.framework */,
+				8DB24176191C26FD00E3A52D /* ImageIO.framework */,
+				8DB24174191C26CB00E3A52D /* CoreTelephony.framework */,
+				8DB24172191C26C000E3A52D /* AdSupport.framework */,
+				8DB24170191C26AA00E3A52D /* Namo.framework */,
 				8DB2415F191BE18600E3A52D /* iAd.framework */,
 				8D35776F19108CDA004D9732 /* CoreLocation.framework */,
 				8DE455DB190EF1D900E8FA36 /* CoreData.framework */,
