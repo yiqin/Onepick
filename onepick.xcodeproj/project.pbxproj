@@ -42,8 +42,6 @@
 		8D471BC1191C89E300466EF7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC0191C89E300466EF7 /* libz.dylib */; };
 		8D471BC3191C89F200466EF7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC2191C89F200466EF7 /* libsqlite3.dylib */; };
 		8D471BC7191C8B6A00466EF7 /* libLocalyticsAMP_x64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */; };
-		8D471BC9191C911A00466EF7 /* iOSa_2.23.0.version in Resources */ = {isa = PBXBuildFile; fileRef = 8D471BC8191C911A00466EF7 /* iOSa_2.23.0.version */; };
-		8D471BCB191C912100466EF7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8D471BCA191C912100466EF7 /* LICENSE */; };
 		8D6120D41916891C003DE1F3 /* Addresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D31916891C003DE1F3 /* Addresses.m */; };
 		8D6120D71916904A003DE1F3 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D61916904A003DE1F3 /* Account.m */; };
 		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
@@ -127,8 +125,6 @@
 		8D471BC4191C8A4800466EF7 /* LocalyticsAmpSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalyticsAmpSession.h; sourceTree = "<group>"; };
 		8D471BC5191C8A4800466EF7 /* LocalyticsSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalyticsSession.h; sourceTree = "<group>"; };
 		8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLocalyticsAMP_x64.a; sourceTree = "<group>"; };
-		8D471BC8191C911A00466EF7 /* iOSa_2.23.0.version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSa_2.23.0.version; sourceTree = "<group>"; };
-		8D471BCA191C912100466EF7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8D6120D21916891C003DE1F3 /* Addresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addresses.h; sourceTree = "<group>"; };
 		8D6120D31916891C003DE1F3 /* Addresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addresses.m; sourceTree = "<group>"; };
 		8D6120D51916904A003DE1F3 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -263,8 +259,6 @@
 		8D42095B1905C31300D566CA /* onepick */ = {
 			isa = PBXGroup;
 			children = (
-				8D471BC8191C911A00466EF7 /* iOSa_2.23.0.version */,
-				8D471BCA191C912100466EF7 /* LICENSE */,
 				8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */,
 				8D471BC4191C8A4800466EF7 /* LocalyticsAmpSession.h */,
 				8D471BC5191C8A4800466EF7 /* LocalyticsSession.h */,
@@ -429,14 +423,12 @@
 				8D42099C190619D100D566CA /* History.png in Resources */,
 				8D4209951905D62000D566CA /* More@2x.png in Resources */,
 				8D42098C1905D1CC00D566CA /* Menu.png in Resources */,
-				8D471BCB191C912100466EF7 /* LICENSE in Resources */,
 				8D42096E1905C31300D566CA /* Images.xcassets in Resources */,
 				8D20DFEF19075C390055CCDF /* I58.png in Resources */,
 				8D4209991905D6E200D566CA /* TopRate@2x.png in Resources */,
 				8D4209601905C31300D566CA /* InfoPlist.strings in Resources */,
 				8D20DFF119075C390055CCDF /* I120.png in Resources */,
 				8D4209901905D3B600D566CA /* Cart.png in Resources */,
-				8D471BC9191C911A00466EF7 /* iOSa_2.23.0.version in Resources */,
 				8D42099D190619D100D566CA /* History@2x.png in Resources */,
 				8D20DFF019075C390055CCDF /* I80.png in Resources */,
 				8D42098D1905D1CC00D566CA /* Menu@2x.png in Resources */,
