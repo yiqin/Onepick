@@ -2,7 +2,7 @@
 //  Account.m
 //  onepick
 //
-//  Created by yiqin on 5/4/14.
+//  Created by yiqin on 5/9/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
@@ -11,8 +11,9 @@
 
 @implementation Account
 
-@dynamic name;
 @dynamic address;
+@dynamic name;
 @dynamic phone;
+@dynamic distance;
 
 @end

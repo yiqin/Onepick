@@ -42,8 +42,8 @@
 		8D471BC1191C89E300466EF7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC0191C89E300466EF7 /* libz.dylib */; };
 		8D471BC3191C89F200466EF7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC2191C89F200466EF7 /* libsqlite3.dylib */; };
 		8D471BC7191C8B6A00466EF7 /* libLocalyticsAMP_x64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */; };
+		8D471BCE191D5A3200466EF7 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D471BCD191D5A3200466EF7 /* Account.m */; };
 		8D6120D41916891C003DE1F3 /* Addresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D31916891C003DE1F3 /* Addresses.m */; };
-		8D6120D71916904A003DE1F3 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D61916904A003DE1F3 /* Account.m */; };
 		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
 		8D77B3E01909551500310CDF /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DE1909551500310CDF /* 640x1136.png */; };
 		8D77B3E2190A028900310CDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3E1190A028900310CDF /* Default-568h@2x.png */; };
@@ -125,10 +125,10 @@
 		8D471BC4191C8A4800466EF7 /* LocalyticsAmpSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalyticsAmpSession.h; sourceTree = "<group>"; };
 		8D471BC5191C8A4800466EF7 /* LocalyticsSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalyticsSession.h; sourceTree = "<group>"; };
 		8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLocalyticsAMP_x64.a; sourceTree = "<group>"; };
+		8D471BCC191D5A3200466EF7 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		8D471BCD191D5A3200466EF7 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		8D6120D21916891C003DE1F3 /* Addresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addresses.h; sourceTree = "<group>"; };
 		8D6120D31916891C003DE1F3 /* Addresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addresses.m; sourceTree = "<group>"; };
-		8D6120D51916904A003DE1F3 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		8D6120D61916904A003DE1F3 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		8D77B3DD1909551500310CDF /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		8D77B3DE1909551500310CDF /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		8D77B3E1190A028900310CDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -282,8 +282,8 @@
 				8DE455E3190F340C00E8FA36 /* CartViewController.h */,
 				8DE455E4190F340C00E8FA36 /* CartViewController.m */,
 				8DE455DD190EF43E00E8FA36 /* Cart.xcdatamodeld */,
-				8D6120D51916904A003DE1F3 /* Account.h */,
-				8D6120D61916904A003DE1F3 /* Account.m */,
+				8D471BCC191D5A3200466EF7 /* Account.h */,
+				8D471BCD191D5A3200466EF7 /* Account.m */,
 				8D6120D21916891C003DE1F3 /* Addresses.h */,
 				8D6120D31916891C003DE1F3 /* Addresses.m */,
 				8DFEBEB119101B9300D24B9D /* SelectedDishes.h */,
@@ -460,9 +460,9 @@
 				8D4209661905C31300D566CA /* AppDelegate.m in Sources */,
 				8DF6580A1911E5BB003920F4 /* HistoryAddressTableViewController.m in Sources */,
 				8D4209A019061C1E00D566CA /* MenuTableViewController.m in Sources */,
-				8D6120D71916904A003DE1F3 /* Account.m in Sources */,
 				8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */,
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
+				8D471BCE191D5A3200466EF7 /* Account.m in Sources */,
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
 				8D6120D41916891C003DE1F3 /* Addresses.m in Sources */,
 				8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */,

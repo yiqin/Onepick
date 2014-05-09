@@ -2,7 +2,7 @@
 //  Account.h
 //  onepick
 //
-//  Created by yiqin on 5/4/14.
+//  Created by yiqin on 5/9/14.
 //  Copyright (c) 2014 purdue. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 
 @interface Account : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * address;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * phone;
+@property (nonatomic, retain) NSNumber * distance;
 
 @end
