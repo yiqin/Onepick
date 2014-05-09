@@ -149,6 +149,9 @@
         case 1:
             NSLog(@"OK button clicked");
             [self updateCurrentAddress];
+            
+            [[LocalyticsSession shared] tagEvent:@"New Address"];
+            
             // Here is the way to move back
             [self.navigationController popViewControllerAnimated:YES];
             break;

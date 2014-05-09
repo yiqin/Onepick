@@ -157,6 +157,8 @@
         case 1:
             NSLog(@"OK button clicked");
             // Here is the way to move back
+            [[LocalyticsSession shared] tagEvent:@"Update History Address"];
+            
             [self updateCurrentAddress];
             [self.navigationController popViewControllerAnimated:YES];
             break;

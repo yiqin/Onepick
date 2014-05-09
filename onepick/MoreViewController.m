@@ -60,6 +60,7 @@
 }
 
 - (IBAction)changeRestaurant:(id)sender {
+    NSLog(@"change restaurant.");
     
 }
 

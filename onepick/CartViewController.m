@@ -33,7 +33,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"Welcome to Cart.");
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
     // Construct a fetch request
@@ -70,9 +69,7 @@
         // [self.cartArray addObject:@"Your cart is empty."];
     }
     
-    [self updatePriceLabel];
-    
-    // Get address. Get user and phone number.
+    // Get address
     // Construct a fetch request
     NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
@@ -82,18 +79,15 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"Fetch account array size:%i",[fetchAccountArray count]);
     
     if([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         self.cartDeliveryAddress.text = fetchAddress.address;
-        NSMutableString *tempWho = [[NSMutableString alloc] initWithString:fetchAddress.name];
-        [tempWho appendString:fetchAddress.phone];
-        self.who = [NSString stringWithString:tempWho];
     } else {
         self.cartDeliveryAddress.text = @"Press Your Address button to add new address.";
     }
     
+    [self updatePriceLabel];
 
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
     [self.cartTableView reloadData];
@@ -197,6 +191,7 @@
     [self updatePriceLabel];
     [self.cartTableView reloadData];
     [self updateCount:[dishInformation objectForKey:@"name"] withCount:currentCount];
+    [[LocalyticsSession shared] tagEvent:@"Add Dish"];
 }
 
 - (IBAction)minusDish:(id)sender
@@ -221,6 +216,7 @@
         [self.cartTableView reloadData];
         [self deleteZeroDish:[dishInformation objectForKey:@"name"]];
     }
+    [[LocalyticsSession shared] tagEvent:@"Minus Dish"];
 }
 
 // Save counts in Core Data
@@ -353,6 +349,7 @@
     
     // Wrapper up all the information
     NSMutableString *summary = [[NSMutableString alloc] init];
+    int dishesCount = 0;
     
     for (NSMutableDictionary *cartListDictionary in self.cartArray) {
         [summary appendString:[cartListDictionary objectForKey:@"name"]];
@@ -364,7 +361,7 @@
         
         // asynchronously and executes the given callback block.
         [self orderCount:[cartListDictionary objectForKey:@"parseObjectId"] withCount:[cartListDictionary objectForKey:@"count"]];
-
+        dishesCount = dishesCount + [[cartListDictionary objectForKey:@"count"] intValue];
     }
     
     NSString *dishesSummary = [[NSString alloc] initWithString:summary];
@@ -375,6 +372,27 @@
     [summary appendString:self.cartDeliveryAddress.text];
     
     NSLog(@"Summary %@",summary);
+
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    // Get user and phone number.
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    
+    if([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        NSMutableString *tempWho = [[NSMutableString alloc] initWithString:fetchAddress.name];
+        [tempWho appendString:fetchAddress.phone];
+        self.who = [NSString stringWithString:tempWho];
+    } else {
+    }
     
     // save the order to Parse.com
     PFObject *orderSummary = [PFObject objectWithClassName:@"Order"];
@@ -382,14 +400,18 @@
     orderSummary[@"dishes"] = dishesSummary;
     orderSummary[@"price"] = [[NSNumber alloc] initWithFloat: self.totalPriceFloat];
     orderSummary[@"address"] = self.cartDeliveryAddress.text;
-    NSLog(@"%@", [[UIDevice currentDevice] name]);
     orderSummary[@"who"] = self.who;
+    
+    orderSummary[@"listCount"] = [[NSNumber alloc] initWithInteger: [self.cartArray count]];
+    orderSummary[@"dishesCount"] = [[NSNumber alloc] initWithInt:dishesCount];
     
     // orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Parse succeed.");
             [HUD hide:YES];
+            // tag this event.
+            [[LocalyticsSession shared] tagEvent:@"Order is confirmed."];
             // Move to Order tab controler.
             [self.tabBarController setSelectedIndex:3];
         } else {

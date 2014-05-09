@@ -108,6 +108,9 @@
     [Namo setApplicationId:@"app-test-id"];
     [Namo setTestDevices:@[@"10EB5A48-9FA1-4364-AEC2-78CFADA2712A"] includeSimulator:YES];
     
+    // Enable tracing.
+    [[LocalyticsSession shared] setLoggingEnabled:YES];
+    
     return YES;
 }
 							
@@ -140,7 +143,6 @@
     [[LocalyticsSession shared] LocalyticsSession:@"b2df1f3eea280c9fad7d1d5-daadee46-d72c-11e3-9d25-009c5fda0a25"];
     [[LocalyticsSession shared] resume];
     [[LocalyticsSession shared] upload];
-    NSLog(@"application did become active");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
