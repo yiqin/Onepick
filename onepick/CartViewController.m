@@ -31,6 +31,8 @@
 // viewWilAppear: load eveytime the page is visited
 // viewDidLoad: load only one time, that is the first time
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     NSLog(@"Welcome to Cart.");
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
@@ -113,6 +115,12 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LocalyticsSession shared] tagScreen:@"Cart"];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -330,7 +338,7 @@
 
 
 
-- (void) confirmButtonPress {
+- (void) confirmButtonPress {    
     NSLog(@"Confirm is pressed.");
     
     // Add MBProgressHUD as indicator

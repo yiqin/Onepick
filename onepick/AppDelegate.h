@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 
 #import <Namo/Namo.h>
+#import "LocalyticsSession.h"
 
 #import "SelectedDishes.h"
 #import "NSDictionary+DictionaryToJSONString.h"

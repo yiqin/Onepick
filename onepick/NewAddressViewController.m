@@ -23,6 +23,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +33,13 @@
     
     [self.addStreet becomeFirstResponder];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LocalyticsSession shared] tagScreen:@"New Address"];
 }
 
 - (void)didReceiveMemoryWarning

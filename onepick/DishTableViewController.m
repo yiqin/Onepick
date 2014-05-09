@@ -45,8 +45,12 @@
 
 // viewWilAppear: load eveytime the page is visited
 // viewDidLoad: load only one time, which is the first time
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Welcome to Dish.");
+- (void)viewWillAppear:(BOOL)animated
+{
+    // You usually want to call the super class' implementation first in any method. In many languages it's required. In Objective-C it's not, but you can easily run into trouble if you don't put it at the top of your method. (That said, I sometimes break this pattern.)
+    // So the answer is no not in a technical sense, but you should probably always do it.
+    [super viewWillAppear:animated];
+    
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
     // Construct a fetch request
@@ -85,7 +89,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LocalyticsSession shared] tagScreen:category];
+}
 
 
 - (void)didReceiveMemoryWarning

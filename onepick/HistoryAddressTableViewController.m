@@ -29,6 +29,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     NSLog(@"Welcome to Cart.");
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
@@ -55,6 +57,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LocalyticsSession shared] tagScreen:@"History Address"];
 }
 
 - (void)didReceiveMemoryWarning

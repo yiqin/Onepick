@@ -24,6 +24,8 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
     [targeting setGender:NAMOGenderMale];
     
@@ -42,6 +44,13 @@
     [self.adView registerAdFormat:NAMOAdFormatSample1.class];
     [self.view addSubview:self.adView];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[LocalyticsSession shared] tagScreen:@"More"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+#import "DishTableViewController.h"
+
 // No standard UITableViewController
 @interface MenuTableViewController : PFQueryTableViewController
 
