@@ -344,7 +344,7 @@
     HUD.labelText = @"Proccessing the order.";
     [HUD show:YES];
     
-   
+    
     // Get the currentDevice name for the first, since the name will be changed. Then save it to Core Data
     
     // Wrapper up all the information
@@ -392,6 +392,7 @@
         [tempWho appendString:fetchAddress.phone];
         self.who = [NSString stringWithString:tempWho];
     } else {
+        self.who = @"hello";
     }
     
     // save the order to Parse.com
