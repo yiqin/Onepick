@@ -26,10 +26,6 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
-    [targeting setGender:NAMOGenderMale];
-    
-    [self.adView requestAdWithTargeting:targeting];
     // Errors too.
 
 }
@@ -39,11 +35,7 @@
     NSLog(@"Welcome to More.");
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.adView = [[NAMOAdView alloc] initWithFrame:CGRectMake(
-                                                                     10, 200, 450, 80)];
-    [self.adView registerAdFormat:NAMOAdFormatSample1.class];
-    [self.view addSubview:self.adView];
-    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -120,6 +112,55 @@
     
 }
 
+- (IBAction)sendFeedbackInEmail:(id)sender {
+    // The user can give feedback here...
+    // Email Subject
+    NSString *emailTitle = @"Hi Ichiban iOS team";
+    // Email Content
+    NSString *messageBody = @"";
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject:@"yiqin.mems@gmail.com"];
+    
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setMessageBody:messageBody isHTML:NO];
+    [mc setToRecipients:toRecipents];
+    
+    // Change UIBarButtonItem color
+    [[mc navigationBar] setTintColor:[UIColor whiteColor]];
+    
+    // Set the UIApplication statusBarStyle in the completion block
+    [self presentViewController:mc animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }];
+    
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            //NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            //NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            //NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 /*
 #pragma mark - Navigation

@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Account.h"
+#import <MessageUI/MessageUI.h>
 
-#import <Namo/Namo.h>
-
-@interface MoreViewController : UIViewController <UIActionSheetDelegate>
-
-@property(strong, nonatomic) NAMOAdView *adView;
+@interface MoreViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @end

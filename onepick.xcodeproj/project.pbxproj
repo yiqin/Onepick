@@ -44,6 +44,7 @@
 		8D471BC7191C8B6A00466EF7 /* libLocalyticsAMP_x64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D471BC6191C8B6A00466EF7 /* libLocalyticsAMP_x64.a */; };
 		8D471BCE191D5A3200466EF7 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D471BCD191D5A3200466EF7 /* Account.m */; };
 		8D6120D41916891C003DE1F3 /* Addresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D31916891C003DE1F3 /* Addresses.m */; };
+		8D639680191EED46003DE9C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D63967F191EED46003DE9C7 /* MessageUI.framework */; };
 		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
 		8D77B3E01909551500310CDF /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DE1909551500310CDF /* 640x1136.png */; };
 		8D77B3E2190A028900310CDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3E1190A028900310CDF /* Default-568h@2x.png */; };
@@ -129,6 +130,7 @@
 		8D471BCD191D5A3200466EF7 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		8D6120D21916891C003DE1F3 /* Addresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addresses.h; sourceTree = "<group>"; };
 		8D6120D31916891C003DE1F3 /* Addresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addresses.m; sourceTree = "<group>"; };
+		8D63967F191EED46003DE9C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8D77B3DD1909551500310CDF /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
 		8D77B3DE1909551500310CDF /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		8D77B3E1190A028900310CDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D639680191EED46003DE9C7 /* MessageUI.framework in Frameworks */,
 				8D471BC3191C89F200466EF7 /* libsqlite3.dylib in Frameworks */,
 				8D471BC1191C89E300466EF7 /* libz.dylib in Frameworks */,
 				8DB24183191C2E5B00E3A52D /* Accounts.framework in Frameworks */,
@@ -231,6 +234,7 @@
 		8D4209541905C31300D566CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D63967F191EED46003DE9C7 /* MessageUI.framework */,
 				8D471BC2191C89F200466EF7 /* libsqlite3.dylib */,
 				8D471BC0191C89E300466EF7 /* libz.dylib */,
 				8DB24182191C2E5B00E3A52D /* Accounts.framework */,
