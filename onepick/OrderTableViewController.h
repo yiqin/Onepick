@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <Namo/Namo.h>
+
 
 #import "AppDelegate.h"
 #import "Account.h"
@@ -15,5 +17,7 @@
 @interface OrderTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *who;
+
+@property(nonatomic, strong) NAMOTableViewAdPlacer *adPlacer;
 
 @end

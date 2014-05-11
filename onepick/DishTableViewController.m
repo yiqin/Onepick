@@ -121,7 +121,7 @@
     return query;
 }
 
-
+// not namo_cellForRowAtIndexPath
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *) object
 {
     static NSString *simpleTableIdentifier = @"dishCell";

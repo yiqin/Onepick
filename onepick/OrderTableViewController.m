@@ -49,6 +49,11 @@
     
     NSLog(@"Welcome to Order.");
     
+    NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
+    [targeting setEducation:NAMOEducationCollege];
+    // [targeting setGender:NAMOGenderMale];
+    [self.adPlacer requestAdsWithTargeting:targeting];
+    
     // reload data doesn't work at all.
     [self.tableView reloadData];
 }
@@ -56,6 +61,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.adPlacer = [NAMOTableViewAdPlacer placerForTableView:self.tableView];
+    [self.adPlacer registerAdFormat:NAMOAdFormatSample1.class];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -141,7 +149,7 @@
 {
     static NSString *simpleTableIdentifier = @"orderCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [tableView namo_dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }

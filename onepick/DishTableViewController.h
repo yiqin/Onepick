@@ -17,6 +17,7 @@
 
 
 @interface DishTableViewController : PFQueryTableViewController <UITableViewDelegate>
+
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSArray *previousCart;
 
