@@ -12,6 +12,7 @@
 #import "SelectedDishes.h"
 #import "NSString+JSONStringToDictionary.h"
 
+#import "SelectRestaurantSignUpViewController.h"
 
 @interface TopTableViewController : PFQueryTableViewController <UITableViewDelegate>
 

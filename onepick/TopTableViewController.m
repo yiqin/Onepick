@@ -62,6 +62,12 @@
 {
     [super viewDidLoad];
     
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSignedUp"]) {
+        SelectRestaurantSignUpViewController *selectRestaurantSignUpViewController = (SelectRestaurantSignUpViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"SelectRestaurantSignUpViewController"];
+        [selectRestaurantSignUpViewController.navigationItem setHidesBackButton:YES];
+        [selectRestaurantSignUpViewController setHidesBottomBarWhenPushed:YES];
+        [self.navigationController pushViewController:selectRestaurantSignUpViewController animated:YES];
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

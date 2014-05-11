@@ -70,6 +70,9 @@
 		8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF658031911E0CD003920F4 /* NewAddressViewController.m */; };
 		8DF6580A1911E5BB003920F4 /* HistoryAddressTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF658091911E5BB003920F4 /* HistoryAddressTableViewController.m */; };
 		8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFEBEB219101B9300D24B9D /* SelectedDishes.m */; };
+		8DFF789F191F3C2800709839 /* SelectRestaurantSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF789E191F3C2800709839 /* SelectRestaurantSignUpViewController.m */; };
+		8DFF78A2191F3D1600709839 /* EnterPhoneSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF78A1191F3D1600709839 /* EnterPhoneSignUpViewController.m */; };
+		8DFF78A5191F3E1600709839 /* EnterAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFF78A4191F3E1600709839 /* EnterAddressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +169,12 @@
 		8DF658091911E5BB003920F4 /* HistoryAddressTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAddressTableViewController.m; sourceTree = "<group>"; };
 		8DFEBEB119101B9300D24B9D /* SelectedDishes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedDishes.h; sourceTree = "<group>"; };
 		8DFEBEB219101B9300D24B9D /* SelectedDishes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedDishes.m; sourceTree = "<group>"; };
+		8DFF789D191F3C2800709839 /* SelectRestaurantSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectRestaurantSignUpViewController.h; sourceTree = "<group>"; };
+		8DFF789E191F3C2800709839 /* SelectRestaurantSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectRestaurantSignUpViewController.m; sourceTree = "<group>"; };
+		8DFF78A0191F3D1600709839 /* EnterPhoneSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPhoneSignUpViewController.h; sourceTree = "<group>"; };
+		8DFF78A1191F3D1600709839 /* EnterPhoneSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPhoneSignUpViewController.m; sourceTree = "<group>"; };
+		8DFF78A3191F3E1600709839 /* EnterAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterAddressViewController.h; sourceTree = "<group>"; };
+		8DFF78A4191F3E1600709839 /* EnterAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterAddressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +278,12 @@
 				8D4209641905C31300D566CA /* AppDelegate.h */,
 				8D4209651905C31300D566CA /* AppDelegate.m */,
 				8D4209671905C31300D566CA /* Main.storyboard */,
+				8DFF78A3191F3E1600709839 /* EnterAddressViewController.h */,
+				8DFF78A4191F3E1600709839 /* EnterAddressViewController.m */,
+				8DFF78A0191F3D1600709839 /* EnterPhoneSignUpViewController.h */,
+				8DFF78A1191F3D1600709839 /* EnterPhoneSignUpViewController.m */,
+				8DFF789D191F3C2800709839 /* SelectRestaurantSignUpViewController.h */,
+				8DFF789E191F3C2800709839 /* SelectRestaurantSignUpViewController.m */,
 				8D996E3E191A8710008F07D4 /* MoreViewController.h */,
 				8D996E3F191A8710008F07D4 /* MoreViewController.m */,
 				8DA4ED18191A76A40071466E /* TopTableViewController.h */,
@@ -467,13 +482,16 @@
 				8DE455DF190EF43E00E8FA36 /* Cart.xcdatamodeld in Sources */,
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
 				8D471BCE191D5A3200466EF7 /* Account.m in Sources */,
+				8DFF78A5191F3E1600709839 /* EnterAddressViewController.m in Sources */,
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
 				8D6120D41916891C003DE1F3 /* Addresses.m in Sources */,
 				8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */,
 				8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
+				8DFF78A2191F3D1600709839 /* EnterPhoneSignUpViewController.m in Sources */,
 				8DF658011911D6BD003920F4 /* OrderTableViewController.m in Sources */,
 				8DEAD4161915C91400CB5E7F /* MBProgressHUD.m in Sources */,
+				8DFF789F191F3C2800709839 /* SelectRestaurantSignUpViewController.m in Sources */,
 				8D20DFEB190703170055CCDF /* DishTableViewController.m in Sources */,
 				8DA4ED1A191A76A40071466E /* TopTableViewController.m in Sources */,
 				8DE455E5190F340C00E8FA36 /* CartViewController.m in Sources */,

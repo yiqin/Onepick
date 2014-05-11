@@ -322,6 +322,8 @@
     
 }
 
+// Storyboards in iOS were introduced in iOS 5.
+// Two methods to perform segue programmatically
 -(void) addNewButtonPress {
     NewAddressViewController *newAddrewViewController = (NewAddressViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"NewAddrewController"];
     [self.navigationController pushViewController:newAddrewViewController animated:YES];
