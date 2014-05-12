@@ -179,6 +179,7 @@
     if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         fetchAddress.address = self.formattedAddressLines;
+        fetchAddress.distance = self.distance;
         // Save everything
         // include save to History Address
         NSError *errorCoreData = nil;
@@ -191,6 +192,7 @@
         // Grab the Label entity
         Account *saveAccount = [NSEntityDescription insertNewObjectForEntityForName:@"Account" inManagedObjectContext:context];
         [saveAccount setAddress:self.formattedAddressLines];
+        [saveAccount setDistance:self.distance];
         // Save everything
         // include save to History Address
         NSError *errorCoreData = nil;

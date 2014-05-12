@@ -15,6 +15,7 @@
 #import "SelectedDishes.h"
 #import "NSDictionary+DictionaryToJSONString.h"
 
+#import "Account.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

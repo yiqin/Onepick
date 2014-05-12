@@ -133,10 +133,10 @@
     [geocoder geocodeAddressString: inputAddressStreet
                  completionHandler:^(NSArray* placemarks, NSError* error){
                      CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
-                     NSNumber *distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
+                     self.distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
                      [HUD hide:YES];
                      UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:@"Distance"
-                                                                            message:[distance stringValue]
+                                                                            message:[self.distance stringValue]
                                                                            delegate:self
                                                                   cancelButtonTitle:@"Cancel"
                                                                   otherButtonTitles:@"Save",nil];
@@ -185,6 +185,7 @@
     if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         fetchAddress.address = self.selectedAddress;
+        fetchAddress.distance = self.distance;
     }
     
     // Save everything

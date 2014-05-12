@@ -21,7 +21,7 @@
 
 #import "MBProgressHUD.h"
 
-@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, MBProgressHUDDelegate>
+@interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIAlertViewDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) NSArray *previousCart;
 @property (strong, nonatomic) NSMutableArray *cartArray;

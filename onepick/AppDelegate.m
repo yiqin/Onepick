@@ -111,6 +111,33 @@
     // Enable tracing.
     // [[LocalyticsSession shared] setLoggingEnabled:YES];
     
+    // Core Data
+    // Load the minimum
+    // https://blog.stackmob.com/2012/12/iphone-database-tutorial-part-3-adding-the-user-interface/
+    NSManagedObjectContext *context = [self managedObjectContext];;
+    
+    // Get address
+    // Construct a fetch request
+    NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                     inManagedObjectContext:context];
+    [fetchRequestAccount setEntity:entityAccount];
+    NSError *errorAccount = nil;
+    // Return a fetch array.
+    NSArray *fetchAccountArray = [[NSArray alloc] init];
+    fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+    NSLog(@"%i",[fetchAccountArray count]);
+    
+    if ([fetchAccountArray count] > 0) {
+        Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+        [[NSUserDefaults standardUserDefaults] setObject:fetchAddress.distance forKey:@"distance"];
+    }
+    else {
+        NSNumber *tempDistance = [[NSNumber alloc] initWithFloat:6000.0];
+        [[NSUserDefaults standardUserDefaults] setObject:tempDistance forKey:@"distance"];
+    }
+    
+    
     return YES;
 }
 							

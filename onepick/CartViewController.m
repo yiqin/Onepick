@@ -106,6 +106,10 @@
     }];
     
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
+    
+    
+    NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"distance"];
+    NSLog(@"Distance %@", temp);
 
 }
 
@@ -283,15 +287,23 @@
 }
 
 - (IBAction)confirm:(id)sender {
-    NSMutableString *confirmInformation = [[NSMutableString alloc] init];
-    [confirmInformation appendString:@"Delivery to: "];
-    [confirmInformation appendString:self.cartDeliveryAddress.text];
-    [confirmInformation appendString:@"\n Total price:"];
-    [confirmInformation appendString:self.totalPrice.text];
+    if (true) {
+        NSMutableString *confirmInformation = [[NSMutableString alloc] init];
+        [confirmInformation appendString:@"Delivery to: "];
+        [confirmInformation appendString:self.cartDeliveryAddress.text];
+        [confirmInformation appendString:@"\n Total price:"];
+        [confirmInformation appendString:self.totalPrice.text];
+        
+        UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:confirmInformation delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
+        [confirmActionSheet setTag:2];
+        [confirmActionSheet showInView:self.view];
+    }
+    else {
+        NSString *orderMoreMessage = @"Your current total price is lower than the minimum. Please order more.";
+        UIAlertView *orderMore = [[UIAlertView alloc] initWithTitle:@"Order More" message: orderMoreMessage delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
+        [orderMore show];
+    }
 
-    UIActionSheet *confirmActionSheet = [[UIActionSheet alloc] initWithTitle:confirmInformation delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
-    [confirmActionSheet setTag:2];
-    [confirmActionSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

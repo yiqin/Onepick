@@ -17,4 +17,6 @@
 @property(strong, nonatomic) NSArray *historyAddress;
 @property(strong, nonatomic) NSString *selectedAddress;
 
+@property (strong, nonatomic) NSNumber *distance;
+
 @end
