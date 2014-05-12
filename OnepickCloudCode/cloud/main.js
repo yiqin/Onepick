@@ -4,3 +4,7 @@
 Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
+
+Parse.Cloud.define("minimumVersion", function(request, response) {
+  response.success("1.0");
+});

@@ -40,9 +40,13 @@
 @property (assign, nonatomic) float totalPriceFloat;
 @property (strong, nonatomic) IBOutlet UILabel *totalPrice;
 
-
 @property (strong, nonatomic) IBOutlet UILabel *cartDeliveryAddress;
+
+
 
 @property (strong, nonatomic) NSString *who;
 
+@property (assign, nonatomic) float distanceFloat;
+
+@property (strong, nonatomic) IBOutlet UILabel *mininumPrice;
 @end

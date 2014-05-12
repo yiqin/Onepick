@@ -111,6 +111,7 @@
     // Enable tracing.
     // [[LocalyticsSession shared] setLoggingEnabled:YES];
     
+    
     // Core Data
     // Load the minimum
     // https://blog.stackmob.com/2012/12/iphone-database-tutorial-part-3-adding-the-user-interface/
@@ -136,6 +137,8 @@
         NSNumber *tempDistance = [[NSNumber alloc] initWithFloat:6000.0];
         [[NSUserDefaults standardUserDefaults] setObject:tempDistance forKey:@"distance"];
     }
+    
+
     
     
     return YES;

@@ -83,8 +83,10 @@
     if([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         self.cartDeliveryAddress.text = fetchAddress.address;
+        self.distanceFloat = [fetchAddress.distance floatValue];
     } else {
         self.cartDeliveryAddress.text = @"Press Your Address button to add new address.";
+        self.distanceFloat = 8000.0;
     }
     
     [self updatePriceLabel];
@@ -97,6 +99,39 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    // Load different version
+    
+    [PFCloud callFunctionInBackground:@"minimumVersion"
+                       withParameters:@{}
+                                block:^(NSString *newMinimumVersion, NSError *error) {
+                                    if (!error) {
+                                        // result is @"Hello world!"
+                                        NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
+                                        NSString *currentMinimumVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"];
+                                        NSLog(@"%@", currentMinimumVersion);
+                                        if (![currentMinimumVersion isEqualToString:newMinimumVersion]) {
+                                            NSLog(@"Load new minimum price.");
+                                            // Add MBProgressHUD as indicator
+                                            MBProgressHUD *minimumVersionHUD = [[MBProgressHUD alloc] initWithView:self.view];
+                                            [self.view.superview addSubview:minimumVersionHUD];
+                                            minimumVersionHUD.delegate = self;
+                                            minimumVersionHUD.labelText = @"Updating System";
+                                            [minimumVersionHUD show:YES];
+                                            [PFCloud callFunctionInBackground:@"hello"
+                                                               withParameters:@{}
+                                                                        block:^(NSString *result, NSError *error) {
+                                                                            if (!error) {
+                                                                                // result is @"Hello world!"
+                                                                                NSLog(@"Parse Cloud Code: %@", result);
+                                                                                [[NSUserDefaults standardUserDefaults] setObject:newMinimumVersion forKey:@"minimumVersion"];
+                                                                                [minimumVersionHUD hide:YES];
+                                                                            }
+                                                                        }];
+                                        }
+                                    }
+                                }];
+    
     
     self.deliveryFeeFloat = 2.50;
     PFQuery *query = [PFQuery queryWithClassName:@"deliveryFee"];
@@ -106,6 +141,7 @@
     }];
     
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
+    
     
     
     NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"distance"];
