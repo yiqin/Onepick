@@ -138,12 +138,78 @@
         [[NSUserDefaults standardUserDefaults] setObject:tempDistance forKey:@"distance"];
     }
     
+    
+    [PFCloud callFunctionInBackground:@"minimumVersion"
+                       withParameters:@{}
+                                block:^(NSString *newMinimumVersion, NSError *error) {
+                                    if (!error) {
+                                        // result is @"Hello world!"
+                                        NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
+                                        NSString *currentMinimumVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"];
+                                        NSLog(@"%@", currentMinimumVersion);
+                                        if (![currentMinimumVersion isEqualToString:newMinimumVersion]) {
+                                            NSLog(@"Load new minimum price.");
+                                            // Add MBProgressHUD as indicator
+                                            UIViewController *c = topMostController();
+                                            
+                                            MBProgressHUD *minimumVersionHUD = [[MBProgressHUD alloc] initWithView:c.view];
+                                            [c.view.superview addSubview:minimumVersionHUD];
+                                            minimumVersionHUD.delegate = self;
+                                            minimumVersionHUD.labelText = @"Updating System";
+                                            [minimumVersionHUD show:YES];
+                                            [PFCloud callFunctionInBackground:@"hello"
+                                                               withParameters:@{}
+                                                                        block:^(NSString *result, NSError *error) {
+                                                                            if (!error) {
+                                                                                // result is @"Hello world!"
+                                                                                NSLog(@"Parse Cloud Code: %@", result);
+                                                                                [[NSUserDefaults standardUserDefaults] setObject:newMinimumVersion forKey:@"minimumVersion"];
+                                                                                [minimumVersionHUD hide:YES];
+                                                                                NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"]);
+                                                                            }
+                                                                        }];
+                                        }
+                                    }
+                                }];
+    
 
     
     
     return YES;
 }
-							
+
+// I'm not sure how to update it.
+// http://stackoverflow.com/questions/6131205/iphone-how-to-find-topmost-view-controller
+UIViewController *_topMostController(UIViewController *cont) {
+    UIViewController *topController = cont;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    if ([topController isKindOfClass:[UINavigationController class]]) {
+        UIViewController *visible = ((UINavigationController *)topController).visibleViewController;
+        if (visible) {
+            topController = visible;
+        }
+    }
+    
+    return (topController != cont ? topController : nil);
+}
+
+UIViewController *topMostController() {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    UIViewController *next = nil;
+    
+    while ((next = _topMostController(topController)) != nil) {
+        topController = next;
+    }
+    
+    return topController;
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
