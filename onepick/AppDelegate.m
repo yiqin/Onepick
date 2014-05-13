@@ -127,7 +127,7 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"%i",[fetchAccountArray count]);
+    NSLog(@"%lu",(unsigned long)[fetchAccountArray count]);
     
     if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
@@ -138,7 +138,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:tempDistance forKey:@"distance"];
     }
     
-    
+    // Update a string splited by space.
     [PFCloud callFunctionInBackground:@"minimumVersion"
                        withParameters:@{}
                                 block:^(NSString *newMinimumVersion, NSError *error) {
@@ -147,7 +147,7 @@
                                         NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
                                         NSString *currentMinimumVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"];
                                         NSLog(@"%@", currentMinimumVersion);
-                                        if (![currentMinimumVersion isEqualToString:newMinimumVersion]) {
+                                        if ([currentMinimumVersion isEqualToString:newMinimumVersion]) {
                                             NSLog(@"Load new minimum price.");
                                             // Add MBProgressHUD as indicator
                                             UIViewController *c = topMostController();
@@ -157,12 +157,13 @@
                                             minimumVersionHUD.delegate = self;
                                             minimumVersionHUD.labelText = @"Updating System";
                                             [minimumVersionHUD show:YES];
-                                            [PFCloud callFunctionInBackground:@"hello"
+                                            [PFCloud callFunctionInBackground:@"deliveryPriceSystem"
                                                                withParameters:@{}
                                                                         block:^(NSString *result, NSError *error) {
                                                                             if (!error) {
                                                                                 // result is @"Hello world!"
                                                                                 NSLog(@"Parse Cloud Code: %@", result);
+                                                                                
                                                                                 [[NSUserDefaults standardUserDefaults] setObject:newMinimumVersion forKey:@"minimumVersion"];
                                                                                 [minimumVersionHUD hide:YES];
                                                                                 NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"]);
@@ -171,9 +172,6 @@
                                         }
                                     }
                                 }];
-    
-
-    
     
     return YES;
 }
