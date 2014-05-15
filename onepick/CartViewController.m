@@ -98,6 +98,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
+    // Doing something on the main thread
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        // Perform long running process
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            
+        });
+    });
+    
+    // Continue doing other stuff on the
+    // main thread while process is running.
+    
+    
+    
     // Do any additional setup after loading the view.
     
     // This is not a good method. But I just don't want to optimize it now.

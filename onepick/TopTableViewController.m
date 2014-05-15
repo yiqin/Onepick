@@ -62,6 +62,51 @@
 {
     [super viewDidLoad];
     
+    // Doing something on the main thread
+    
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        // Perform long running process
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            
+        });
+    });
+    
+    
+    // Continue doing other stuff on the
+    // main thread while process is running.
+    NSArray *images = @[@"http://example.com/image1.png",
+                        @"http://example.com/image2.png",
+                        @"http://example.com/image3.png",
+                        @"http://example.com/image4.png"];
+    
+    dispatch_queue_t imageQueue = dispatch_queue_create("Image Queue",NULL);
+    
+    for (NSString *urlString in images) {
+        dispatch_async(imageQueue, ^{
+            
+            NSURL *url = [NSURL URLWithString:urlString];
+            NSData *imageData = [NSData dataWithContentsOfURL:url];
+            UIImage *image = [UIImage imageWithData:imageData];
+            
+            NSUInteger imageIndex = [images indexOfObject:urlString];
+            UIImageView *imageVIew = (UIImageView *)[self.view viewWithTag:imageIndex];
+            
+            if (!imageVIew) return;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                [imageVIew setImage:image];
+            });
+            
+        }); 
+    }
+    
+    // Continue doing other stuff while images load.
+    
+    
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"hasSignedUp"]) {
         SelectRestaurantSignUpViewController *selectRestaurantSignUpViewController = (SelectRestaurantSignUpViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"SelectRestaurantSignUpViewController"];
         [selectRestaurantSignUpViewController.navigationItem setHidesBackButton:YES];
