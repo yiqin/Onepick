@@ -69,7 +69,11 @@
         [self.navigationController pushViewController:selectRestaurantSignUpViewController animated:YES];
     }
     else {
-
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        // Track an event in Mixpanel Engagement
+        NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"tempPhone"];
+        [mixpanel identify:phone];
+        [mixpanel track:@"Change ID with the phone number."];
     }
 
     
