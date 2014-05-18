@@ -113,7 +113,9 @@
     
     // Initialize the library with your
     // Mixpanel project token, MIXPANEL_TOKEN
-    [Mixpanel sharedInstanceWithToken:@"52fcb0e29437cbbd3dcf1a571b6483f1"];
+    // Account: yiqin.mems@gmail.com 52fcb0e29437cbbd3dcf1a571b6483f1
+    //          sjtu_qy@hotmail.com 9b5647bedd42695430dffd02637d0556
+    [Mixpanel sharedInstanceWithToken:@"9b5647bedd42695430dffd02637d0556"];
     
 
     
