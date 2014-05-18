@@ -11,7 +11,6 @@
 
 #import <Namo/Namo.h>
 #import "LocalyticsSession.h"
-#import <Mixpanel.h>
 
 #import "SelectedDishes.h"
 #import "Account.h"

@@ -113,7 +113,6 @@
     
     // Initialize the library with your
     // Mixpanel project token, MIXPANEL_TOKEN
-    [Mixpanel sharedInstanceWithToken:@"9b5647bedd42695430dffd02637d0556"];
     
 
     

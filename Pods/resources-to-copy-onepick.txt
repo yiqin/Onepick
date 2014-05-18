@@ -1,0 +1,14 @@
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPArrowLeft.imageset/MPArrowLeft@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPArrowRight.imageset/MPArrowRight.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPArrowRight.imageset/MPArrowRight@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPCheckmark.imageset/MPCheckmark.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPCheckmark.imageset/MPCheckmark@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPCloseBtn.imageset/MPCloseBtn.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPCloseBtn.imageset/MPCloseBtn@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPDismissKeyboard.imageset/MPDismissKeyboard.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPDismissKeyboard.imageset/MPDismissKeyboard@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPLogo.imageset/MPLogo.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/Media.xcassets/MPLogo.imageset/MPLogo@2x.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/MPCloseBtn.png
+/Users/yiqin/Desktop/Ichiban/Pods/Mixpanel/Mixpanel/MPCloseBtn@2x.png
