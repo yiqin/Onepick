@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     NSLog(@"select the restaurant.");
+    self.navigationItem.title = @"Restaurant";
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +37,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)selectWestLafayette:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"IN" forKey:@"locationIndicator"];
+    [self performSegueWithIdentifier: @"MoveToEnterPhone" sender: self];
+}
+
+- (IBAction)selectMadison:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"WI" forKey:@"locationIndicator"];
+    [self performSegueWithIdentifier: @"MoveToEnterPhone" sender: self];
+}
 
 /*
 #pragma mark - Navigation

@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
+#import "Addresses.h"
+#import "Account.h"
 
-@interface EnterAddressViewController : UIViewController
+#import "MBProgressHUD.h"
+
+@interface EnterAddressViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, MBProgressHUDDelegate>
+
+
+@property (strong, nonatomic) IBOutlet UITextField *addStreet;
+@property (strong, nonatomic) IBOutlet UITextField *addApartment;
+
+
+@property (strong, nonatomic) NSMutableString *formattedAddressLines;
+@property (strong, nonatomic) NSNumber *distance;
 
 @end

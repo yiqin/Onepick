@@ -115,10 +115,7 @@
     // Mixpanel project token, MIXPANEL_TOKEN
     [Mixpanel sharedInstanceWithToken:@"52fcb0e29437cbbd3dcf1a571b6483f1"];
     
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    // Track an event in Mixpanel Engagement
-    [mixpanel track:@"App starts."];
-    
+
     
     // Core Data
     // Load the minimum

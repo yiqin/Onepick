@@ -16,10 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZE-it-1ej">
-                                <rect key="frame" x="20" y="179" width="280" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Golden-Gate.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LGi-bp-50A">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-RW-gs8">
+                                <rect key="frame" x="20" y="408" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Tf-Os-QN6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <state key="normal" title="West Lafayette">
@@ -27,16 +34,44 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dgR-uf-nXp" kind="push" id="Rxy-Fl-xFE"/>
+                                    <action selector="selectWestLafayette:" destination="Wpl-hr-tj3" eventType="touchUpInside" id="8R4-0y-Gtz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMe-V6-k6M">
+                                <rect key="frame" x="20" y="456" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rIQ-9g-Jba"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Madison">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectMadison:" destination="Wpl-hr-tj3" eventType="touchUpInside" id="uzk-uG-Tcc"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xA7-RW-gs8" secondAttribute="bottom" constant="120" id="5Ve-Q5-azY"/>
+                            <constraint firstAttribute="bottom" secondItem="BMe-V6-k6M" secondAttribute="bottom" constant="72" id="9cw-87-ifW"/>
+                            <constraint firstItem="BMe-V6-k6M" firstAttribute="leading" secondItem="Lmk-M4-WZ6" secondAttribute="leading" constant="20" id="BsU-oA-qf8"/>
+                            <constraint firstItem="xA7-RW-gs8" firstAttribute="leading" secondItem="Lmk-M4-WZ6" secondAttribute="leading" constant="20" symbolic="YES" id="TPV-Ee-mZp"/>
+                            <constraint firstAttribute="trailing" secondItem="xA7-RW-gs8" secondAttribute="trailing" constant="20" symbolic="YES" id="WAG-Zb-y2B"/>
+                            <constraint firstAttribute="trailing" secondItem="BMe-V6-k6M" secondAttribute="trailing" constant="20" id="qQV-CQ-4x2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="dgR-uf-nXp" kind="push" identifier="MoveToEnterPhone" id="mK4-1n-mpz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryP-id-kHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1920" y="314"/>
+            <point key="canvasLocation" x="-1898" y="314"/>
         </scene>
         <!--Enter Phone Sign Up View Controller-->
         <scene sceneID="TRd-qd-6O7">
@@ -51,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCu-rk-j4l">
-                                <rect key="frame" x="20" y="233" width="280" height="40"/>
+                                <rect key="frame" x="20" y="184" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -64,11 +99,25 @@
                                     <action selector="moveToEnterAddress:" destination="dgR-uf-nXp" eventType="touchUpInside" id="3Zn-YS-h6e"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="7650001111" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lv7-kG-3O1">
+                                <rect key="frame" x="20" y="146" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your phone number (without space). We will use this phone number to verify the order." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="5qW-pz-e5y">
+                                <rect key="frame" x="20" y="61" width="280" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="SKS-dA-v0q"/>
                     <connections>
+                        <outlet property="phoneNumber" destination="lv7-kG-3O1" id="wGT-LQ-2Pc"/>
                         <segue destination="ADR-6E-N7P" kind="push" identifier="MoveToEnterAddress" id="7DM-Mf-dp2"/>
                     </connections>
                 </viewController>
@@ -89,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFu-L7-Zlh">
-                                <rect key="frame" x="20" y="264" width="280" height="40"/>
+                                <rect key="frame" x="20" y="184" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -102,10 +151,31 @@
                                     <action selector="confirmSignUp:" destination="ADR-6E-N7P" eventType="touchUpInside" id="nqz-Mr-Loe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter your address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dat-J9-1eB">
+                                <rect key="frame" x="20" y="73" width="200" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Street information" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ML-kB-DPV">
+                                <rect key="frame" x="20" y="108" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Apartment number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="89O-4f-pTc">
+                                <rect key="frame" x="20" y="146" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="S2a-Np-f7Q"/>
                     <connections>
+                        <outlet property="addApartment" destination="89O-4f-pTc" id="j50-Wr-WFE"/>
+                        <outlet property="addStreet" destination="7ML-kB-DPV" id="nYz-GQ-kk5"/>
                         <segue destination="Cp8-L4-aLT" kind="modal" identifier="ConfirmAccount" id="Rid-cP-BcQ"/>
                     </connections>
                 </viewController>
@@ -700,7 +770,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street information" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-XB-dNg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Street information" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gu3-XB-dNg">
                                 <rect key="frame" x="20" y="171" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -726,7 +796,7 @@
                                     <action selector="submitAddress:" destination="J8A-hp-kd8" eventType="touchUpInside" id="iiw-dp-fNs"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apartment number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKQ-sL-Ksa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Apartment number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKQ-sL-Ksa">
                                 <rect key="frame" x="20" y="209" width="140" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -825,6 +895,7 @@
     </scenes>
     <resources>
         <image name="Cart.png" width="30" height="30"/>
+        <image name="Golden-Gate.jpg" width="320" height="568"/>
         <image name="History.png" width="30" height="30"/>
         <image name="Menu.png" width="30" height="30"/>
         <image name="More.png" width="30" height="30"/>

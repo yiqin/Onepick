@@ -68,6 +68,13 @@
         [selectRestaurantSignUpViewController setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:selectRestaurantSignUpViewController animated:YES];
     }
+    else {
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        // Track an event in Mixpanel Engagement
+        NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"tempPhone"];
+        [mixpanel identify:phone];
+        [mixpanel track:@"Change ID with the phone number."];
+    }
 
     
     // Uncomment the following line to preserve selection between presentations.
@@ -110,7 +117,15 @@
 
 - (PFQuery *)queryForTable
 {
-    NSString *locationIndicator = @"IN";
+    NSLog(@"test");
+    NSString *locationIndicator = [[NSString alloc] init];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"] != nil) {
+        locationIndicator = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"];
+    }
+    else {
+        locationIndicator = @"IN";
+    }
+    
     NSString *parseClassName =  [@"Dishes" stringByAppendingString:locationIndicator];
     PFQuery *query = [PFQuery queryWithClassName:parseClassName];
     [query orderByDescending:@"orderCount"];

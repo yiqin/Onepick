@@ -29,7 +29,7 @@
     if (self) {
         // self.parseClassNmae didn't work efficiently.
         // The className to query on
-        self.parseClassName = @"ichibanCategoryIN";
+        // self.parseClassName = @"ichibanCategoryIN";
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = NO;
@@ -84,7 +84,18 @@
 */
 - (PFQuery *)queryForTable
 {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    
+    NSString *locationIndicator = [[NSString alloc] init];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"] != nil) {
+        locationIndicator = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"];
+    }
+    else {
+        locationIndicator = @"IN";
+    }
+    
+    NSString *parseClassName =  [@"ichibanCategory" stringByAppendingString:locationIndicator];
+    
+    PFQuery *query = [PFQuery queryWithClassName:parseClassName];
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;

@@ -79,6 +79,12 @@
         // How to get the path distance?
         // Willowbrook 40.448668, -86.939104
         
+        UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:self.title
+                                                               message:@""
+                                                              delegate:self
+                                                     cancelButtonTitle:@"Cancel"
+                                                     otherButtonTitles:@"Save",nil];
+        
         // Add MBProgressHUD as indicator
         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view.superview addSubview:HUD];
@@ -97,41 +103,37 @@
                              if ([placemarks count] > 0) {
                                  // Need to check whether placemarks is 0 or not.
                                  CLPlacemark* aPlacemark = [placemarks objectAtIndex:0];
-                                 // initialize first
-                                 self.formattedAddressLines = [[NSMutableString alloc] init];
-                                 [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
-                                 NSLog(@"%@", aPlacemark.addressDictionary);
-                                 [self.formattedAddressLines appendString: @", unit #"];
-                                 [self.formattedAddressLines appendString: self.addApartment.text];
-                                 [self.formattedAddressLines appendString: @", "];
-                                 [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
-                                 [self.formattedAddressLines appendString: @", Indiana"];
-                                 // [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
-                                 
-                                 // Core Data
-                                 // Grab the context, only one context is needed.
-                                 NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
-                                 
-                                 // Grab the Label entity
-                                 Addresses *saveAddress = [NSEntityDescription insertNewObjectForEntityForName:@"Addresses" inManagedObjectContext:context];
-                                 [saveAddress setStreet:self.formattedAddressLines];
-                                 // This data is saved later in updateCurrentAddress function.
-                                 
-                                 // Get distance
-                                 // Need to consider how to store the value of distance.
-                                 self.distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
-                                 
-                                 NSMutableString* messageSummaryAddress = [[NSMutableString alloc] initWithString: self.formattedAddressLines];
-                                 [messageSummaryAddress appendString: @"\nDistance "];
-                                 [messageSummaryAddress appendString: [self.distance stringValue]];
-                                 
-                                 [HUD hide:YES];
-                                 UIAlertView *alertAddress = [[UIAlertView alloc] initWithTitle:self.title
-                                                                                        message:messageSummaryAddress
-                                                                                       delegate:self
-                                                                              cancelButtonTitle:@"Cancel"
-                                                                              otherButtonTitles:@"Save",nil];
-                                 [alertAddress show];
+                                 if ([aPlacemark.addressDictionary objectForKey:@"Street"] != nil) {
+                                     // initialize first
+                                     self.formattedAddressLines = [[NSMutableString alloc] init];
+                                     [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
+                                     NSLog(@"%@", aPlacemark.addressDictionary);
+                                     [self.formattedAddressLines appendString: @", unit #"];
+                                     [self.formattedAddressLines appendString: self.addApartment.text];
+                                     [self.formattedAddressLines appendString: @", "];
+                                     [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"City"]];
+                                     [self.formattedAddressLines appendString: @", Indiana"];
+                                     // [self.formattedAddressLines appendString: [aPlacemark.addressDictionary objectForKey:@"Country"]];
+                                     
+                                     // Get distance
+                                     // Need to consider how to store the value of distance.
+                                     self.distance = [[NSNumber alloc] initWithFloat:[aPlacemark.location distanceFromLocation:ichibanLocation]];
+                                     
+                                     NSMutableString* messageSummaryAddress = [[NSMutableString alloc] initWithString: self.formattedAddressLines];
+                                     [messageSummaryAddress appendString: @"\nDistance "];
+                                     [messageSummaryAddress appendString: [self.distance stringValue]];
+                                     
+                                     [HUD hide:YES];
+                                     
+                                     [alertAddress setMessage:messageSummaryAddress];
+                                     [alertAddress show];
+                                 }
+                                 else {
+                                     [HUD hide:YES];
+                                     [alertAddress setMessage:@"This is a valid address."];
+                                     [alertAddress show];
+                                 }
+
                              }
                         }];
         }
@@ -163,6 +165,10 @@
 
 - (void) updateCurrentAddress {
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Grab the Label entity
+    Addresses *saveAddress = [NSEntityDescription insertNewObjectForEntityForName:@"Addresses" inManagedObjectContext:context];
+    [saveAddress setStreet:self.formattedAddressLines];
     
     // Get address
     // Construct a fetch request

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EnterPhoneSignUpViewController : UIViewController
+@interface EnterPhoneSignUpViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
 
 @end

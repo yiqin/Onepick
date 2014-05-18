@@ -291,7 +291,7 @@
 }
 
 - (IBAction)confirm:(id)sender {
-    if (true) {
+    if (self.totalPriceFloat > 3.0) {
         NSMutableString *confirmInformation = [[NSMutableString alloc] init];
         [confirmInformation appendString:@"Delivery to: "];
         [confirmInformation appendString:self.cartDeliveryAddress.text];
@@ -447,11 +447,21 @@
 - (void) updatePriceLabel {
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     
-    NSString *locationIndicator = @"IN";
+    NSString *locationIndicator = [[NSString alloc] init];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"] != nil) {
+        locationIndicator = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"];
+    }
+    else {
+        locationIndicator = @"IN";
+    }
+    
     if ([locationIndicator isEqualToString:@"IN"]) {
         self.taxFloat = self.totalDishesFloat*0.07;
-        self.tax.text = [NSString stringWithFormat:@"$%.2f",self.taxFloat];
     }
+    else if ([locationIndicator isEqualToString:@"IN"]) {
+        self.taxFloat = self.totalDishesFloat*0.09;
+    }
+    self.tax.text = [NSString stringWithFormat:@"$%.2f",self.taxFloat];
     
     self.totalPriceFloat = self.totalDishesFloat + self.taxFloat + self.deliveryFeeFloat;
     self.totalPrice.text = [NSString stringWithFormat:@"$%.2f",self.totalPriceFloat];

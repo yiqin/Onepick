@@ -106,7 +106,13 @@
 - (PFQuery *)queryForTable
 {
 
-    NSString *locationIndicator = @"IN";
+    NSString *locationIndicator = [[NSString alloc] init];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"] != nil) {
+        locationIndicator = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationIndicator"];
+    }
+    else {
+        locationIndicator = @"IN";
+    }
     
     NSString *parseClassName =  [@"Dishes" stringByAppendingString:locationIndicator];
     

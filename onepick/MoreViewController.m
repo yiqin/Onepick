@@ -72,7 +72,6 @@
 
 - (void) updatePhoneCoreData {
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
-    
     // Get address
     // Construct a fetch request
     NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
