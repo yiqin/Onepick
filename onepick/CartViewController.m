@@ -98,26 +98,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    
-    // Doing something on the main thread
-    
-    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
-    dispatch_async(myQueue, ^{
-        // Perform long running process
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update the UI
-            
-        });
-    });
-    
-    // Continue doing other stuff on the
-    // main thread while process is running.
-    
-    
-    
     // Do any additional setup after loading the view.
     
     // This is not a good method. But I just don't want to optimize it now.
@@ -247,45 +227,8 @@
     [[LocalyticsSession shared] tagEvent:@"Minus Dish"];
 }
 
-- (void) setCount:(NSString *)dishName count:(NSNumber *)count {
-    NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-    NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
-    NSNumber *shouldUseLiterals = @YES;
-    NSNumber *buildingZIPCode = @10018;
-    
-    CGRect frame = self.view.frame;
-    
-    CGFloat x = CGRectGetMinX(frame);
-    CGFloat y = CGRectGetMinY(frame);
-    CGFloat width = CGRectGetWidth(frame);
-    CGFloat height = CGRectGetHeight(frame);
-    
-}
-
-- (NSString *)functionName:(int)param {
-    NSString *result = nil;
-    
-    switch (param) {
-        case 1:
-            result = @"x";
-            break;
-        case 2:
-            result = @"y";
-            break;
-        case 3:
-            result = @"z";
-            break;
-        default:
-            result = @"defaultv";
-            break;
-    }
-    
-    return result;
-}
-
 // Save counts in Core Data
 - (void) updateCount:(NSString *)dishName withCount:(NSNumber *) count {
-    [self functionName:1];
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
     

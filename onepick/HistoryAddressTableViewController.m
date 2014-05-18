@@ -49,8 +49,6 @@
 
 - (void)viewDidLoad
 {
-
-    
     [super viewDidLoad];
     self.navigationItem.title = @"History Address";
     
@@ -100,8 +98,6 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    
-
     
     int historyAddreeCount = [self.historyAddress count];
     
