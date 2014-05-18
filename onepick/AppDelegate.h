@@ -11,13 +11,14 @@
 
 #import <Namo/Namo.h>
 #import "LocalyticsSession.h"
+#import <Mixpanel.h>
 
 #import "SelectedDishes.h"
+#import "Account.h"
 #import "NSDictionary+DictionaryToJSONString.h"
 
-#import "Account.h"
-
 #import "MBProgressHUD.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,MBProgressHUDDelegate>
 

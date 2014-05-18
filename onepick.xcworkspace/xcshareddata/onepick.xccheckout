@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>700D9AE0-22EC-4CF6-A0BC-8EB84083BD85</string>
+	<string>BD90267E-4FC8-441F-9786-39B134364342</string>
 	<key>IDESourceControlProjectName</key>
 	<string>onepick</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/yiqin/Onepick.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>onepick.xcodeproj/project.xcworkspace</string>
+	<string>onepick.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5CD502E1-72E1-407C-A429-5219FBFB0F07</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/yiqin/Onepick.git</string>

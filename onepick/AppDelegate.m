@@ -111,9 +111,19 @@
     // Enable tracing.
     // [[LocalyticsSession shared] setLoggingEnabled:YES];
     
+    // Initialize the library with your
+    // Mixpanel project token, MIXPANEL_TOKEN
+    [Mixpanel sharedInstanceWithToken:@"52fcb0e29437cbbd3dcf1a571b6483f1"];
+    
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    // Track an event in Mixpanel Engagement
+    [mixpanel track:@"App starts."];
+    
     
     // Core Data
     // Load the minimum
+    // This is not the best way to do it.
+    // Dispatch Queue
     // https://blog.stackmob.com/2012/12/iphone-database-tutorial-part-3-adding-the-user-interface/
     NSManagedObjectContext *context = [self managedObjectContext];;
     
@@ -147,7 +157,7 @@
                                         NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
                                         NSString *currentMinimumVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"];
                                         NSLog(@"%@", currentMinimumVersion);
-                                        if ([currentMinimumVersion isEqualToString:newMinimumVersion]) {
+                                        if (![currentMinimumVersion isEqualToString:newMinimumVersion]) {
                                             NSLog(@"Load new minimum price.");
                                             // Add MBProgressHUD as indicator
                                             UIViewController *c = topMostController();
