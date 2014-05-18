@@ -117,7 +117,7 @@
     //          sjtu_qy@hotmail.com 9b5647bedd42695430dffd02637d0556
     [Mixpanel sharedInstanceWithToken:@"9b5647bedd42695430dffd02637d0556"];
     
-
+    // Wanna to make sure the survey works.
     
     // Core Data
     // Load the minimum
