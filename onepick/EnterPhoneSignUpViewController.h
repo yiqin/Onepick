@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Account.h"
 
 @interface EnterPhoneSignUpViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 

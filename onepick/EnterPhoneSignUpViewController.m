@@ -39,6 +39,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (IBAction)moveToEnterAddress:(id)sender {
     //This is the input string that is either an email or phone number
     NSString *input = self.phoneNumber.text;
@@ -57,8 +61,42 @@
     
     //If the string containing all the numbers has the same length as the input...
     if([input length] == [testString length] && [input length] == 10) {
-        NSLog(@"great");
-        [[NSUserDefaults standardUserDefaults] setObject:input forKey:@"tempPhone"];
+        NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+   
+        // Construct a fetch request
+        NSFetchRequest *fetchRequestAccount = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entityAccount = [NSEntityDescription entityForName:@"Account"
+                                                         inManagedObjectContext:context];
+        [fetchRequestAccount setEntity:entityAccount];
+        NSError *errorAccount = nil;
+        // Return a fetch array.
+        NSArray *fetchAccountArray = [[NSArray alloc] init];
+        fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
+
+        if ([fetchAccountArray count] > 0) {
+            Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
+            fetchAddress.phone = input;
+            // Save everything
+            // include save to History Address
+            NSError *errorCoreData = nil;
+            if (![context save:&errorCoreData])
+            {
+                NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            }
+        }
+        else {
+            // Grab the Label entity
+            Account *saveAccount = [NSEntityDescription insertNewObjectForEntityForName:@"Account" inManagedObjectContext:context];
+            [saveAccount setPhone:input];
+            // Save everything
+            // include save to History Address
+            NSError *errorCoreData = nil;
+            if (![context save:&errorCoreData])
+            {
+                NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            }
+        }
+        
         [self performSegueWithIdentifier: @"MoveToEnterAddress" sender: self];
     }
     else {

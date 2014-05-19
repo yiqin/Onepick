@@ -186,7 +186,6 @@
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
     NSLog(@"%i",[fetchAccountArray count]);
     
-    NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:@"tempPhone"];
     NSString *name = [[NSString alloc] initWithFormat:@"%@ ", [[UIDevice currentDevice] name]];
 
     
@@ -194,8 +193,16 @@
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
         fetchAddress.address = self.formattedAddressLines;
         fetchAddress.distance = self.distance;
-        fetchAddress.phone = phone;
         fetchAddress.name = name;
+        
+        Mixpanel *mixpanel = [Mixpanel sharedInstance];
+        // Track an event in Mixpanel Engagement
+        [mixpanel identify:fetchAddress.phone];
+        [mixpanel.people set:@{@"Plan": @"Early Version"}];
+        [mixpanel track:@"Change ID with the phone number."];
+        
+        // NSLog(@"mxiphanel id %@", fetchAddress.phone);
+        
         // Save everything
         // include save to History Address
         NSError *errorCoreData = nil;
@@ -209,7 +216,7 @@
         Account *saveAccount = [NSEntityDescription insertNewObjectForEntityForName:@"Account" inManagedObjectContext:context];
         [saveAccount setAddress:self.formattedAddressLines];
         [saveAccount setDistance:self.distance];
-        [saveAccount setPhone:phone];
+        [saveAccount setPhone:@"1234567890"];
         [saveAccount setName:name];
         // Save everything
         // include save to History Address

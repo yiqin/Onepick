@@ -115,7 +115,7 @@
     // Mixpanel project token, MIXPANEL_TOKEN
     // Account: yiqin.mems@gmail.com 52fcb0e29437cbbd3dcf1a571b6483f1
     //          sjtu_qy@hotmail.com 9b5647bedd42695430dffd02637d0556
-    [Mixpanel sharedInstanceWithToken:@"9b5647bedd42695430dffd02637d0556"];
+    [Mixpanel sharedInstanceWithToken:@"d658d3225a22447f534b6e0232c86d64"];
     
     // Wanna to make sure the survey works.
     
