@@ -29,11 +29,11 @@
     self = [super initWithCoder:aCoder];
     if (self) {
         // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = NO;
+        self.pullToRefreshEnabled = YES;
         
         // Whether the built-in pagination is enabled
-        self.paginationEnabled = NO;
-        // self.objectsPerPage = 2;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 5;
         
     }
     return self;
@@ -71,8 +71,6 @@
     else {
 
     }
-
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -126,7 +124,14 @@
     NSString *parseClassName =  [@"Dishes" stringByAppendingString:locationIndicator];
     PFQuery *query = [PFQuery queryWithClassName:parseClassName];
     [query orderByDescending:@"orderCount"];
-    query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    
+    // If no objects are loaded in memory, we look to the cache
+    // first to fill the table and then subsequently do a query
+    // against the network.
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
     return query;
 }
 
@@ -144,12 +149,25 @@
     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
     
     NSString *name = [dishInformation objectForKey:@"name"];
+    
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:500];
-    nameLabel.text = [dishInformation objectForKey:@"name"];
+    nameLabel.text = [dishInformation objectForKey:@"name"];;
+    
+    UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:504];
+    nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];
+    
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:501];
     // NSNumber -> float -> string
     NSNumber *price = [dishInformation objectForKey:@"price"];
-    priceLabel.text = [NSString stringWithFormat:@"%.2f",[price floatValue]];
+    priceLabel.text = [NSString stringWithFormat:@"Price: %.2f",[price floatValue]];
+    
+    UILabel *listNumLabel = (UILabel *) [cell viewWithTag:502];
+    listNumLabel.text = [NSString stringWithFormat:@"NO. %i", indexPath.row+1];
+    
+    NSNumber *ordered = [object objectForKey:@"orderCount"];
+    UILabel *orderedLabel = (UILabel *) [cell viewWithTag:503];
+    orderedLabel.text = [NSString stringWithFormat:@"Ordered: %i",[ordered intValue]];
+    
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     // Note that in self.previousCart is not NSString objects.
@@ -163,9 +181,12 @@
     return cell;
 }
 
-
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    
+    NSLog(@"Row: %i", indexPath.row);
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
     
@@ -182,6 +203,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+ 
 // Core Data
 - (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];

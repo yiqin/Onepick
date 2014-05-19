@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
-#import "Account.h"
+#import "LocalyticsSession.h"
 #import <MessageUI/MessageUI.h>
 #import <Colours.h>
+#import "SelectRestaurantSignUpViewController.h"
 
-@interface MoreViewController : UIViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface MoreViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UIButton *feedbackButton;
