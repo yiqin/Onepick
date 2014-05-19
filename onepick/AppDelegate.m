@@ -143,7 +143,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:fetchAddress.distance forKey:@"distance"];
     }
     else {
-        NSNumber *tempDistance = [[NSNumber alloc] initWithFloat:6000.0];
+        NSNumber *tempDistance = [[NSNumber alloc] initWithFloat:9000.0];
         [[NSUserDefaults standardUserDefaults] setObject:tempDistance forKey:@"distance"];
     }
     
@@ -174,6 +174,9 @@
                                                                                 NSLog(@"Parse Cloud Code: %@", result);
                                                                                 
                                                                                 [[NSUserDefaults standardUserDefaults] setObject:newMinimumVersion forKey:@"minimumVersion"];
+                                                                                
+                                                                                [[NSUserDefaults standardUserDefaults] setObject:result forKey:@"deliveryPriceSystem"];
+                                                                                
                                                                                 [minimumVersionHUD hide:YES];
                                                                                 NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"]);
                                                                             }

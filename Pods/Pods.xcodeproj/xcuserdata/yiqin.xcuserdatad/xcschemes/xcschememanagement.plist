@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-Colours.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Mixpanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4C1DC327E50A4DC2B4FB7749</key>
+		<key>2EF37185FC364C17A764A727</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5900AFC0DAFA4F8B9223C44A</key>
+		<key>52B797B3D1384CB1ABFB100A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F3DBCF8644F4B24AD259226</key>
 		<dict>
 			<key>primary</key>
 			<true/>

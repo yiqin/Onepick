@@ -28,6 +28,9 @@
     [super viewDidLoad];
     NSLog(@"select the restaurant.");
     self.navigationItem.title = @"Restaurant";
+    
+    [self.madison setBackgroundColor:[UIColor waveColor]];
+    
     // Do any additional setup after loading the view.
 }
 

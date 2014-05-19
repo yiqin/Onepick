@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Colours.h>
 
 @interface SelectRestaurantSignUpViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UIButton *madison;
 
 @end

@@ -100,6 +100,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self.confirmButton setBackgroundColor:[UIColor waveColor]];
+    
     // This is not a good method. But I just don't want to optimize it now.
     self.deliveryFeeFloat = 2.50;
     PFQuery *query = [PFQuery queryWithClassName:@"deliveryFee"];
@@ -113,6 +115,12 @@
     
     
     NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"distance"];
+    
+    
+    
+    
+    
+    
     NSLog(@"Distance %@", temp);
 
 }

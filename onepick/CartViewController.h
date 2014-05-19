@@ -21,6 +21,8 @@
 
 #import "MBProgressHUD.h"
 
+#import <Colours.h>
+
 @interface CartViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIAlertViewDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) NSArray *previousCart;
@@ -49,4 +51,8 @@
 @property (assign, nonatomic) float distanceFloat;
 
 @property (strong, nonatomic) IBOutlet UILabel *mininumPrice;
+
+
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
+
 @end

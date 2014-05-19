@@ -10,7 +10,11 @@
 #import "AppDelegate.h"
 #import "Account.h"
 #import <MessageUI/MessageUI.h>
+#import <Colours.h>
 
-@interface MoreViewController : UIViewController <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface MoreViewController : UIViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+
+
+@property (strong, nonatomic) IBOutlet UIButton *feedbackButton;
 
 @end

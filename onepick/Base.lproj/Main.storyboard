@@ -37,7 +37,7 @@
                                     <action selector="selectWestLafayette:" destination="Wpl-hr-tj3" eventType="touchUpInside" id="8R4-0y-Gtz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMe-V6-k6M">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMe-V6-k6M">
                                 <rect key="frame" x="20" y="456" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,6 +66,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="madison" destination="BMe-V6-k6M" id="NW9-Yk-bNI"/>
                         <segue destination="dgR-uf-nXp" kind="push" identifier="MoveToEnterPhone" id="mK4-1n-mpz"/>
                     </connections>
                 </viewController>
@@ -415,24 +416,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tV-vy-pnO">
-                                <rect key="frame" x="83" y="129" width="153" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tV-vy-pnO">
+                                <rect key="frame" x="18" y="150" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change the restaurant">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal" title="Change Account Information">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="changeRestaurant:" destination="rLZ-oU-A31" eventType="touchUpInside" id="Sin-C6-h5F"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPW-QP-2cj">
-                                <rect key="frame" x="69" y="196" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Update the phone number">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="changePhone:" destination="rLZ-oU-A31" eventType="touchUpInside" id="zgu-Sj-hLb"/>
                                 </connections>
                             </button>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="aaS-9M-c0r">
@@ -442,31 +437,55 @@
                                     <constraint firstAttribute="height" constant="50" id="En4-Rg-9Zn"/>
                                 </constraints>
                             </adBannerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0a-o0-V6Y">
-                                <rect key="frame" x="141" y="258" width="68" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0a-o0-V6Y">
+                                <rect key="frame" x="18" y="198" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Feedback">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendFeedbackInEmail:" destination="rLZ-oU-A31" eventType="touchUpInside" id="c3G-Vt-Oha"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="765-742-6600" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljh-im-o4J">
+                                <rect key="frame" x="105" y="282" width="109" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 S 4th Street" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVx-gU-9Ox">
+                                <rect key="frame" x="105" y="311" width="106" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lafayette, IN 47901" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1f-9o-l7s">
+                                <rect key="frame" x="85" y="340" width="150" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you would like to change the phone number and the restaurant, please press the following button." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="4Mw-9F-Fre">
+                                <rect key="frame" x="18" y="78" width="278" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qPW-QP-2cj" firstAttribute="leading" secondItem="Imj-W2-5t8" secondAttribute="leading" constant="69" id="1z2-tf-ReD"/>
-                            <constraint firstItem="qPW-QP-2cj" firstAttribute="top" secondItem="0tV-vy-pnO" secondAttribute="bottom" constant="37" id="5dm-Jg-rzV"/>
                             <constraint firstAttribute="trailing" secondItem="aaS-9M-c0r" secondAttribute="trailing" id="NTk-py-fUv"/>
                             <constraint firstItem="aaS-9M-c0r" firstAttribute="leading" secondItem="Imj-W2-5t8" secondAttribute="leading" id="V2P-Db-FQz"/>
                             <constraint firstItem="4zL-hZ-xBF" firstAttribute="top" secondItem="aaS-9M-c0r" secondAttribute="bottom" id="gPl-hV-l4e"/>
-                            <constraint firstItem="Z0a-o0-V6Y" firstAttribute="leading" secondItem="Imj-W2-5t8" secondAttribute="leading" constant="141" id="lo7-Zt-bjZ"/>
-                            <constraint firstItem="0tV-vy-pnO" firstAttribute="centerX" secondItem="qPW-QP-2cj" secondAttribute="centerX" id="wny-4L-hih"/>
-                            <constraint firstItem="Z0a-o0-V6Y" firstAttribute="top" secondItem="qPW-QP-2cj" secondAttribute="bottom" constant="32" id="xvp-tD-Iz6"/>
-                            <constraint firstItem="0tV-vy-pnO" firstAttribute="top" secondItem="q1Z-yZ-hot" secondAttribute="bottom" constant="65" id="yQW-Dl-PLo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="More" id="jTz-iQ-44S"/>
+                    <connections>
+                        <outlet property="feedbackButton" destination="Z0a-o0-V6Y" id="9mn-EX-de0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yD-ia-P6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -747,6 +766,7 @@
                     <connections>
                         <outlet property="cartDeliveryAddress" destination="JI1-Vx-qqR" id="J0z-Zz-HpW"/>
                         <outlet property="cartTableView" destination="BTc-pB-cK5" id="tO6-hq-Yt0"/>
+                        <outlet property="confirmButton" destination="McK-iD-w9g" id="3tf-FK-R95"/>
                         <outlet property="deliveryFee" destination="ZIS-NM-hNC" id="3WP-qo-Ynt"/>
                         <outlet property="mininumPrice" destination="TPG-Ia-WUY" id="cMt-ld-UBT"/>
                         <outlet property="tax" destination="ACx-zH-5eZ" id="LCZ-G0-UoH"/>
