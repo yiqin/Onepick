@@ -89,6 +89,7 @@
         self.distanceFloat = 8000.0;
     }
     
+    [self updateMininumPriceLabel];
     [self updatePriceLabel];
 
     // Why here I need to add @property (strong, nonatomic) IBOutlet UITableView *cartTableView; to handle reloadData?
@@ -106,22 +107,12 @@
     self.deliveryFeeFloat = 2.50;
     PFQuery *query = [PFQuery queryWithClassName:@"deliveryFee"];
     [query getObjectInBackgroundWithId:@"0sV22OGRD6" block:^(PFObject *object, NSError *error) {
-        self.deliveryFee.text = [NSString stringWithFormat:@"$%@",[object objectForKey:@"fee"]];
-        self.deliveryFeeFloat = [[object objectForKey:@"fee"] floatValue];
+        if ([object objectForKey:@"fee"] != nil) {
+            self.deliveryFeeFloat = [[object objectForKey:@"fee"] floatValue];
+        }
     }];
-    
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
     
-    
-    
-    NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"distance"];
-    
-    
-    
-    
-    
-    
-    NSLog(@"Distance %@", temp);
 
 }
 
@@ -476,6 +467,22 @@
     
 }
 
+- (void) updateMininumPriceLabel {
+    // self.mininumPrice = 0;
+    // self.distanceFloat = 0;
+    
+    
+    NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"zero"];
+    
+    if (temp == NULL) {
+        NSLog(@"temp is null.");
+    }
+    
+    NSLog(@"Distance %@", temp);
+
+}
+
+
 // This code couldn't put into the main thread.
 - (void) orderCount:(NSString *)objectId withCount:(NSNumber *) count {
     NSLog(@"orderCount");
@@ -489,6 +496,8 @@
         NSLog(@"orderCount Parse.com success.");
     }];
 }
+
+
 
 /*
 #pragma mark - Navigation

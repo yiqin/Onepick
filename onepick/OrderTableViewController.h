@@ -20,4 +20,5 @@
 
 @property(nonatomic, strong) NAMOTableViewAdPlacer *adPlacer;
 
+
 @end
