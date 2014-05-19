@@ -187,19 +187,22 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     NSLog(@"Row: %i", indexPath.row);
-    PFObject *object = [self.objects objectAtIndex:indexPath.row];
-    NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        // Reflect selection in data model
-        [self create:dishInformation withParseObjectId:[object objectId]];
-    } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        // Reflect deselection in data model
-        [self delete:[dishInformation objectForKey:@"name"]];
+    if (indexPath.row < [self.objects count]) {
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (cell.accessoryType == UITableViewCellAccessoryNone) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            // Reflect selection in data model
+            [self create:dishInformation withParseObjectId:[object objectId]];
+        } else if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            // Reflect deselection in data model
+            [self delete:[dishInformation objectForKey:@"name"]];
+        }
     }
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
