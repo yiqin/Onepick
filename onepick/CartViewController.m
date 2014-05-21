@@ -166,7 +166,7 @@
     countLabel.text = [[dishInformation objectForKey:@"count"] stringValue];
     
     UILabel *listNumLabel = (UILabel *) [cell viewWithTag:304];
-    listNumLabel.text = [NSString stringWithFormat:@"%i", indexPath.row+1];
+    listNumLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.row+1];
     
     // Dynamically add buttons
     // add button
@@ -197,7 +197,7 @@
     UIButton *senderButton = (UIButton *)sender;
     NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:senderButton.tag];
     // NSNumber are not really used to store numbers in actual math.
-    int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
+    int previousCount = [[dishInformation objectForKey:@"count"] intValue];
     NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount+1];
     [dishInformation setValue:currentCount forKey:@"count"];
     self.totalDishesFloat = self.totalDishesFloat + [[dishInformation objectForKey:@"price"] floatValue];
@@ -212,7 +212,7 @@
     UIButton *senderButton = (UIButton *)sender;
     NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:senderButton.tag];
     // NSNumber are not really used to store numbers in actual math.
-    int previousCount = [[dishInformation objectForKey:@"count"] integerValue];
+    int previousCount = [[dishInformation objectForKey:@"count"] intValue];
     if (previousCount > 1) {
         NSNumber *currentCount = [[NSNumber alloc] initWithInt:previousCount-1];
         [dishInformation setValue:currentCount forKey:@"count"];

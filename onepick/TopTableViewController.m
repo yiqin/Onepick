@@ -162,7 +162,7 @@
     priceLabel.text = [NSString stringWithFormat:@"Price: %.2f",[price floatValue]];
     
     UILabel *listNumLabel = (UILabel *) [cell viewWithTag:502];
-    listNumLabel.text = [NSString stringWithFormat:@"NO. %i", indexPath.row+1];
+    listNumLabel.text = [NSString stringWithFormat:@"NO. %d", (int)indexPath.row+1];
     
     NSNumber *ordered = [object objectForKey:@"orderCount"];
     UILabel *orderedLabel = (UILabel *) [cell viewWithTag:503];

@@ -752,7 +752,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Ichiban;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "158BDF7D-D498-4CAA-B0F3-86D65541B6EF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

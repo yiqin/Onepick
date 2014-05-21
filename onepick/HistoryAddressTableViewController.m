@@ -99,7 +99,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    int historyAddreeCount = [self.historyAddress count];
+    int historyAddreeCount = (int)[self.historyAddress count];
     
     Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
     
@@ -118,7 +118,7 @@
     HUD.labelText = @"Calculating the distance.";
     [HUD show:YES];
     
-    int historyAddreeCount = [self.historyAddress count];
+    int historyAddreeCount = (int)[self.historyAddress count];
     Addresses *address = [self.historyAddress objectAtIndex: historyAddreeCount-indexPath.row-1];
     
     NSMutableString *inputAddressStreet = [[NSMutableString alloc] initWithString:address.street];
