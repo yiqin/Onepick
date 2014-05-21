@@ -461,6 +461,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = purdue;
 				TargetAttributes = {
+					8D4209511905C31300D566CA = {
+						DevelopmentTeam = U49UQ4SP28;
+					};
 					8D4209721905C31300D566CA = {
 						TestTargetID = 8D4209511905C31300D566CA;
 					};
@@ -706,6 +709,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0E41E79DC13466C9BE451A8 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -723,6 +728,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Ichiban;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -731,6 +737,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C0E41E79DC13466C9BE451A8 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -744,6 +752,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Ichiban;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

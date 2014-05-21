@@ -18,43 +18,43 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
 + (MPNotification *)notificationWithJSONObject:(NSDictionary *)object
 {
     if (object == nil) {
-        NSLog(@"notif json object should not be nil");
+        //NSLog(@"notif json object should not be nil");
         return nil;
     }
 
     NSNumber *ID = object[@"id"];
     if (!([ID isKindOfClass:[NSNumber class]] && [ID integerValue] > 0)) {
-        NSLog(@"invalid notif id: %@", ID);
+        //NSLog(@"invalid notif id: %@", ID);
         return nil;
     }
     
     NSNumber *messageID = object[@"message_id"];
     if (!([messageID isKindOfClass:[NSNumber class]] && [messageID integerValue] > 0)) {
-        NSLog(@"invalid notif message id: %@", messageID);
+        //NSLog(@"invalid notif message id: %@", messageID);
         return nil;
     }
 
     NSString *type = object[@"type"];
     if (![type isKindOfClass:[NSString class]]) {
-        NSLog(@"invalid notif type: %@", type);
+        //NSLog(@"invalid notif type: %@", type);
         return nil;
     }
 
     NSString *title = object[@"title"];
     if (![title isKindOfClass:[NSString class]]) {
-        NSLog(@"invalid notif title: %@", title);
+        //NSLog(@"invalid notif title: %@", title);
         return nil;
     }
 
     NSString *body = object[@"body"];
     if (![body isKindOfClass:[NSString class]]) {
-        NSLog(@"invalid notif body: %@", body);
+        //NSLog(@"invalid notif body: %@", body);
         return nil;
     }
 
     NSString *callToAction = object[@"cta"];
     if (![callToAction isKindOfClass:[NSString class]]) {
-        NSLog(@"invalid notif cta: %@", callToAction);
+        //NSLog(@"invalid notif cta: %@", callToAction);
         return nil;
     }
 
@@ -62,13 +62,13 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
     NSObject *URLString = object[@"cta_url"];
     if (URLString != nil && ![URLString isKindOfClass:[NSNull class]]) {
         if (![URLString isKindOfClass:[NSString class]] || [(NSString *)URLString length] == 0) {
-            NSLog(@"invalid notif URL: %@", URLString);
+            //NSLog(@"invalid notif URL: %@", URLString);
             return nil;
         }
 
         callToActionURL = [NSURL URLWithString:(NSString *)URLString];
         if (callToActionURL == nil) {
-            NSLog(@"invalid notif URL: %@", URLString);
+            //NSLog(@"invalid notif URL: %@", URLString);
             return nil;
         }
     }
@@ -77,7 +77,7 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
     NSString *imageURLString = object[@"image_url"];
     if (imageURLString != nil && ![imageURLString isKindOfClass:[NSNull class]]) {
         if (![imageURLString isKindOfClass:[NSString class]]) {
-            NSLog(@"invalid notif image URL: %@", imageURLString);
+            //NSLog(@"invalid notif image URL: %@", imageURLString);
             return nil;
         }
 
@@ -89,7 +89,7 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
 
         imageURL = [NSURL URLWithString:[imageURLString stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionExternalRepresentation]];
         if (imageURL == nil) {
-            NSLog(@"invalid notif image URL: %@", imageURLString);
+            //NSLog(@"invalid notif image URL: %@", imageURLString);
             return nil;
         }
     }
@@ -111,17 +111,17 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
 
         if (!(title && title.length > 0)) {
             valid = NO;
-            NSLog(@"Notification title nil or empty: %@", title);
+            //NSLog(@"Notification title nil or empty: %@", title);
         }
 
         if (!(body && body.length > 0)) {
             valid = NO;
-            NSLog(@"Notification body nil or empty: %@", body);
+            //NSLog(@"Notification body nil or empty: %@", body);
         }
 
         if (!([type isEqualToString:MPNotificationTypeTakeover] || [type isEqualToString:MPNotificationTypeMini])) {
             valid = NO;
-            NSLog(@"Invalid notification type: %@, must be %@ or %@", type, MPNotificationTypeMini, MPNotificationTypeTakeover);
+            //NSLog(@"Invalid notification type: %@, must be %@ or %@", type, MPNotificationTypeMini, MPNotificationTypeTakeover);
         }
 
         if (valid) {
@@ -148,7 +148,7 @@ NSString *const MPNotificationTypeTakeover = @"takeover";
         NSError *error = nil;
         NSData *imageData = [NSData dataWithContentsOfURL:_imageURL options:NSDataReadingMappedIfSafe error:&error];
         if (error || !imageData) {
-            NSLog(@"image failed to load from URL: %@", _imageURL);
+            //NSLog(@"image failed to load from URL: %@", _imageURL);
             return NO;
         }
         _image = imageData;

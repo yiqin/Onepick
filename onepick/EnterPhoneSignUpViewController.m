@@ -29,7 +29,7 @@
     self.navigationItem.title = @"Phone";
     self.phoneNumber.keyboardType = UIKeyboardTypeNumberPad;
     [self.phoneNumber becomeFirstResponder];
-    NSLog(@"Enter the Phone.");
+    //NSLog(@"Enter the Phone.");
     // Do any additional setup after loading the view.
 }
 
@@ -81,7 +81,7 @@
             NSError *errorCoreData = nil;
             if (![context save:&errorCoreData])
             {
-                NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+                //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
             }
         }
         else {
@@ -93,7 +93,7 @@
             NSError *errorCoreData = nil;
             if (![context save:&errorCoreData])
             {
-                NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+                //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
             }
         }
         

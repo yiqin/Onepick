@@ -253,7 +253,7 @@
     NSError *error = nil;
     if (![context save:&error])
     {
-        NSLog(@"Error deleting movie, %@", [error userInfo]);
+        //NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
 }
 
@@ -276,7 +276,7 @@
     NSError *error = nil;
     if (![context save:&error])
     {
-        NSLog(@"Error deleting movie, %@", [error userInfo]);
+        //NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
     
 }
@@ -319,11 +319,11 @@
     if (actionSheet.tag == 1) {
         switch (buttonIndex) {
             case 0:
-                NSLog(@"History Address");
+                //NSLog(@"History Address");
                 [self historyButtonPress];
                 break;
             case 1:
-                NSLog(@"Add New Address");
+                //NSLog(@"Add New Address");
                 [self addNewButtonPress];
                 break;
             default:
@@ -333,7 +333,7 @@
     else if (actionSheet.tag == 2) {
         switch (buttonIndex) {
             case 0:
-                NSLog(@"Confirm");
+                //NSLog(@"Confirm");
                 [self confirmButtonPress];
                 [self onPurchaseCompletedGATracking];
                 [self clearDataForNextOne];
@@ -360,7 +360,7 @@
 
 
 - (void) confirmButtonPress {    
-    NSLog(@"Confirm is pressed.");
+    //NSLog(@"Confirm is pressed.");
     
     // Add MBProgressHUD as indicator
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -396,7 +396,7 @@
     [summary appendString:@"\nDelivery to: "];
     [summary appendString:self.cartDeliveryAddress.text];
     
-    NSLog(@"Summary %@",summary);
+    //NSLog(@"Summary %@",summary);
 
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
@@ -434,7 +434,7 @@
     // orderSummary[@"summaryForCount"] = [summaryObjectId DictionaryToJSONString];
     [orderSummary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"Parse succeed.");
+            //NSLog(@"Parse succeed.");
             [HUD hide:YES];
             // tag this event.
             [[LocalyticsSession shared] tagEvent:@"Order is confirmed."];
@@ -442,11 +442,11 @@
             [self.tabBarController setSelectedIndex:3];
         } else {
             // If it doesn't print Error, please check the wifi connection.
-            NSLog(@"Error.");
+            //NSLog(@"Error.");
         }
     }];
     
-    NSLog(@"End.");
+    //NSLog(@"End.");
     
 
 }
@@ -492,13 +492,13 @@
     NSError *error = nil;
     if (![context save:&error])
     {
-        NSLog(@"Error deleting movie, %@", [error userInfo]);
+        //NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
 }
 
 
 - (void) updatePriceLabel {
-    // NSLog(@"update price.");
+    // //NSLog(@"update price.");
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     
     NSString *locationIndicator = [[NSString alloc] init];
@@ -529,7 +529,7 @@
     
     
     if (rawStringPriceSystem != NULL) {
-        NSLog(@"Distance %@", rawStringPriceSystem);
+        //NSLog(@"Distance %@", rawStringPriceSystem);
         // level 1
         NSArray *rawArray = [rawStringPriceSystem componentsSeparatedByString:@"#"];
         NSArray *distanceArray = [[rawArray objectAtIndex:0] componentsSeparatedByString:@" "];
@@ -558,7 +558,7 @@
 
 // This code couldn't put into the main thread.
 - (void) orderCount:(NSString *)objectId withCount:(NSNumber *) count {
-    NSLog(@"orderCount");
+    //NSLog(@"orderCount");
 
     PFQuery *dishQuery = [PFQuery queryWithClassName:@"DishesIN"];
     [dishQuery getObjectInBackgroundWithId:objectId block:^(PFObject *dishObject, NSError *error) {
@@ -566,7 +566,7 @@
         // will get sent to the cloud. playerName hasn't changed.
         [dishObject incrementKey:@"orderCount" byAmount:count];
         [dishObject saveInBackground];
-        NSLog(@"orderCount Parse.com success.");
+        //NSLog(@"orderCount Parse.com success.");
     }];
 }
 

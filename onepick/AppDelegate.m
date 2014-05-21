@@ -47,10 +47,10 @@
     gameScore[@"cheatMode"] = @NO;
     [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"Parse succeed.");
+            //NSLog(@"Parse succeed.");
         } else {
             // If it doesn't print Error, please check the wifi connection.
-            NSLog(@"Error.");
+            //NSLog(@"Error.");
         }
     }];
     */
@@ -62,9 +62,9 @@
     ichibanCategory[@"category"] = @"Beef";
     [ichibanCategory saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"ichiban category created.");
+            //NSLog(@"ichiban category created.");
         } else {
-            NSLog(@"ichiban category error.");
+            //NSLog(@"ichiban category error.");
         }
     }];
     */
@@ -85,9 +85,9 @@
     dish[@"orderCount"] = @0;
     [dish saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"Dish created.");
+            //NSLog(@"Dish created.");
         } else {
-            NSLog(@"Dish error.");
+            //NSLog(@"Dish error.");
         }
     }];
     */
@@ -99,7 +99,7 @@
                                 block:^(NSString *result, NSError *error) {
                                     if (!error) {
                                         // result is @"Hello world!"
-                                        NSLog(@"Parse Cloud Code: %@", result);
+                                        //NSLog(@"Parse Cloud Code: %@", result);
                                     }
                                 }];
     */
@@ -128,7 +128,7 @@
     
     
     // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // [GAI sharedInstance].trackUncaughtExceptions = YES;
     
     // Optional: set Logger to VERBOSE for debug information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
@@ -154,7 +154,7 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"%lu",(unsigned long)[fetchAccountArray count]);
+    // //NSLog(@"%lu",(unsigned long)[fetchAccountArray count]);
     
     if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
@@ -171,11 +171,11 @@
                                 block:^(NSString *newMinimumVersion, NSError *error) {
                                     if (!error) {
                                         // result is @"Hello world!"
-                                        NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
+                                        ////NSLog(@"Parse Cloud Code: %@", newMinimumVersion);
                                         NSString *currentMinimumVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"];
-                                        NSLog(@"%@", currentMinimumVersion);
+                                        ////NSLog(@"%@", currentMinimumVersion);
                                         if (![currentMinimumVersion isEqualToString:newMinimumVersion]) {
-                                            NSLog(@"Load new minimum price.");
+                                            //NSLog(@"Load new minimum price.");
                                             // Add MBProgressHUD as indicator
                                             UIViewController *c = topMostController();
                                             
@@ -189,14 +189,14 @@
                                                                         block:^(NSString *result, NSError *error) {
                                                                             if (!error) {
                                                                                 // result is @"Hello world!"
-                                                                                NSLog(@"Parse Cloud Code: %@", result);
+                                                                                //NSLog(@"Parse Cloud Code: %@", result);
                                                                                 
                                                                                 [[NSUserDefaults standardUserDefaults] setObject:newMinimumVersion forKey:@"minimumVersion"];
                                                                                 
                                                                                 [[NSUserDefaults standardUserDefaults] setObject:result forKey:@"deliveryPriceSystem"];
                                                                                 
                                                                                 [minimumVersionHUD hide:YES];
-                                                                                NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"]);
+                                                                                //NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"minimumVersion"]);
                                                                             }
                                                                         }];
                                         }
@@ -288,7 +288,7 @@ UIViewController *topMostController() {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            //NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }
@@ -360,7 +360,7 @@ UIViewController *topMostController() {
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        //NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     

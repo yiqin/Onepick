@@ -47,7 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"Welcome to Order.");
+    //NSLog(@"Welcome to Order.");
     
     NAMOTargeting *targeting = [[NAMOTargeting alloc] init];
     [targeting setEducation:NAMOEducationCollege];
@@ -90,7 +90,7 @@
     // Device name + phone number
     // Always from Core Data
     PFQuery *query = [PFQuery queryWithClassName:@"Order"];
-    NSLog(@"parseClassName:");
+    //NSLog(@"parseClassName:");
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -106,7 +106,7 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"Fetch account array size:%i",[fetchAccountArray count]);
+    //NSLog(@"Fetch account array size:%i",[fetchAccountArray count]);
     
     if([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];

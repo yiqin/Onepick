@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Welcome to More.");
+    //NSLog(@"Welcome to More.");
     [super viewDidLoad];
     
     [self.feedbackButton setBackgroundColor:[UIColor waveColor]];
@@ -93,16 +93,16 @@
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            //NSLog(@"Mail cancelled");
+            ////NSLog(@"Mail cancelled");
             break;
         case MFMailComposeResultSaved:
-            //NSLog(@"Mail saved");
+            ////NSLog(@"Mail saved");
             break;
         case MFMailComposeResultSent:
-            //NSLog(@"Mail sent");
+            ////NSLog(@"Mail sent");
             break;
         case MFMailComposeResultFailed:
-            //NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            ////NSLog(@"Mail sent failure: %@", [error localizedDescription]);
             break;
         default:
             break;

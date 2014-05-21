@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Load the menu.");
+    //NSLog(@"Load the menu.");
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -170,7 +170,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    NSLog(@"Start to move to dishes.");
+    //NSLog(@"Start to move to dishes.");
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     // Send selection to DishTableViewController.
     DishTableViewController *destViewController = segue.destinationViewController;
@@ -179,7 +179,7 @@
     
     destViewController.category = [object objectForKey:@"category"];
     
-    NSLog(@"%@",destViewController.category);
+    //NSLog(@"%@",destViewController.category);
     
 }
 

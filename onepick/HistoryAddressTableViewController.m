@@ -31,7 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"Welcome to Cart.");
+    //NSLog(@"Welcome to Cart.");
     // Grab the context
     NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
     // Construct a fetch request
@@ -105,7 +105,7 @@
     
     UILabel *streetLabel = (UILabel *) [cell viewWithTag:400];
     streetLabel.text = address.street;
-    NSLog(@"Title: %@", address.street);
+    //NSLog(@"Title: %@", address.street);
     return cell;
 }
 
@@ -152,10 +152,10 @@
 (NSInteger)buttonIndex{
     switch (buttonIndex) {
         case 0:
-            NSLog(@"Cancel button clicked");
+            //NSLog(@"Cancel button clicked");
             break;
         case 1:
-            NSLog(@"OK button clicked");
+            //NSLog(@"OK button clicked");
             // Here is the way to move back
             [[LocalyticsSession shared] tagEvent:@"Update History Address"];
             
@@ -193,7 +193,7 @@
     NSError *errorCoreData = nil;
     if (![context save:&errorCoreData])
     {
-        NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+        //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
     }
 }
 

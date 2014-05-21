@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"Address";
     [self.addStreet becomeFirstResponder];
-    NSLog(@"Enter the address.");
+    //NSLog(@"Enter the address.");
     // Do any additional setup after loading the view.
 }
 
@@ -44,8 +44,8 @@
 
 - (IBAction)confirmSignUp:(id)sender {
     // Do something here.
-    NSLog(@"Sumibt Address. %@", self.addStreet.text);
-    NSLog(@"%@", self.addApartment.text);
+    //NSLog(@"Sumibt Address. %@", self.addStreet.text);
+    //NSLog(@"%@", self.addApartment.text);
     
     if ([self.addStreet.text isEqualToString:@""]) {
         UIAlertView *alertStreet = [[UIAlertView alloc] initWithTitle:@"New Address"
@@ -107,7 +107,7 @@
                                      // initialize first
                                      self.formattedAddressLines = [[NSMutableString alloc] init];
                                      [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
-                                     NSLog(@"%@", aPlacemark.addressDictionary);
+                                     //NSLog(@"%@", aPlacemark.addressDictionary);
                                      [self.formattedAddressLines appendString: @", unit #"];
                                      [self.formattedAddressLines appendString: self.addApartment.text];
                                      [self.formattedAddressLines appendString: @", "];
@@ -138,7 +138,7 @@
                          }];
         }
         else if ([locationIndicator isEqualToString:@"WI"]) {
-            NSLog(@"hi this is WI");
+            //NSLog(@"hi this is WI");
         }
 
     }
@@ -149,10 +149,10 @@
 (NSInteger)buttonIndex{
     switch (buttonIndex) {
         case 0:
-            NSLog(@"Cancel button clicked");
+            //NSLog(@"Cancel button clicked");
             break;
         case 1:
-            NSLog(@"OK button clicked");
+            //NSLog(@"OK button clicked");
             [self updateCurrentAddress];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasSignedUp"];
             [self performSegueWithIdentifier: @"ConfirmAccount" sender: self];
@@ -184,7 +184,7 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"%i",[fetchAccountArray count]);
+    //NSLog(@"%i",[fetchAccountArray count]);
     
     NSString *name = [[NSString alloc] initWithFormat:@"%@ ", [[UIDevice currentDevice] name]];
 
@@ -201,14 +201,14 @@
         [mixpanel.people set:@{@"Plan": @"Early Version"}];
         [mixpanel track:@"Change ID with the phone number."];
         
-        // NSLog(@"mxiphanel id %@", fetchAddress.phone);
+        // //NSLog(@"mxiphanel id %@", fetchAddress.phone);
         
         // Save everything
         // include save to History Address
         NSError *errorCoreData = nil;
         if (![context save:&errorCoreData])
         {
-            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
         }
     }
     else {
@@ -223,7 +223,7 @@
         NSError *errorCoreData = nil;
         if (![context save:&errorCoreData])
         {
-            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
         }
     }
     

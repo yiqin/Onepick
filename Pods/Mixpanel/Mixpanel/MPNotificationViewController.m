@@ -95,7 +95,7 @@
                 _imageHeight.constant = image.size.height;
                 _imageView.image = image;
             } else {
-                NSLog(@"image failed to load from data: %@", self.notification.image);
+                //NSLog(@"image failed to load from data: %@", self.notification.image);
             }
         }
 

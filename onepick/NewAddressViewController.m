@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"Welcome to New Address.");
+    //NSLog(@"Welcome to New Address.");
     self.navigationItem.title = @"New Address";
     
     [self.addStreet becomeFirstResponder];
@@ -53,8 +53,8 @@
 }
 
 - (IBAction)submitAddress:(id)sender {
-    NSLog(@"Sumibt Address. %@", self.addStreet.text);
-    NSLog(@"%@", self.addApartment.text);
+    //NSLog(@"Sumibt Address. %@", self.addStreet.text);
+    //NSLog(@"%@", self.addApartment.text);
     
     if ([self.addStreet.text isEqualToString:@""]) {
         UIAlertView *alertStreet = [[UIAlertView alloc] initWithTitle:@"New Address"
@@ -107,7 +107,7 @@
                                      // initialize first
                                      self.formattedAddressLines = [[NSMutableString alloc] init];
                                      [self.formattedAddressLines appendString:[aPlacemark.addressDictionary objectForKey:@"Street"]];
-                                     NSLog(@"%@", aPlacemark.addressDictionary);
+                                     //NSLog(@"%@", aPlacemark.addressDictionary);
                                      [self.formattedAddressLines appendString: @", unit #"];
                                      [self.formattedAddressLines appendString: self.addApartment.text];
                                      [self.formattedAddressLines appendString: @", "];
@@ -146,10 +146,10 @@
 (NSInteger)buttonIndex{
     switch (buttonIndex) {
         case 0:
-            NSLog(@"Cancel button clicked");
+            //NSLog(@"Cancel button clicked");
             break;
         case 1:
-            NSLog(@"OK button clicked");
+            //NSLog(@"OK button clicked");
             [self updateCurrentAddress];
             
             [[LocalyticsSession shared] tagEvent:@"New Address"];
@@ -180,7 +180,7 @@
     // Return a fetch array.
     NSArray *fetchAccountArray = [[NSArray alloc] init];
     fetchAccountArray = [context executeFetchRequest:fetchRequestAccount error:&errorAccount];
-    NSLog(@"%i",[fetchAccountArray count]);
+    //NSLog(@"%i",[fetchAccountArray count]);
     
     if ([fetchAccountArray count] > 0) {
         Account *fetchAddress = [fetchAccountArray objectAtIndex:0];
@@ -191,7 +191,7 @@
         NSError *errorCoreData = nil;
         if (![context save:&errorCoreData])
         {
-            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
         }
     }
     else {
@@ -204,7 +204,7 @@
         NSError *errorCoreData = nil;
         if (![context save:&errorCoreData])
         {
-            NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
+            //NSLog(@"Error deleting movie, %@", [errorCoreData userInfo]);
         }
     }
 

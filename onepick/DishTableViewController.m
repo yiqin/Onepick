@@ -75,7 +75,7 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Load dishes.");
+    //NSLog(@"Load dishes.");
     [super viewDidLoad];
     self.navigationItem.title = category;
 
@@ -119,7 +119,7 @@
     PFQuery *query = [PFQuery queryWithClassName:parseClassName];
     [query whereKey:@"category" equalTo:category];
     
-    NSLog(@"parseClassName: %@", parseClassName);
+    //NSLog(@"parseClassName: %@", parseClassName);
     
     // enable caching.
     query.cachePolicy = kPFCachePolicyCacheThenNetwork;
@@ -163,7 +163,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Row: %i", indexPath.row);
+    //NSLog(@"Row: %i", indexPath.row);
     PFObject *object = [self.objects objectAtIndex:indexPath.row];
     NSDictionary *dishInformation =  [[object objectForKey:@"dish"] JSONStringToDictionay];
     
@@ -217,7 +217,7 @@
     NSError *error = nil;
     if (![context save:&error])
     {
-        NSLog(@"Error deleting movie, %@", [error userInfo]);
+        //NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
     
 }
@@ -242,7 +242,7 @@
     NSError *error = nil;
     if (![context save:&error])
     {
-        NSLog(@"Error deleting movie, %@", [error userInfo]);
+        //NSLog(@"Error deleting movie, %@", [error userInfo]);
     }
 
 }
