@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         self.totalDishesFloat = 0;
+        self.mininumPriceFloat = 40.0;
     }
     return self;
 }
@@ -50,7 +51,7 @@
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
         // Reset the total price
-        
+        self.totalDishesFloat = 0;
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -114,6 +115,7 @@
         }
     }];
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
+    
     
     
     
@@ -294,7 +296,7 @@
 }
 
 - (IBAction)confirm:(id)sender {
-    if (self.totalPriceFloat > 3.0) {
+    if (self.totalPriceFloat > self.mininumPriceFloat) {
         NSMutableString *confirmInformation = [[NSMutableString alloc] init];
         [confirmInformation appendString:@"Delivery to: "];
         [confirmInformation appendString:self.cartDeliveryAddress.text];
@@ -523,15 +525,33 @@
 - (void) updateMininumPriceLabel {
     // self.mininumPrice = 0;
     // self.distanceFloat = 0;
+    NSString *rawStringPriceSystem= [[NSUserDefaults standardUserDefaults] objectForKey:@"deliveryPriceSystem"];
     
     
-    NSNumber *temp = [[NSUserDefaults standardUserDefaults] objectForKey:@"zero"];
-    
-    if (temp == NULL) {
-        NSLog(@"temp is null.");
+    if (rawStringPriceSystem != NULL) {
+        NSLog(@"Distance %@", rawStringPriceSystem);
+        // level 1
+        NSArray *rawArray = [rawStringPriceSystem componentsSeparatedByString:@"#"];
+        NSArray *distanceArray = [[rawArray objectAtIndex:0] componentsSeparatedByString:@" "];
+        NSArray *priceArray = [[rawArray objectAtIndex:1] componentsSeparatedByString:@" "];
+        
+        NSMutableString *tempMinimumPrice = [[NSMutableString alloc] init];
+        for (int i = 0; i< [distanceArray count]; i++) {
+            if (self.distanceFloat > [[distanceArray objectAtIndex:i] floatValue]) {
+                tempMinimumPrice = [priceArray objectAtIndex:i];
+            }
+        }
+        self.mininumPrice.text = [NSString stringWithFormat:@"The order can be placed only when the price is larger than $%@.", tempMinimumPrice];
+        self.mininumPriceFloat = [tempMinimumPrice floatValue];
+        // level 2
+        
+        
+    }
+    else {
+        self.mininumPrice.text = @"The order can be placed only when the price is larger than 40.";
     }
     
-    NSLog(@"Distance %@", temp);
+    
 
 }
 

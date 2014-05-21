@@ -52,6 +52,7 @@
 
 @property (assign, nonatomic) float distanceFloat;
 
+@property (assign, nonatomic) float mininumPriceFloat;
 @property (strong, nonatomic) IBOutlet UILabel *mininumPrice;
 
 

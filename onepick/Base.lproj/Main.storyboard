@@ -724,6 +724,7 @@
                         <outlet property="cartTableView" destination="BTc-pB-cK5" id="tO6-hq-Yt0"/>
                         <outlet property="confirmButton" destination="McK-iD-w9g" id="3tf-FK-R95"/>
                         <outlet property="deliveryFee" destination="ZIS-NM-hNC" id="3WP-qo-Ynt"/>
+                        <outlet property="mininumPrice" destination="fg9-n9-oVN" id="Wff-uu-hPy"/>
                         <outlet property="tax" destination="ACx-zH-5eZ" id="LCZ-G0-UoH"/>
                         <outlet property="totalDishes" destination="d7D-ZD-zcs" id="FzC-Ij-fUq"/>
                         <outlet property="totalPrice" destination="OsS-xh-cGe" id="aEP-S1-qqs"/>
