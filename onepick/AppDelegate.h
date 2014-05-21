@@ -12,6 +12,7 @@
 #import <Namo/Namo.h>
 #import "LocalyticsSession.h"
 #import <Mixpanel.h>
+#import "GAI.h"
 
 #import "SelectedDishes.h"
 #import "Account.h"

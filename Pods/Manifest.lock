@@ -7,7 +7,7 @@ DEPENDENCIES:
   - Mixpanel (< 2.3.6)
 
 SPEC CHECKSUMS:
-  Colours: 4df972e1ff8d888acad5a00302288a94c43ec5dc
-  Mixpanel: 79ff289920b67399475b93057ac11e48637585d7
+  Colours: 60b2e4dbdf2a0f077a98a07dae1ed18ac3333e21
+  Mixpanel: 73ab2e90b651fee096a16448004df39ca535cd72
 
 COCOAPODS: 0.32.1

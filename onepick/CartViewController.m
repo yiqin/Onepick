@@ -329,6 +329,7 @@
             case 0:
                 NSLog(@"Confirm");
                 [self confirmButtonPress];
+                [self onPurchaseCompletedGATracking];
                 break;
             default:
                 break;
@@ -442,6 +443,31 @@
     
 
 }
+
+/*
+ * Called when a purchase is processed and verified.
+ */
+- (void)onPurchaseCompletedGATracking {
+    // Assumes a tracker has already been initialized with a property ID, otherwise
+    // this call returns null.
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createTransactionWithId:@"0_123456"
+                                                     affiliation:@"Lafayette-Ichiban-Price"
+                                                         revenue:[NSNumber numberWithFloat:self.totalPriceFloat]
+                                                             tax:[NSNumber numberWithFloat:self.taxFloat]
+                                                        shipping:[NSNumber numberWithFloat:self.deliveryFeeFloat]
+                                                    currencyCode:@"USD"] build]];
+    
+    [tracker send:[[GAIDictionaryBuilder createTransactionWithId:@"0_123456"
+                                                     affiliation:@"Lafayette-Ichiban-Distance"
+                                                         revenue:[NSNumber numberWithFloat:self.totalPriceFloat]
+                                                             tax:@0.0F
+                                                        shipping:[NSNumber numberWithFloat:self.distanceFloat]
+                                                    currencyCode:@"USD"] build]];
+    
+}
+
 
 - (void) updatePriceLabel {
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];

@@ -120,9 +120,21 @@
     
     Mixpanel *mixpanel = [Mixpanel sharedInstance];
     // Track an event in Mixpanel Engagement
+    // [mixpanel identify:@"7654041448"];
     [mixpanel.people set:@{@"Plan": @"Early Version"}];
     [mixpanel track:@"Change ID with the phone number."];
     // Wanna to make sure the survey works.
+    
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-51208804-1"];
+    
     
     // Core Data
     // Load the minimum
