@@ -14,6 +14,8 @@
 #import "AppDelegate.h"
 #import "Account.h"
 
+#import "OrderDetailViewController.h"
+
 @interface OrderTableViewController : PFQueryTableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *who;

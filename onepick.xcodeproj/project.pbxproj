@@ -63,6 +63,7 @@
 		8DB24181191C2E5500E3A52D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24180191C2E5500E3A52D /* Social.framework */; };
 		8DB24183191C2E5B00E3A52D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DB24182191C2E5B00E3A52D /* Accounts.framework */; };
 		8DC41AC2192CEBBC006DE2E8 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC41AC1192CEBBC006DE2E8 /* libGoogleAnalyticsServices.a */; };
+		8DC41AC7192D3A16006DE2E8 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC41AC6192D3A16006DE2E8 /* OrderDetailViewController.m */; };
 		8DE455D4190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */; };
 		8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */; };
 		8DE455DC190EF1D900E8FA36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE455DB190EF1D900E8FA36 /* CoreData.framework */; };
@@ -165,6 +166,8 @@
 		8DC41ABF192CEBBC006DE2E8 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		8DC41AC0192CEBBC006DE2E8 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		8DC41AC1192CEBBC006DE2E8 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		8DC41AC5192D3A16006DE2E8 /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		8DC41AC6192D3A16006DE2E8 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		8DE455D2190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JSONStringToDictionary.h"; sourceTree = "<group>"; };
 		8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JSONStringToDictionary.m"; sourceTree = "<group>"; };
 		8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DictionaryToJSONString.h"; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				8D4209641905C31300D566CA /* AppDelegate.h */,
 				8D4209651905C31300D566CA /* AppDelegate.m */,
 				8D4209671905C31300D566CA /* Main.storyboard */,
+				8DC41AC5192D3A16006DE2E8 /* OrderDetailViewController.h */,
+				8DC41AC6192D3A16006DE2E8 /* OrderDetailViewController.m */,
 				8DFF78A3191F3E1600709839 /* EnterAddressViewController.h */,
 				8DFF78A4191F3E1600709839 /* EnterAddressViewController.m */,
 				8DFF78A0191F3D1600709839 /* EnterPhoneSignUpViewController.h */,
@@ -566,6 +571,7 @@
 				8DFF78A5191F3E1600709839 /* EnterAddressViewController.m in Sources */,
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
 				8D6120D41916891C003DE1F3 /* Addresses.m in Sources */,
+				8DC41AC7192D3A16006DE2E8 /* OrderDetailViewController.m in Sources */,
 				8DFEBEB319101B9300D24B9D /* SelectedDishes.m in Sources */,
 				8D996E40191A8710008F07D4 /* MoreViewController.m in Sources */,
 				8D4209621905C31300D566CA /* main.m in Sources */,
