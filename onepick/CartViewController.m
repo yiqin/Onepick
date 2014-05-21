@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.totalDishesFloat = 0;
     }
     return self;
 }
@@ -49,7 +50,7 @@
     // Note that all data in Cart are mutable.
     if([self.previousCart count] > 0) {
         // Reset the total price
-        self.totalDishesFloat = 0;
+        
         self.cartArray = [[NSMutableArray alloc] initWithCapacity:[self.previousCart count]];
         NSMutableArray *keys = [[NSMutableArray alloc] init];
         NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -67,6 +68,7 @@
     }
     else {
         // [self.cartArray addObject:@"Your cart is empty."];
+        self.totalDishesFloat = 0;
     }
     
     // Get address
@@ -112,6 +114,8 @@
         }
     }];
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
+    
+    
     
 
 }
@@ -330,6 +334,7 @@
                 NSLog(@"Confirm");
                 [self confirmButtonPress];
                 [self onPurchaseCompletedGATracking];
+                [self clearDataForNextOne];
                 break;
             default:
                 break;
@@ -468,8 +473,30 @@
     
 }
 
+- (void) clearDataForNextOne {
+    // Grab the context
+    NSManagedObjectContext *context = [[self appDelegate] managedObjectContext];
+    
+    // Fetch all the data we wanna delete
+    NSFetchRequest *fetchDelete = [[NSFetchRequest alloc] init];
+    fetchDelete.entity = [NSEntityDescription entityForName:@"SelectedDishes" inManagedObjectContext:context];
+    NSArray *arrayDelete = [context executeFetchRequest:fetchDelete error:nil];
+    
+    for (NSManagedObject *managedObject in arrayDelete) {
+        [context deleteObject:managedObject];
+    }
+    
+    // Delete
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Error deleting movie, %@", [error userInfo]);
+    }
+}
+
 
 - (void) updatePriceLabel {
+    // NSLog(@"update price.");
     self.totalDishes.text = [NSString stringWithFormat:@"$%.2f",self.totalDishesFloat];
     
     NSString *locationIndicator = [[NSString alloc] init];
