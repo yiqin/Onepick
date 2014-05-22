@@ -466,13 +466,6 @@
                                                         shipping:[NSNumber numberWithFloat:self.deliveryFeeFloat]
                                                     currencyCode:@"USD"] build]];
     
-    [tracker send:[[GAIDictionaryBuilder createTransactionWithId:@"0_123456"
-                                                     affiliation:@"Lafayette-Ichiban-Distance"
-                                                         revenue:[NSNumber numberWithFloat:self.totalPriceFloat]
-                                                             tax:@0.0F
-                                                        shipping:[NSNumber numberWithFloat:self.distanceFloat]
-                                                    currencyCode:@"USD"] build]];
-    
 }
 
 - (void) clearDataForNextOne {
