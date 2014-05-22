@@ -459,8 +459,8 @@
     // this call returns null.
     id tracker = [[GAI sharedInstance] defaultTracker];
     
-    [tracker send:[[GAIDictionaryBuilder createTransactionWithId:@"0_123456"
-                                                     affiliation:@"Lafayette-Ichiban-Price"
+    [tracker send:[[GAIDictionaryBuilder createTransactionWithId:self.who
+                                                     affiliation:@"Lafayette-Ichiban"
                                                          revenue:[NSNumber numberWithFloat:self.totalPriceFloat]
                                                              tax:[NSNumber numberWithFloat:self.taxFloat]
                                                         shipping:[NSNumber numberWithFloat:self.deliveryFeeFloat]
