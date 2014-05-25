@@ -151,7 +151,7 @@
     NSString *name = [dishInformation objectForKey:@"name"];
     
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:500];
-    nameLabel.text = [dishInformation objectForKey:@"name"];;
+    nameLabel.text = [dishInformation objectForKey:@"name"];
     
     UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:504];
     nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];

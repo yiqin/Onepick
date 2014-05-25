@@ -142,7 +142,7 @@
     // This is not the best way to do it.
     // Dispatch Queue
     // https://blog.stackmob.com/2012/12/iphone-database-tutorial-part-3-adding-the-user-interface/
-    NSManagedObjectContext *context = [self managedObjectContext];;
+    NSManagedObjectContext *context = [self managedObjectContext];
     
     // Get address
     // Construct a fetch request

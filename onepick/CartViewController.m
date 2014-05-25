@@ -152,6 +152,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
 
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     // Similar as DishTableViewController
     NSMutableDictionary *dishInformation = [self.cartArray objectAtIndex:indexPath.row];
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:300];
