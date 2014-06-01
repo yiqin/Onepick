@@ -69,8 +69,18 @@
         [self.navigationController pushViewController:selectRestaurantSignUpViewController animated:YES];
     }
     else {
-
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"firstOrderAlert"]) {
+            UIAlertView *firstOrderAlert = [[UIAlertView alloc] initWithTitle:@"Instruction" message:@"Please select the dishes in the Top and Menu sections, then change the quantity in the Cart section. You can't change the quantity in the Top and Menu section." delegate:self cancelButtonTitle:@"Start" otherButtonTitles:nil];
+            [firstOrderAlert show];
+        }
+        else {
+            
+        }
     }
+    
+
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -273,7 +283,16 @@
     
 }
 
-
+#pragma mark - Alert view delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstOrderAlert"];
+            break;
+        default:
+            break;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

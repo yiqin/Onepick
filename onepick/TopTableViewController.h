@@ -15,7 +15,7 @@
 #import "SelectRestaurantSignUpViewController.h"
 
 
-@interface TopTableViewController : PFQueryTableViewController <UITableViewDelegate>
+@interface TopTableViewController : PFQueryTableViewController <UITableViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *previousCart;
 
