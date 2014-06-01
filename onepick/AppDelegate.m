@@ -72,10 +72,11 @@
     /*
     PFObject *dish = [PFObject objectWithClassName:@"DishesIN"];
     
-    NSString *name = [NSString stringWithFormat:@"Pork 1"];
+    NSString *name = [NSString stringWithFormat:@"Pork 007"];
     NSNumber *price = [NSNumber numberWithFloat:12.00];
-    NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", nil];
-    NSArray *dishArrayObjects = [NSArray arrayWithObjects:name,price, nil];
+    NSString *nameChinese = @"三杯鸡";
+    NSArray *dishArrayKeys = [NSArray arrayWithObjects:@"name",@"price", @"nameChinese", nil];
+    NSArray *dishArrayObjects = [NSArray arrayWithObjects:name,price,nameChinese, nil];
     
     NSDictionary *dishDictionaryInput = [NSDictionary dictionaryWithObjects:dishArrayObjects forKeys:dishArrayKeys];
     NSString *dishDictionaryInputString = [dishDictionaryInput DictionaryToJSONString];

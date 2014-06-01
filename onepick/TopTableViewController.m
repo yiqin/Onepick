@@ -241,7 +241,7 @@
     else [selectedDishes setPrice:[[NSNumber alloc] initWithFloat:10]];
     
     NSString *nameChinese = [dishInformation objectForKey:@"nameChinese"];
-    if (nameChinese != nil) [selectedDishes setName:nameChinese];
+    if (nameChinese != nil) [selectedDishes setNameChinese:nameChinese];
     else [selectedDishes setNameChinese:@"还没有名字"];
     
     [selectedDishes setParseObjectId:parseObjectId];

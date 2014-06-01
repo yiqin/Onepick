@@ -61,6 +61,7 @@
             // The mutable array doesn't exist at the time this is being called.
             // The mutable array must be initalized first.
             keys = [NSMutableArray arrayWithObjects:@"name", @"price", @"nameChinese", @"parseObjectId",@"count", nil];
+            NSLog(@"%@", previousDish.nameChinese);
             objects = [NSMutableArray arrayWithObjects:previousDish.name, previousDish.price, previousDish.nameChinese, previousDish.parseObjectId,previousDish.count, nil];
             dishDictionary = [NSMutableDictionary dictionaryWithObjects:objects forKeys:keys];
             [self.cartArray addObject:dishDictionary];
