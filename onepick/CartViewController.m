@@ -165,7 +165,7 @@
     UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:302];
     nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];
     UILabel *countLabel = (UILabel *) [cell viewWithTag:303];
-    countLabel.text = [[dishInformation objectForKey:@"count"] stringValue];
+    countLabel.text = [NSString stringWithFormat:@"%@", [[dishInformation objectForKey:@"count"] stringValue]];
     
     UILabel *listNumLabel = (UILabel *) [cell viewWithTag:304];
     listNumLabel.text = [NSString stringWithFormat:@"%d", (int)indexPath.row+1];
@@ -174,8 +174,10 @@
     // add button
     UIButton *addDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addDishButton.tag = indexPath.row;
-    addDishButton.frame = CGRectMake(100.0f, 5.0f, 75.0f, 30.0f);
+    addDishButton.frame = CGRectMake(110.0f, 50.0f, 75.0f, 30.0f);
     [addDishButton setTitle:@"Add" forState:UIControlStateNormal];
+    [addDishButton setBackgroundColor:[UIColor black25PercentColor]];
+    [addDishButton setTintColor:[UIColor whiteColor]];
     [cell addSubview:addDishButton];
     [addDishButton addTarget:self
                         action:@selector(addDish:)
@@ -184,8 +186,10 @@
     // minus button
     UIButton *minusDishButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     minusDishButton.tag = indexPath.row;
-    minusDishButton.frame = CGRectMake(250.0f, 5.0f, 75.0f, 30.0f);
+    minusDishButton.frame = CGRectMake(250.0f, 50.0f, 75.0f, 30.0f);
     [minusDishButton setTitle:@"Delete" forState:UIControlStateNormal];
+    [minusDishButton setBackgroundColor:[UIColor black25PercentColor]];
+    [minusDishButton setTintColor:[UIColor whiteColor]];
     [cell addSubview:minusDishButton];
     [minusDishButton addTarget:self
                       action:@selector(minusDish:)

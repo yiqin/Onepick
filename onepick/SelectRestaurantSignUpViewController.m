@@ -46,8 +46,12 @@
 }
 
 - (IBAction)selectMadison:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:@"WI" forKey:@"locationIndicator"];
-    [self performSegueWithIdentifier: @"MoveToEnterPhone" sender: self];
+    UIAlertView *WInotReady = [[UIAlertView alloc] initWithTitle:@"Ichiban" message:@"Ichiban restaurant in UW Madison is not ready. It will come soon." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+
+    [WInotReady show];
+    
+    // [[NSUserDefaults standardUserDefaults] setObject:@"WI" forKey:@"locationIndicator"];
+    // [self performSegueWithIdentifier: @"MoveToEnterPhone" sender: self];
 }
 
 /*
