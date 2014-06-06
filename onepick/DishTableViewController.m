@@ -142,12 +142,21 @@
     
     NSString *name = [dishInformation objectForKey:@"name"];
     UILabel *nameLabel = (UILabel *) [cell viewWithTag:200];
-    nameLabel.text = [dishInformation objectForKey:@"name"];
+    nameLabel.text = name;
+    
+    UILabel *nameChineseLabel = (UILabel *) [cell viewWithTag:202];
+    nameChineseLabel.text = [dishInformation objectForKey:@"nameChinese"];
+    
     UILabel *priceLabel = (UILabel *) [cell viewWithTag:201];
     // NSNumber -> float -> string
     NSNumber *price = [dishInformation objectForKey:@"price"];
-    priceLabel.text = [NSString stringWithFormat:@"%.2f",[price floatValue]];
+    priceLabel.text = [NSString stringWithFormat:@"Price: %.2f",[price floatValue]];
 
+    NSNumber *ordered = [object objectForKey:@"orderCount"];
+    UILabel *orderedLabel = (UILabel *) [cell viewWithTag:203];
+    orderedLabel.text = [NSString stringWithFormat:@"Ordered: %i",[ordered intValue]];
+
+    
     cell.accessoryType = UITableViewCellAccessoryNone;
     // Note that in self.previousCart is not NSString objects.
     for(SelectedDishes *previousDish in self.previousCart) {
