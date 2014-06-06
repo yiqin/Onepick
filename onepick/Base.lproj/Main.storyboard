@@ -483,13 +483,6 @@
                                     <action selector="changeRestaurant:" destination="rLZ-oU-A31" eventType="touchUpInside" id="Sin-C6-h5F"/>
                                 </connections>
                             </button>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="aaS-9M-c0r">
-                                <rect key="frame" x="0.0" y="469" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="En4-Rg-9Zn"/>
-                                </constraints>
-                            </adBannerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0a-o0-V6Y">
                                 <rect key="frame" x="18" y="198" width="280" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -529,11 +522,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aaS-9M-c0r" secondAttribute="trailing" id="NTk-py-fUv"/>
-                            <constraint firstItem="aaS-9M-c0r" firstAttribute="leading" secondItem="Imj-W2-5t8" secondAttribute="leading" id="V2P-Db-FQz"/>
-                            <constraint firstItem="4zL-hZ-xBF" firstAttribute="top" secondItem="aaS-9M-c0r" secondAttribute="bottom" id="gPl-hV-l4e"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="More" id="jTz-iQ-44S"/>
                     <connections>
