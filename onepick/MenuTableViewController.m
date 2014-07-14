@@ -116,6 +116,10 @@
     UILabel *categoryLabel = (UILabel *) [cell viewWithTag:100];
     categoryLabel.text = [object objectForKey:@"category"];
     
+    UILabel *categoryChineseLabel = (UILabel *) [cell viewWithTag:101];
+    categoryChineseLabel.text = [object objectForKey:@"category"];
+    
+    
     return cell;
 }
 
