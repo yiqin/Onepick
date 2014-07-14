@@ -10,6 +10,8 @@
 
 @interface CartViewController ()
 
+@property (strong, nonatomic) UIView *statusBar;
+
 @end
 
 @implementation CartViewController
@@ -105,6 +107,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // self.navigationController.navigationBarHidden = YES;
+    
     [self.confirmButton setBackgroundColor:[UIColor waveColor]];
     
     // This is not a good method. But I just don't want to optimize it now.
@@ -117,10 +121,15 @@
     }];
     self.deliveryFee.text = [NSString stringWithFormat:@"$%.2f",self.deliveryFeeFloat];
     
-    
-    
-    
+    self.statusBar = [[UIView alloc] init];
+    self.statusBar.backgroundColor = [UIColor colorWithRed: 235.0/255.0 green: 82.0/255.0 blue: 91.0/255.0 alpha: 1];
 
+}
+
+- (void)viewDidLayoutSubviews
+{
+    self.statusBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 20);
+    [self.view addSubview:self.statusBar];
 }
 
 - (void)viewDidAppear:(BOOL)animated

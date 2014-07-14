@@ -124,7 +124,7 @@
     // Track an event in Mixpanel Engagement
     // [mixpanel identify:@"7654041448"];
     [mixpanel.people set:@{@"Plan": @"Early Version"}];
-    [mixpanel track:@"Change ID with the phone number."];
+    [mixpanel track:@"Enter App."];
     // Wanna to make sure the survey works.
     
     
