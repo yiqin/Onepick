@@ -34,4 +34,11 @@
     [mixpanel track:@"Enter App."];
 }
 
++ (void) revenueTracking:(NSNumber*) revenue
+{
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel identify:mixpanel.distinctId];
+    [mixpanel.people trackCharge:revenue];
+}
+
 @end

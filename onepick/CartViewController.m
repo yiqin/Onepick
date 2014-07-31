@@ -7,6 +7,7 @@
 //
 
 #import "CartViewController.h"
+#import "YQMixpanel.h"
 
 @interface CartViewController ()
 
@@ -352,6 +353,7 @@
                 //NSLog(@"Confirm");
                 [self confirmButtonPress];
                 [self onPurchaseCompletedGATracking];
+                [self onPurchaseCompletedMixpanelTracking];
                 [self clearDataForNextOne];
                 break;
             default:
@@ -482,6 +484,10 @@
                                                         shipping:[NSNumber numberWithFloat:self.deliveryFeeFloat]
                                                     currencyCode:@"USD"] build]];
     
+}
+
+- (void)onPurchaseCompletedMixpanelTracking {
+    [YQMixpanel revenueTracking:[NSNumber numberWithFloat:self.totalPriceFloat]];
 }
 
 - (void) clearDataForNextOne {

@@ -11,8 +11,8 @@
 @interface YQMixpanel : NSObject
 
 + (void) initUser;
-+ (void) setAccountName: (NSString*) accountName;
-
++ (void) setAccountName:(NSString*) accountName;
 + (void) enterApp;
++ (void) revenueTracking:(NSNumber*) revenue;
 
 @end
