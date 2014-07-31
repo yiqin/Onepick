@@ -45,6 +45,7 @@
 		8D471BCE191D5A3200466EF7 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D471BCD191D5A3200466EF7 /* Account.m */; };
 		8D6120D41916891C003DE1F3 /* Addresses.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6120D31916891C003DE1F3 /* Addresses.m */; };
 		8D639680191EED46003DE9C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D63967F191EED46003DE9C7 /* MessageUI.framework */; };
+		8D6C192A198A938000C9B1BE /* YQMixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6C1929198A938000C9B1BE /* YQMixpanel.m */; };
 		8D6C23AD1929086400BF5778 /* Golden-Gate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8D6C23AB1929086400BF5778 /* Golden-Gate.jpg */; };
 		8D6C23AE1929086400BF5778 /* Golden-Gate@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8D6C23AC1929086400BF5778 /* Golden-Gate@2x.jpg */; };
 		8D77B3DF1909551500310CDF /* 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D77B3DD1909551500310CDF /* 640x960.png */; };
@@ -140,6 +141,8 @@
 		8D6120D21916891C003DE1F3 /* Addresses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Addresses.h; sourceTree = "<group>"; };
 		8D6120D31916891C003DE1F3 /* Addresses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Addresses.m; sourceTree = "<group>"; };
 		8D63967F191EED46003DE9C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		8D6C1928198A938000C9B1BE /* YQMixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQMixpanel.h; sourceTree = "<group>"; };
+		8D6C1929198A938000C9B1BE /* YQMixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQMixpanel.m; sourceTree = "<group>"; };
 		8D6C23AB1929086400BF5778 /* Golden-Gate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Golden-Gate.jpg"; sourceTree = "<group>"; };
 		8D6C23AC1929086400BF5778 /* Golden-Gate@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Golden-Gate@2x.jpg"; sourceTree = "<group>"; };
 		8D77B3DD1909551500310CDF /* 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x960.png; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 			children = (
 				8DC41AC4192CEDF9006DE2E8 /* Google Analytics */,
 				8DC41AC3192CEDEB006DE2E8 /* Localytics */,
+				8D6C192B198A956900C9B1BE /* YQMixpanel */,
 				8D4209641905C31300D566CA /* AppDelegate.h */,
 				8D4209651905C31300D566CA /* AppDelegate.m */,
 				8D4209671905C31300D566CA /* Main.storyboard */,
@@ -386,6 +390,15 @@
 				8D42097D1905C31300D566CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D6C192B198A956900C9B1BE /* YQMixpanel */ = {
+			isa = PBXGroup;
+			children = (
+				8D6C1928198A938000C9B1BE /* YQMixpanel.h */,
+				8D6C1929198A938000C9B1BE /* YQMixpanel.m */,
+			);
+			name = YQMixpanel;
 			sourceTree = "<group>";
 		};
 		8DC41AC3192CEDEB006DE2E8 /* Localytics */ = {
@@ -572,6 +585,7 @@
 				8DE455D7190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m in Sources */,
 				8D471BCE191D5A3200466EF7 /* Account.m in Sources */,
 				8DFF78A5191F3E1600709839 /* EnterAddressViewController.m in Sources */,
+				8D6C192A198A938000C9B1BE /* YQMixpanel.m in Sources */,
 				8DF658041911E0CD003920F4 /* NewAddressViewController.m in Sources */,
 				8D6120D41916891C003DE1F3 /* Addresses.m in Sources */,
 				8DC41AC7192D3A16006DE2E8 /* OrderDetailViewController.m in Sources */,

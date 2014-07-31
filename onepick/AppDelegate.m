@@ -14,7 +14,7 @@
 #define tintcolor [UIColor whiteColor]
 
 #import "AppDelegate.h"
-
+#import "YQMixpanel.h"
 
 @implementation AppDelegate
 
@@ -113,18 +113,10 @@
     // Enable tracing.
     // [[LocalyticsSession shared] setLoggingEnabled:YES];
     
-    // Initialize the library with your
-    // Mixpanel project token, MIXPANEL_TOKEN
-    // Account: yiqin.mems@gmail.com 52fcb0e29437cbbd3dcf1a571b6483f1
-    //          sjtu_qy@hotmail.com 9b5647bedd42695430dffd02637d0556
-    //                              d658d3225a22447f534b6e0232c86d64
-    [Mixpanel sharedInstanceWithToken:@"52fcb0e29437cbbd3dcf1a571b6483f1"];
     
-    Mixpanel *mixpanel = [Mixpanel sharedInstance];
-    // Track an event in Mixpanel Engagement
-    // [mixpanel identify:@"7654041448"];
-    [mixpanel.people set:@{@"Plan": @"Early Version"}];
-    [mixpanel track:@"Enter App."];
+    [YQMixpanel initUser];
+    [YQMixpanel enterApp];
+    
     // Wanna to make sure the survey works.
     
     

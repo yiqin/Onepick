@@ -7,6 +7,7 @@
 //
 
 #import "EnterPhoneSignUpViewController.h"
+#import "YQMixpanel.h"
 
 @interface EnterPhoneSignUpViewController ()
 
@@ -97,6 +98,7 @@
             }
         }
         
+        [YQMixpanel setAccountName:self.phoneNumber.text];
         [self performSegueWithIdentifier: @"MoveToEnterAddress" sender: self];
     }
     else {
