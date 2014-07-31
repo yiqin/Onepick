@@ -300,6 +300,7 @@
 				8DC41AC4192CEDF9006DE2E8 /* Google Analytics */,
 				8DC41AC3192CEDEB006DE2E8 /* Localytics */,
 				8D6C192B198A956900C9B1BE /* YQMixpanel */,
+				8D43C5C0198AA17C00B219BC /* MBProgressHUD */,
 				8D4209641905C31300D566CA /* AppDelegate.h */,
 				8D4209651905C31300D566CA /* AppDelegate.m */,
 				8D4209671905C31300D566CA /* Main.storyboard */,
@@ -338,8 +339,6 @@
 				8DE455D3190ECE4C00E8FA36 /* NSString+JSONStringToDictionary.m */,
 				8DE455D5190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.h */,
 				8DE455D6190ECF3700E8FA36 /* NSDictionary+DictionaryToJSONString.m */,
-				8DEAD4141915C91400CB5E7F /* MBProgressHUD.h */,
-				8DEAD4151915C91400CB5E7F /* MBProgressHUD.m */,
 				8D42096D1905C31300D566CA /* Images.xcassets */,
 				8D42095C1905C31300D566CA /* Supporting Files */,
 			);
@@ -390,6 +389,15 @@
 				8D42097D1905C31300D566CA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D43C5C0198AA17C00B219BC /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8DEAD4141915C91400CB5E7F /* MBProgressHUD.h */,
+				8DEAD4151915C91400CB5E7F /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		8D6C192B198A956900C9B1BE /* YQMixpanel */ = {
