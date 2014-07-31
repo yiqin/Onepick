@@ -7,6 +7,7 @@
 //
 
 #import "EnterAddressViewController.h"
+#import "YQMixpanel.h"
 
 @interface EnterAddressViewController ()
 
@@ -197,8 +198,7 @@
         
         Mixpanel *mixpanel = [Mixpanel sharedInstance];
         // Track an event in Mixpanel Engagement
-        [mixpanel identify:fetchAddress.phone];
-        [mixpanel.people set:@{@"Plan": @"Early Version"}];
+        [YQMixpanel setAccountName:fetchAddress.phone];
         [mixpanel track:@"Change ID with the phone number."];
         
         // //NSLog(@"mxiphanel id %@", fetchAddress.phone);

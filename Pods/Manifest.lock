@@ -4,10 +4,10 @@ PODS:
 
 DEPENDENCIES:
   - Colours
-  - Mixpanel (< 2.3.6)
+  - Mixpanel
 
 SPEC CHECKSUMS:
   Colours: 60b2e4dbdf2a0f077a98a07dae1ed18ac3333e21
   Mixpanel: 73ab2e90b651fee096a16448004df39ca535cd72
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
