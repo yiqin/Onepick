@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-NewRelicAgent.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>007A951802794D3785FB6ECB</key>
+		<key>1E2109DA7D0A420681D2DD26</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1CFC053DE5D54E4B96812683</key>
+		<key>52F427128DC94607A25426CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D65AA40EBD7440DA57D8D7D</key>
+		<key>F3C2DA49D4AA48929BD509A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDC7911E03EE4681B74253FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

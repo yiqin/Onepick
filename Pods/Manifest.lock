@@ -1,13 +1,16 @@
 PODS:
   - Colours (5.3.0)
   - Mixpanel (2.3.5)
+  - NewRelicAgent (3.380)
 
 DEPENDENCIES:
   - Colours
   - Mixpanel
+  - NewRelicAgent
 
 SPEC CHECKSUMS:
   Colours: 60b2e4dbdf2a0f077a98a07dae1ed18ac3333e21
   Mixpanel: 73ab2e90b651fee096a16448004df39ca535cd72
+  NewRelicAgent: 712c78b64cf9e8fdc20a360e3a7bfe59126c2fac
 
 COCOAPODS: 0.33.1

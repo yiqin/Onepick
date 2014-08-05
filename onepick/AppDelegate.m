@@ -35,7 +35,9 @@
     // Set status bar style
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        
+    
+    [NewRelicAgent startWithApplicationToken:@"AA18e005e34f0c01e183ce25cf4828c05e64ab02c7"];
+    
     // Parse.com
     [Parse setApplicationId:@"2D6T3tgwBIPoE8HkuninwT3gsUkrHouCfzg0MzDL"
                   clientKey:@"cmvDVWTEIrZO4phyuddppS96diUqckCKazxBEwxH"];

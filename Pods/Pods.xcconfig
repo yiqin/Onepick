@@ -1,5 +1,6 @@
+FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/NewRelicAgent/NewRelic_iOS_Agent_3.380"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Colours" "${PODS_ROOT}/Headers/Mixpanel"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/Colours" -isystem "${PODS_ROOT}/Headers/Mixpanel"
-OTHER_LDFLAGS = -ObjC -framework Accelerate -framework CoreGraphics -framework CoreTelephony -framework Foundation -framework QuartzCore -framework SystemConfiguration -framework UIKit
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/Colours" "${PODS_ROOT}/Headers/Mixpanel" "${PODS_ROOT}/Headers/NewRelicAgent"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/Colours" -isystem "${PODS_ROOT}/Headers/Mixpanel" -isystem "${PODS_ROOT}/Headers/NewRelicAgent"
+OTHER_LDFLAGS = -ObjC -lz -framework Accelerate -framework CoreGraphics -framework CoreTelephony -framework Foundation -framework NewRelicAgent -framework QuartzCore -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods
