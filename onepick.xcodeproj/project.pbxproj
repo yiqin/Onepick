@@ -748,7 +748,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/onepick",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					$inherited,
+				);
 				PRODUCT_NAME = Ichiban;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -772,7 +775,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/onepick",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					$inherited,
+				);
 				PRODUCT_NAME = Ichiban;
 				PROVISIONING_PROFILE = "158BDF7D-D498-4CAA-B0F3-86D65541B6EF";
 				WRAPPER_EXTENSION = app;
